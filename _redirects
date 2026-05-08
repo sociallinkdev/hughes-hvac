@@ -1,0 +1,9 @@
+# Netlify redirects — Hughes HVAC
+# Clean URLs (already handled by Netlify's pretty URLs setting)
+/home  /  301
+/index /  301
+
+# Common typos / old URL patterns
+/services/ac-repair     /ac-repair-nashville/    301
+/services/furnace-repair /furnace-repair-nashville/ 301
+/madison               /hvac-madison-tn/         301

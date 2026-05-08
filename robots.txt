@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hugheshvac.com/sitemap.xml
+
+# Block admin and private paths
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /cgi-bin/

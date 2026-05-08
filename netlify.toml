@@ -1,0 +1,25 @@
+[build]
+  publish = "."
+
+# Netlify Forms — email notifications
+# Go to: Netlify Dashboard > your site > Forms > hughes-hvac-service-request > Settings
+# Add email notifications to: brady@sociallink.com and chris@hugheshvacservices.com
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
+# Redirect form submissions to thanks page
+[[redirects]]
+  from = "/"
+  to = "/thanks.html"
+  status = 200
+  conditions = {method = ["POST"]}
