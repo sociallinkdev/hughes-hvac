@@ -758,7 +758,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div style="background:var(--offwhite);border-radius:10px;padding:20px;margin-bottom:14px;">
       <div style="font-family:var(--fd);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:12px;">Related Articles</div><a href="/hvac-madison-tn.html" style="display:block;background:var(--white);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:8px;text-decoration:none;"><div style="font-family:var(--fd);font-size:13px;font-weight:900;color:var(--navy);text-transform:uppercase;letter-spacing:.03em;">HVAC Madison TN &#8594;</div><div style="font-size:11px;color:var(--steel);margin-top:3px;">Local service.</div></a><a href="/ac-repair-madison-tn.html" style="display:block;background:var(--white);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:8px;text-decoration:none;"><div style="font-family:var(--fd);font-size:13px;font-weight:900;color:var(--navy);text-transform:uppercase;letter-spacing:.03em;">AC Repair Madison TN &#8594;</div><div style="font-size:11px;color:var(--steel);margin-top:3px;">Same-day repair.</div></a><a href="/maintenance-plans.html" style="display:block;background:var(--white);border-radius:8px;padding:14px 16px;border:1px solid var(--border);margin-bottom:8px;text-decoration:none;"><div style="font-family:var(--fd);font-size:13px;font-weight:900;color:var(--navy);text-transform:uppercase;letter-spacing:.03em;">Maintenance Plans &#8594;</div><div style="font-size:11px;color:var(--steel);margin-top:3px;">Annual tune-ups.</div></a>
     </div>
-    <div><form class="ifc" name="hughes-hvac-service-request" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <div><form class="ifc" name="hughes-hvac-service-request" onsubmit="submitForm(event,this)" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
   <input type="hidden" name="form-name" value="hughes-hvac-service-request">
   <input type="hidden" name="_cc" value="brady@sociallink.com,chris@hugheshvacservices.com">
   <input type="hidden" name="_to" value="brady@sociallink.com,chris@hugheshvacservices.com">
@@ -771,9 +771,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="fl"><label for="f-svc">Select Your Service*</label><select class="fs" id="f-svc" name="service" required><option value="New System Estimate (FREE)">New System Estimate (FREE)</option><option value="AC Repair">AC Repair</option><option value="AC Installation">AC Installation</option><option value="Furnace Repair">Furnace Repair</option><option value="Furnace Installation">Furnace Installation</option><option value="Heat Pump Repair">Heat Pump Repair</option><option value="Heat Pump Installation">Heat Pump Installation</option><option value="Maintenance Tune-Up">Maintenance Tune-Up</option><option value="Emergency Service">Emergency Service</option><option value="Duct Cleaning">Duct Cleaning</option><option value="Mini Split">Mini Split</option><option value="Commercial HVAC">Commercial HVAC</option><option value="Indoor Air Quality">Indoor Air Quality</option><option value="Custom Job / Not Sure">Custom Job / Not Sure</option></select></div>
   <div class="fl"><label for="f-msg">How Can We Help?*</label><textarea class="ft" id="f-msg" name="message" rows="3" placeholder="Please include as many details as possible."></textarea></div>
   <div class="fl"><label for="f-addr">Service Address</label><input class="fi" id="f-addr" name="address" type="text" placeholder="Search address" autocomplete="street-address"></div>
-  <button class="fsub" onclick="submitForm(this)">Request a Callback</button>
+  <button class="fsub" type="submit">Request a Callback</button>
   <p class="fnote">Someone will call you within 1 hour to confirm your appointment.</p>
-</div></div>
+</form></div></div>
   </div>
 </div></div></section><section style="padding:0 20px 36px;"><div style="max-width:1160px;margin:0 auto;"><div style="background:var(--ember);border-radius:10px;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;"><div><div style="font-family:var(--fd);font-size:20px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.03em;">Ready to Schedule?</div><div style="font-size:12px;color:rgba(255,255,255,.72);margin-top:3px;">Same-day available &middot; Upfront pricing &middot; No surprises</div></div><div style="display:flex;gap:10px;flex-wrap:wrap;"><a href="/contact.html" style="background:#fff;color:var(--ember);font-family:var(--fd);font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:11px 20px;border-radius:5px;text-decoration:none;white-space:nowrap;">Schedule Online</a><a href="tel:6152199882" style="background:rgba(255,255,255,.15);color:#fff;font-family:var(--fd);font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:11px 20px;border-radius:5px;text-decoration:none;border:1px solid rgba(255,255,255,.3);white-space:nowrap;">(615) 219-9882</a></div></div></div></section>
 <section class="sec sec-alt" id="related-services">
@@ -864,9 +864,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="mob-bar"><a href="tel:6152199882"><svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 3H6L7.5 7L5.5 8.2C6.4 10.1 7.9 11.6 9.8 12.5L11 10.5L15 12V15C15 16.1 13.9 17 12.8 16.8C5.7 15.5 0.5 10.3-0.8 3.2C-1 2.1 0 1 1 1H4L3 3Z" stroke="white" fill="none" stroke-width="1.3" transform="translate(1,0)"/></svg>Call (615) 219-9882</a></div>
 <div class="mob-bar"><a href="tel:6152199882">Call (615) 219-9882</a></div>
 <script>
-function submitForm(b){
-  var form=b.closest('form');
-  if(!form) return;
+function submitForm(ev,form){
+  ev.preventDefault();
+  var b=form.querySelector('.fsub');
   var n=document.getElementById('f-name')&&document.getElementById('f-name').value.trim(),
       e=document.getElementById('f-email')&&document.getElementById('f-email').value.trim(),
       p=document.getElementById('f-phone')&&document.getElementById('f-phone').value.trim();
@@ -884,8 +884,16 @@ function submitForm(b){
     headers:{'Content-Type':'application/x-www-form-urlencoded'},
     body:new URLSearchParams(data).toString()
   })
-  .then(function(){ window.location.href='/thanks.html'; })
-  .catch(function(){ window.location.href='/thanks.html'; });
+  .then(function(res){
+    if(!res.ok) throw new Error('Form submission failed');
+    window.location.href='/thanks';
+  })
+  .catch(function(){
+    b.textContent='Something went wrong. Please call us.';
+    b.style.background='#c0392b';
+    b.disabled=false;
+    setTimeout(function(){b.textContent='Request a Callback';b.style.background='';},4000);
+  });
 }
 // Smooth scroll for anchor links
 document.querySelectorAll("a[href^='#']").forEach(a=>a.addEventListener("click",e=>{
