@@ -1,18 +1,51 @@
+# Hughes HVAC Services — Netlify Configuration
+# Domain: hugheshvacservices.com
+
 [build]
   publish = "."
+  command = "echo 'Static site — no build step'"
 
-# Netlify Forms — email notifications
-# Go to: Netlify Dashboard > your site > Forms > hughes-hvac-service-request > Settings
-# Add email notifications to: brady@sociallink.com and chris@hugheshvacservices.com
+# Form notification emails
+# Sends lead notifications to Chris (owner) and Brady (agency)
+[[plugins]]
+  package = "@netlify/plugin-emails"
 
+# Redirect www to non-www (canonical)
+[[redirects]]
+  from = "https://www.hugheshvacservices.com/*"
+  to = "https://hugheshvacservices.com/:splat"
+  status = 301
+  force = true
+
+# Custom 404
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# Security headers
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache static assets
+[[headers]]
+  for = "/og-image.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "*.html"
+  for = "/*.html"
   [headers.values]
-    Cache-Control = "public, max-age=86400, must-revalidate"
+    Cache-Control = "public, max-age=3600"
+
+# Preconnect hints for performance
+[[headers]]
+  for = "/"
+  [headers.values]
+    Link = '''<https://fonts.googleapis.com>; rel=preconnect, <https://fonts.gstatic.com>; rel=preconnect; crossorigin, <https://www.googletagmanager.com>; rel=preconnect'''
