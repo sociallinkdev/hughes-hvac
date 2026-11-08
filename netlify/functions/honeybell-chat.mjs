@@ -129,16 +129,18 @@ export async function handler(event) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-haiku-3-5-20241022',
         max_tokens: 512,
         system: systemWithContext,
-        messages: messages.slice(-10), // Keep last 10 turns for context window
+        messages: messages.slice(-10),
       }),
     });
 
+    const responseText = await response.text();
+    console.log('Claude API status:', response.status);
+
     if (!response.ok) {
-      const errText = await response.text();
-      console.error('Claude API error:', response.status, errText);
+      console.error('Claude API error:', response.status, responseText.substring(0, 500));
       return {
         statusCode: 200,
         headers,
@@ -149,7 +151,11 @@ export async function handler(event) {
       };
     }
 
-    const data = await response.json();
+    let data;
+    try { data = JSON.parse(responseText); } catch(e) {
+      console.error('JSON parse failed:', responseText.substring(0, 500));
+      data = {};
+    }
     const reply = data.content?.[0]?.text || "I'd love to help - call us at (615) 219-9882 and we'll get this sorted.";
 
     return {
