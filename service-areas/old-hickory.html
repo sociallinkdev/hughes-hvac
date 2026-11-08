@@ -2223,8 +2223,7 @@ var HB={
       .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
       .replace(/\[(.+?)\]\(tel:(.+?)\)/g,'<a href="tel:$2">$1</a>')
       .replace(/\[(.+?)\]\((https?:\/\/.+?)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>')
-      .replace(/
-/g,'<br>');
+      .replace(/\n/g,'<br>');
   },
 
   submitLead:function(name,phone,issue){
