@@ -2002,6 +2002,27 @@ input[type="email"] { text-transform: none; }
   });
 })();
 
+/* ── Lead Notification: POST all form leads to /api/honeybell-lead ── */
+(function(){
+  document.querySelectorAll('form[data-netlify]').forEach(function(f){
+    f.addEventListener('submit',function(){
+      try{
+        var d={source:'form',name:'',phone:'',email:'',service:'',urgency:'normal',address:'',details:'',page:window.location.pathname};
+        var n=f.querySelector('[name=name]');if(n)d.name=n.value;
+        var p=f.querySelector('[name=phone]');if(p)d.phone=p.value;
+        var e=f.querySelector('[name=email]');if(e)d.email=e.value;
+        var s=f.querySelector('[name=service]');if(s)d.service=s.value;
+        var u=f.querySelector('[name=urgency]');if(u)d.urgency=u.value||'normal';
+        var a=f.querySelector('[name=address]');if(a)d.address=a.value;
+        var dt=f.querySelector('[name=details]');if(dt)d.details=dt.value;
+        if(d.name||d.phone){
+          fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+        }
+      }catch(err){console.error('Lead notify error:',err);}
+    });
+  });
+})();
+
 /* ── Phone Click Tracking ── */
 (function(){
   document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
