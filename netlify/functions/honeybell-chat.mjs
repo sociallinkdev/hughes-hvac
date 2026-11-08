@@ -129,18 +129,16 @@ export async function handler(event) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-haiku-3-5-20241022',
+        model: 'claude-sonnet-5-5',
         max_tokens: 512,
         system: systemWithContext,
-        messages: messages.slice(-10),
+        messages: messages.slice(-10), // Keep last 10 turns for context window
       }),
     });
 
-    const responseText = await response.text();
-    console.log('Claude API status:', response.status);
-
     if (!response.ok) {
-      console.error('Claude API error:', response.status, responseText.substring(0, 500));
+      const errText = await response.text();
+      console.error('Claude API error:', response.status, errText);
       return {
         statusCode: 200,
         headers,
@@ -151,12 +149,10 @@ export async function handler(event) {
       };
     }
 
-    let data;
-    try { data = JSON.parse(responseText); } catch(e) {
-      console.error('JSON parse failed:', responseText.substring(0, 500));
-      data = {};
-    }
-    const reply = data.content?.[0]?.text || "I'd love to help - call us at (615) 219-9882 and we'll get this sorted.";
+    const data = await response.json();
+    const textBlock = (data.content || []).find(b => b.type === 'text');
+    if (!textBlock) console.error('Claude API returned no text block:', JSON.stringify(data).slice(0, 500));
+    const reply = textBlock?.text || "I'd love to help - call us at (615) 219-9882 and we'll get this sorted.";
 
     return {
       statusCode: 200,
