@@ -288,12 +288,9 @@ ul, ol { list-style: none; }
 .h-btn-primary {
   background: var(--h-orange);
   color: #fff;
-  box-shadow: 0 2px 8px rgba(212,84,26,0.25);
 }
 .h-btn-primary:hover {
   background: var(--h-orange-hover);
-  box-shadow: 0 4px 16px rgba(212,84,26,0.35);
-  transform: translateY(-1px);
 }
 .h-btn-primary:active { transform: translateY(0) scale(0.97); }
 
@@ -307,17 +304,15 @@ ul, ol { list-style: none; }
   transform: translateY(-1px);
 }
 
-/* Ghost -- outlined + glass */
+/* Ghost -- outlined */
 .h-btn-ghost {
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: transparent;
   color: #fff;
-  border: 1.5px solid rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.25);
 }
 .h-btn-ghost:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.3);
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.05);
 }
 
 /* White ghost (for dark backgrounds) */
@@ -491,15 +486,12 @@ input[type="email"] { text-transform: none; }
   left: 0;
   right: 0;
   z-index: 300;
-  background: rgba(14,28,47,0.85);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  transition: all 0.3s ease;
+  background: var(--h-navy);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.2s;
 }
 .h-header.is-scrolled {
-  background: rgba(14,28,47,0.95);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  background: var(--h-navy-deep);
 }
 .h-header-inner {
   display: flex;
