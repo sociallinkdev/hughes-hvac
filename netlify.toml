@@ -3,12 +3,30 @@
 
 [build]
   publish = "."
-  command = "echo 'Static site — no build step'"
+  command = "echo 'Static site - no build step'"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
 
 # Form notification emails
 # Sends lead notifications to Chris (owner) and Brady (agency)
 [[plugins]]
   package = "@netlify/plugin-emails"
+
+# API proxy for Honeybell AI chat
+[[redirects]]
+  from = "/api/honeybell"
+  to = "/.netlify/functions/honeybell-chat"
+  status = 200
+  force = true
+
+# API proxy for Honeybell lead capture (Mega Honey feed)
+[[redirects]]
+  from = "/api/honeybell-lead"
+  to = "/.netlify/functions/honeybell-lead"
+  status = 200
+  force = true
 
 # Redirect www to non-www (canonical)
 [[redirects]]
