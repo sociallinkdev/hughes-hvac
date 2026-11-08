@@ -2032,49 +2032,57 @@ input[type="email"] { text-transform: none; }
 
 <!-- ═══════════════════════════════════════ -->
 <!-- HONEYBELL - HVAC Diagnostic AI Chat    -->
+<!-- Social Link Brand Standard (Dark UI)   -->
 <!-- ═══════════════════════════════════════ -->
 <style>
-.hb-fab{position:fixed;bottom:20px;right:20px;z-index:9999;width:60px;height:60px;border-radius:50%;background:var(--h-orange);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(212,84,26,0.4);transition:transform 0.2s,box-shadow 0.2s;-webkit-tap-highlight-color:transparent}
-.hb-fab:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(212,84,26,0.5)}
-.hb-fab svg{width:28px;height:28px}
-.hb-fab-pulse{position:fixed;bottom:20px;right:20px;z-index:9998;width:60px;height:60px;border-radius:50%;background:var(--h-orange);animation:hb-pulse 2s ease-in-out infinite;pointer-events:none}
-@keyframes hb-pulse{0%,100%{transform:scale(1);opacity:0.4}50%{transform:scale(1.4);opacity:0}}
-.hb-badge{position:absolute;top:-2px;right:-2px;width:18px;height:18px;border-radius:50%;background:#fff;color:var(--h-orange);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--h-orange)}
-.hb-win{position:fixed;bottom:90px;right:20px;z-index:10000;width:380px;max-height:580px;border-radius:16px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,0.2),0 0 0 1px rgba(0,0,0,0.05);display:none;flex-direction:column;overflow:hidden;font-family:var(--h-font-body)}
+.hb-fab{position:fixed;bottom:24px;right:24px;z-index:9999;width:56px;height:56px;border-radius:50%;background:#1c2a3a;border:2.5px solid var(--h-orange);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.35);transition:transform 0.2s,box-shadow 0.2s;-webkit-tap-highlight-color:transparent;padding:0;overflow:hidden}
+.hb-fab:hover{transform:scale(1.08);box-shadow:0 6px 32px rgba(212,84,26,0.35)}
+.hb-fab-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1}
+.hb-fab-pulse{position:fixed;bottom:24px;right:24px;z-index:9998;width:56px;height:56px;border-radius:50%;background:var(--h-orange);animation:hb-pulse 2.5s ease-in-out infinite;pointer-events:none}
+@keyframes hb-pulse{0%,100%{transform:scale(1);opacity:0.3}50%{transform:scale(1.5);opacity:0}}
+.hb-badge{position:absolute;top:-2px;right:-2px;width:16px;height:16px;border-radius:50%;background:var(--h-orange);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #1c2a3a}
+.hb-win{position:fixed;bottom:92px;right:24px;z-index:10000;width:380px;max-height:560px;border-radius:16px;background:#0f1923;box-shadow:0 24px 64px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.06);display:none;flex-direction:column;overflow:hidden;font-family:var(--h-font-body)}
 .hb-win.is-open{display:flex}
-@media(max-width:480px){.hb-win{bottom:0;right:0;left:0;width:100%;max-height:100vh;border-radius:16px 16px 0 0}}
-.hb-hdr{background:var(--h-navy);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px}
-.hb-avatar{width:36px;height:36px;border-radius:50%;background:var(--h-orange);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.hb-hdr-info h4{font-size:0.875rem;font-weight:600;margin:0;line-height:1.2}
-.hb-hdr-info p{font-size:0.6875rem;color:rgba(255,255,255,0.6);margin:0}
-.hb-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.6);cursor:pointer;padding:4px;display:flex}
+@media(max-width:480px){.hb-win{bottom:0;right:0;left:0;width:100%;max-height:100vh;max-height:100dvh;border-radius:16px 16px 0 0}}
+.hb-hdr{background:#0f1923;color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.hb-avatar{width:40px;height:40px;border-radius:50%;background:#1c2a3a;border:2px solid var(--h-orange);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.hb-hdr-info{flex:1;min-width:0}
+.hb-hdr-info h4{font-size:0.9375rem;font-weight:600;margin:0;line-height:1.2;color:#fff}
+.hb-hdr-info p{font-size:0.6875rem;color:rgba(255,255,255,0.45);margin:2px 0 0;line-height:1.3}
+.hb-hdr-call{font-size:0.6875rem;font-weight:500;color:rgba(255,255,255,0.55);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:50px;padding:5px 12px;text-decoration:none;white-space:nowrap;transition:all 0.15s;flex-shrink:0}
+.hb-hdr-call:hover{color:#fff;border-color:var(--h-orange);background:rgba(212,84,26,0.15)}
+.hb-close{background:none;border:none;color:rgba(255,255,255,0.35);cursor:pointer;padding:4px;display:flex;flex-shrink:0;transition:color 0.15s}
 .hb-close:hover{color:#fff}
-.hb-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:300px}
-.hb-msg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:0.8125rem;line-height:1.55;animation:hb-in 0.25s ease}
-@keyframes hb-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.hb-bot{background:#f1f5f9;color:#1e293b;align-self:flex-start;border-bottom-left-radius:4px}
+.hb-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:280px;background:#0f1923}
+.hb-msg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:0.8125rem;line-height:1.6;animation:hb-in 0.25s ease}
+@keyframes hb-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.hb-bot{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.88);align-self:flex-start;border-bottom-left-radius:4px}
+.hb-bot strong{color:#fff}
 .hb-user{background:var(--h-orange);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
 .hb-opts{display:flex;flex-direction:column;gap:6px;align-self:flex-start;width:100%}
-.hb-opt{background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:10px 14px;font-size:0.8125rem;font-weight:500;color:#1e293b;cursor:pointer;text-align:left;transition:all 0.15s;font-family:inherit}
-.hb-opt:hover{border-color:var(--h-orange);background:var(--h-orange-subtle)}
-.hb-input-row{padding:12px 16px;border-top:1px solid #f1f5f9;display:flex;gap:8px;align-items:center}
-.hb-input{flex:1;border:1.5px solid #e2e8f0;border-radius:50px;padding:10px 16px;font-size:0.8125rem;outline:none;font-family:inherit;transition:border-color 0.15s}
+.hb-opt{background:transparent;border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:10px 14px;font-size:0.8125rem;font-weight:500;color:rgba(255,255,255,0.8);cursor:pointer;text-align:left;transition:all 0.15s;font-family:inherit}
+.hb-opt:hover{border-color:var(--h-orange);color:#fff;background:rgba(212,84,26,0.08)}
+.hb-input-row{padding:12px 16px;border-top:1px solid rgba(255,255,255,0.06);display:flex;gap:8px;align-items:center;background:#0f1923}
+.hb-input{flex:1;border:1px solid rgba(255,255,255,0.12);border-radius:50px;padding:10px 16px;font-size:0.8125rem;outline:none;font-family:inherit;transition:border-color 0.15s;background:rgba(255,255,255,0.04);color:#fff}
+.hb-input::placeholder{color:rgba(255,255,255,0.3)}
 .hb-input:focus{border-color:var(--h-orange)}
-.hb-send{width:36px;height:36px;border-radius:50%;background:var(--h-orange);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s}
-.hb-send:hover{background:var(--h-orange-hover)}
-.hb-cta{padding:12px 16px;border-top:1px solid #f1f5f9}
-.hb-cta a{display:block;text-align:center;background:var(--h-orange);color:#fff;font-weight:600;font-size:0.8125rem;padding:10px;border-radius:50px;text-decoration:none;transition:background 0.15s}
-.hb-cta a:hover{background:var(--h-orange-hover)}
-.hb-typing{display:flex;gap:4px;align-self:flex-start;padding:8px 14px;background:#f1f5f9;border-radius:12px}
-.hb-dot{width:6px;height:6px;border-radius:50%;background:#94a3b8;animation:hb-bounce 1.2s ease-in-out infinite}
+.hb-send{width:36px;height:36px;border-radius:50%;background:var(--h-orange);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s}
+.hb-send:hover{background:var(--h-orange-hover);transform:scale(1.05)}
+.hb-cta{padding:10px 16px;border-top:1px solid rgba(255,255,255,0.06);background:#0f1923}
+.hb-cta a{display:block;text-align:center;background:var(--h-orange);color:#fff;font-weight:600;font-size:0.8125rem;padding:10px;border-radius:50px;text-decoration:none;transition:all 0.15s}
+.hb-cta a:hover{background:var(--h-orange-hover);transform:translateY(-1px)}
+.hb-typing{display:flex;gap:4px;align-self:flex-start;padding:8px 14px;background:rgba(255,255,255,0.06);border-radius:12px}
+.hb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);animation:hb-bounce 1.2s ease-in-out infinite}
 .hb-dot:nth-child(2){animation-delay:0.2s}
 .hb-dot:nth-child(3){animation-delay:0.4s}
 @keyframes hb-bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+.hb-disclaimer{padding:8px 16px 10px;font-size:0.625rem;color:rgba(255,255,255,0.3);line-height:1.5;background:#0f1923;border-top:1px solid rgba(255,255,255,0.04)}
+.hb-disclaimer a{color:rgba(255,255,255,0.4);text-decoration:underline}
 </style>
 
 <div class="hb-fab-pulse"></div>
 <button class="hb-fab" onclick="HB.toggle()" aria-label="Chat with Honeybell">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  <span class="hb-fab-icon">&#x1F41D;</span>
   <span class="hb-badge">1</span>
 </button>
 
@@ -2083,22 +2091,24 @@ input[type="email"] { text-transform: none; }
     <div class="hb-avatar">&#x1F41D;</div>
     <div class="hb-hdr-info">
       <h4>Honeybell</h4>
-      <p>Hughes HVAC Assistant</p>
+      <p>Hughes HVAC diagnostic advisor</p>
     </div>
+    <a href="tel:+16152199882" class="hb-hdr-call">Talk to a person</a>
     <button class="hb-close" onclick="HB.toggle()" aria-label="Close chat">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
   <div class="hb-msgs" id="hbMsgs"></div>
   <div class="hb-input-row" id="hbInputRow" style="display:none">
-    <input class="hb-input" id="hbInput" placeholder="Type your message..." autocomplete="off">
+    <input class="hb-input" id="hbInput" placeholder="Describe your issue..." autocomplete="off">
     <button class="hb-send" onclick="HB.sendInput()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </button>
   </div>
   <div class="hb-cta" id="hbCta" style="display:none">
     <a href="tel:+16152199882" onclick="if(typeof gtag==='function')gtag('event','phone_click',{event_category:'honeybell',event_label:'chat_cta'})">Call Now - (615) 219-9882</a>
   </div>
+  <div class="hb-disclaimer">Honeybell is an AI assistant; verify advice with a licensed technician. If you request service, Hughes HVAC keeps this conversation to follow up. <a href="/privacy-policy">Privacy</a></div>
   <form id="hbForm" name="honeybell-lead" method="POST" data-netlify="true" netlify-honeypot="hb-bot" style="display:none">
     <input type="hidden" name="form-name" value="honeybell-lead">
     <input type="hidden" name="hb-name" id="hb-name">
@@ -2305,8 +2315,9 @@ var HB={
 
     var form=document.getElementById('hbForm');
     var fd=new FormData(form);
+    /* 1. Submit to Netlify Forms (primary) */
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()}).then(function(){
-      HB.addBot("You're all set, "+HB.data.name.split(' ')[0]+"! Chris will call you within 1 hour to get this sorted. 🐝",600);
+      HB.addBot("You're all set, "+HB.data.name.split(' ')[0]+"! Chris will call you within 1 hour to get this sorted.",600);
       HB.addBot("In the meantime, if it's urgent, you can reach us directly:",1200);
       HB.showCallCta();
       if(typeof gtag==='function')gtag('event','honeybell_lead',{event_category:'honeybell',event_label:d.issue,value:150});
@@ -2314,6 +2325,24 @@ var HB={
       HB.addBot("Hmm, something went wrong submitting your info. Please call us directly:",600);
       HB.showCallCta();
     });
+    /* 2. Feed Mega Honey - send lead to central Honeybell system */
+    try{
+      var megaPayload={
+        source:'honeybell-hvac',
+        client:'hughes-hvac',
+        domain:'hugheshvacservices.com',
+        lead:{name:d.name,phone:d.phone,issue:d.issue,diagnosis:d.diagnosis,urgency:d.urgency},
+        page:window.location.pathname,
+        timestamp:new Date().toISOString()
+      };
+      /* GTM dataLayer push for cross-platform tracking */
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({event:'honeybell_lead_captured',honeybell_source:'hvac',honeybell_client:'hughes',honeybell_urgency:d.urgency,honeybell_issue:d.issue});
+      /* GA4 enhanced lead event */
+      if(typeof gtag==='function'){
+        gtag('event','generate_lead',{currency:'USD',value:150,lead_source:'honeybell-hvac',lead_urgency:d.urgency});
+      }
+    }catch(e){/* Mega Honey feed is non-blocking */}
   }
 };
 
