@@ -2038,5 +2038,304 @@ input[type="email"] { text-transform: none; }
   stats.forEach(function(s){io.observe(s);});
 })();
 </script>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- HONEYBELL - HVAC Diagnostic AI Chat    -->
+<!-- ═══════════════════════════════════════ -->
+<style>
+.hb-fab{position:fixed;bottom:20px;right:20px;z-index:9999;width:60px;height:60px;border-radius:50%;background:var(--h-orange);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(212,84,26,0.4);transition:transform 0.2s,box-shadow 0.2s;-webkit-tap-highlight-color:transparent}
+.hb-fab:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(212,84,26,0.5)}
+.hb-fab svg{width:28px;height:28px}
+.hb-fab-pulse{position:fixed;bottom:20px;right:20px;z-index:9998;width:60px;height:60px;border-radius:50%;background:var(--h-orange);animation:hb-pulse 2s ease-in-out infinite;pointer-events:none}
+@keyframes hb-pulse{0%,100%{transform:scale(1);opacity:0.4}50%{transform:scale(1.4);opacity:0}}
+.hb-badge{position:absolute;top:-2px;right:-2px;width:18px;height:18px;border-radius:50%;background:#fff;color:var(--h-orange);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--h-orange)}
+.hb-win{position:fixed;bottom:90px;right:20px;z-index:10000;width:380px;max-height:580px;border-radius:16px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,0.2),0 0 0 1px rgba(0,0,0,0.05);display:none;flex-direction:column;overflow:hidden;font-family:var(--h-font-body)}
+.hb-win.is-open{display:flex}
+@media(max-width:480px){.hb-win{bottom:0;right:0;left:0;width:100%;max-height:100vh;border-radius:16px 16px 0 0}}
+.hb-hdr{background:var(--h-navy);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px}
+.hb-avatar{width:36px;height:36px;border-radius:50%;background:var(--h-orange);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.hb-hdr-info h4{font-size:0.875rem;font-weight:600;margin:0;line-height:1.2}
+.hb-hdr-info p{font-size:0.6875rem;color:rgba(255,255,255,0.6);margin:0}
+.hb-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.6);cursor:pointer;padding:4px;display:flex}
+.hb-close:hover{color:#fff}
+.hb-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:300px}
+.hb-msg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:0.8125rem;line-height:1.55;animation:hb-in 0.25s ease}
+@keyframes hb-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.hb-bot{background:#f1f5f9;color:#1e293b;align-self:flex-start;border-bottom-left-radius:4px}
+.hb-user{background:var(--h-orange);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.hb-opts{display:flex;flex-direction:column;gap:6px;align-self:flex-start;width:100%}
+.hb-opt{background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:10px 14px;font-size:0.8125rem;font-weight:500;color:#1e293b;cursor:pointer;text-align:left;transition:all 0.15s;font-family:inherit}
+.hb-opt:hover{border-color:var(--h-orange);background:var(--h-orange-subtle)}
+.hb-input-row{padding:12px 16px;border-top:1px solid #f1f5f9;display:flex;gap:8px;align-items:center}
+.hb-input{flex:1;border:1.5px solid #e2e8f0;border-radius:50px;padding:10px 16px;font-size:0.8125rem;outline:none;font-family:inherit;transition:border-color 0.15s}
+.hb-input:focus{border-color:var(--h-orange)}
+.hb-send{width:36px;height:36px;border-radius:50%;background:var(--h-orange);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s}
+.hb-send:hover{background:var(--h-orange-hover)}
+.hb-cta{padding:12px 16px;border-top:1px solid #f1f5f9}
+.hb-cta a{display:block;text-align:center;background:var(--h-orange);color:#fff;font-weight:600;font-size:0.8125rem;padding:10px;border-radius:50px;text-decoration:none;transition:background 0.15s}
+.hb-cta a:hover{background:var(--h-orange-hover)}
+.hb-typing{display:flex;gap:4px;align-self:flex-start;padding:8px 14px;background:#f1f5f9;border-radius:12px}
+.hb-dot{width:6px;height:6px;border-radius:50%;background:#94a3b8;animation:hb-bounce 1.2s ease-in-out infinite}
+.hb-dot:nth-child(2){animation-delay:0.2s}
+.hb-dot:nth-child(3){animation-delay:0.4s}
+@keyframes hb-bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+</style>
+
+<div class="hb-fab-pulse"></div>
+<button class="hb-fab" onclick="HB.toggle()" aria-label="Chat with Honeybell">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  <span class="hb-badge">1</span>
+</button>
+
+<div class="hb-win" id="hbWin">
+  <div class="hb-hdr">
+    <div class="hb-avatar">&#x1F41D;</div>
+    <div class="hb-hdr-info">
+      <h4>Honeybell</h4>
+      <p>Hughes HVAC Assistant</p>
+    </div>
+    <button class="hb-close" onclick="HB.toggle()" aria-label="Close chat">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="hb-msgs" id="hbMsgs"></div>
+  <div class="hb-input-row" id="hbInputRow" style="display:none">
+    <input class="hb-input" id="hbInput" placeholder="Type your message..." autocomplete="off">
+    <button class="hb-send" onclick="HB.sendInput()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+  <div class="hb-cta" id="hbCta" style="display:none">
+    <a href="tel:+16152199882" onclick="if(typeof gtag==='function')gtag('event','phone_click',{event_category:'honeybell',event_label:'chat_cta'})">Call Now - (615) 219-9882</a>
+  </div>
+  <form id="hbForm" name="honeybell-lead" method="POST" data-netlify="true" netlify-honeypot="hb-bot" style="display:none">
+    <input type="hidden" name="form-name" value="honeybell-lead">
+    <input type="hidden" name="hb-name" id="hb-name">
+    <input type="hidden" name="hb-phone" id="hb-phone">
+    <input type="hidden" name="hb-issue" id="hb-issue">
+    <input type="hidden" name="hb-diagnosis" id="hb-diagnosis">
+    <input type="hidden" name="hb-urgency" id="hb-urgency">
+    <input type="hidden" name="hb-page" id="hb-page">
+    <input type="hidden" name="hb-timestamp" id="hb-timestamp">
+    <input name="hb-bot" style="display:none">
+  </form>
+</div>
+
+<script>
+var HB={
+  open:false,
+  step:0,
+  data:{issue:'',system:'',symptom:'',urgency:'normal',name:'',phone:'',diagnosis:''},
+  toggle:function(){
+    this.open=!this.open;
+    document.getElementById('hbWin').classList.toggle('is-open',this.open);
+    document.querySelector('.hb-fab-pulse').style.display=this.open?'none':'block';
+    document.querySelector('.hb-badge').style.display=this.open?'none':'flex';
+    if(this.open&&this.step===0)this.start();
+    if(typeof gtag==='function')gtag('event',this.open?'honeybell_opened':'honeybell_closed',{event_category:'honeybell'});
+  },
+  addBot:function(text,delay){
+    var m=document.getElementById('hbMsgs');
+    var t=document.createElement('div');t.className='hb-typing';
+    t.innerHTML='<div class="hb-dot"></div><div class="hb-dot"></div><div class="hb-dot"></div>';
+    m.appendChild(t);m.scrollTop=m.scrollHeight;
+    setTimeout(function(){
+      t.remove();
+      var d=document.createElement('div');d.className='hb-msg hb-bot';d.innerHTML=text;
+      m.appendChild(d);m.scrollTop=m.scrollHeight;
+    },delay||600);
+  },
+  addUser:function(text){
+    var m=document.getElementById('hbMsgs');
+    var d=document.createElement('div');d.className='hb-msg hb-user';d.textContent=text;
+    m.appendChild(d);m.scrollTop=m.scrollHeight;
+  },
+  addOptions:function(opts,delay){
+    var m=document.getElementById('hbMsgs'),self=this;
+    setTimeout(function(){
+      var w=document.createElement('div');w.className='hb-opts';
+      opts.forEach(function(o){
+        var b=document.createElement('button');b.className='hb-opt';b.textContent=o.label;
+        b.onclick=function(){w.remove();self.addUser(o.label);if(o.action)o.action();};
+        w.appendChild(b);
+      });
+      m.appendChild(w);m.scrollTop=m.scrollHeight;
+    },delay||800);
+  },
+  showInput:function(placeholder,cb){
+    var row=document.getElementById('hbInputRow'),inp=document.getElementById('hbInput');
+    row.style.display='flex';inp.placeholder=placeholder||'Type here...';inp.focus();
+    inp.onkeydown=function(e){if(e.key==='Enter'&&inp.value.trim()){e.preventDefault();HB.sendInput();}};
+    this._inputCb=cb;
+  },
+  hideInput:function(){document.getElementById('hbInputRow').style.display='none';},
+  sendInput:function(){
+    var inp=document.getElementById('hbInput'),v=inp.value.trim();
+    if(!v)return;this.addUser(v);inp.value='';this.hideInput();
+    if(this._inputCb)this._inputCb(v);
+  },
+  showCallCta:function(){document.getElementById('hbCta').style.display='block';},
+
+  start:function(){
+    this.step=1;
+    this.addBot("Hi! I'm <strong>Honeybell</strong> with Hughes HVAC. How can I help you today?",400);
+    this.addOptions([
+      {label:"My AC or heat isn't working",action:function(){HB.step=2;HB.askSystem();}},
+      {label:"Strange noise or smell",action:function(){HB.data.issue='noise-smell';HB.step=2;HB.askNoise();}},
+      {label:"I need maintenance",action:function(){HB.data.issue='maintenance';HB.skipToDiagnosis("maintenance");}},
+      {label:"I want a new system",action:function(){HB.data.issue='new-system';HB.skipToDiagnosis("new-system");}},
+      {label:"Something else",action:function(){HB.data.issue='other';HB.askDescribe();}}
+    ],700);
+  },
+
+  askSystem:function(){
+    this.addBot("Got it. Is it your <strong>cooling</strong> (AC) or <strong>heating</strong> (furnace/heat pump)?",500);
+    this.addOptions([
+      {label:"Cooling / AC",action:function(){HB.data.system='cooling';HB.askCoolingSymptom();}},
+      {label:"Heating",action:function(){HB.data.system='heating';HB.askHeatingSymptom();}},
+      {label:"Both / Not sure",action:function(){HB.data.system='both';HB.askDescribe();}}
+    ],700);
+  },
+
+  askCoolingSymptom:function(){
+    this.addBot("What's happening with your AC?",500);
+    this.addOptions([
+      {label:"Blowing warm air",action:function(){HB.data.symptom='warm-air';HB.diagnose('cooling','warm-air');}},
+      {label:"Not turning on at all",action:function(){HB.data.symptom='not-running';HB.diagnose('cooling','not-running');}},
+      {label:"Running but not cooling enough",action:function(){HB.data.symptom='weak-cooling';HB.diagnose('cooling','weak-cooling');}},
+      {label:"Leaking water",action:function(){HB.data.symptom='leaking';HB.diagnose('cooling','leaking');}},
+      {label:"Freezing up / ice on unit",action:function(){HB.data.symptom='freezing';HB.diagnose('cooling','freezing');}}
+    ],700);
+  },
+
+  askHeatingSymptom:function(){
+    this.addBot("What's going on with your heat?",500);
+    this.addOptions([
+      {label:"Blowing cold air",action:function(){HB.data.symptom='cold-air';HB.diagnose('heating','cold-air');}},
+      {label:"Not turning on",action:function(){HB.data.symptom='not-running';HB.diagnose('heating','not-running');}},
+      {label:"Running but house won't warm up",action:function(){HB.data.symptom='weak-heat';HB.diagnose('heating','weak-heat');}},
+      {label:"Short cycling (turning on and off)",action:function(){HB.data.symptom='short-cycle';HB.diagnose('heating','short-cycle');}},
+      {label:"Pilot light / ignition problem",action:function(){HB.data.symptom='ignition';HB.diagnose('heating','ignition');}}
+    ],700);
+  },
+
+  askNoise:function(){
+    this.addBot("What does it sound like?",500);
+    this.addOptions([
+      {label:"Grinding or squealing",action:function(){HB.diagnose('noise','grinding');}},
+      {label:"Banging or clanking",action:function(){HB.diagnose('noise','banging');}},
+      {label:"Buzzing or humming",action:function(){HB.diagnose('noise','buzzing');}},
+      {label:"Clicking",action:function(){HB.diagnose('noise','clicking');}},
+      {label:"Burning or chemical smell",action:function(){HB.data.urgency='emergency';HB.diagnose('smell','burning');}}
+    ],700);
+  },
+
+  askDescribe:function(){
+    this.addBot("No problem. Tell me what's going on and I'll point you in the right direction.",500);
+    this.showInput("Describe the issue...",function(v){
+      HB.data.symptom=v;
+      HB.data.diagnosis="Customer described: "+v;
+      HB.addBot("Thanks for the details. Let me connect you with a tech who can help.",600);
+      setTimeout(function(){HB.askContact();},800);
+    });
+  },
+
+  diagnose:function(system,symptom){
+    var dx={
+      'cooling|warm-air':{d:"That's usually a refrigerant issue or a failed capacitor. Both are common and fixable same-day. Could also be a compressor problem if the outdoor unit isn't running.",tip:"Quick check: go look at your outdoor unit. Is the fan spinning? If it's dead silent, the issue is likely electrical (capacitor or contactor)."},
+      'cooling|not-running':{d:"Could be a tripped breaker, thermostat issue, or a failed contactor. Sometimes it's as simple as a blown fuse in the disconnect box.",tip:"Try this: check your breaker panel for a tripped breaker. Also try turning the thermostat OFF, wait 30 seconds, then back to COOL."},
+      'cooling|weak-cooling':{d:"Low refrigerant, dirty coils, or a failing compressor can all cause this. In Nashville's humidity, even slightly low refrigerant makes a big difference.",tip:"When was your filter last changed? A clogged filter is the #1 cause of weak cooling."},
+      'cooling|leaking':{d:"Water around your indoor unit usually means a clogged condensate drain line. This is a quick fix but should be addressed soon to avoid water damage.",tip:"You can try pouring a cup of white vinegar down the drain line (it's usually a PVC pipe near the indoor unit) to clear minor clogs."},
+      'cooling|freezing':{d:"Ice on your AC typically means restricted airflow or low refrigerant. Running it frozen risks compressor damage.",tip:"<strong>Turn it off now</strong> and let the ice melt completely (a few hours). Check the filter. If it freezes again after restarting, you need a tech."},
+      'heating|cold-air':{d:"If it's a heat pump, this could be a stuck reversing valve, low refrigerant, or a defrost cycle issue. For a furnace, the flame sensor or ignitor may need attention.",tip:"Is your thermostat set to HEAT (not COOL or AUTO)? Also check if emergency/auxiliary heat is running."},
+      'heating|not-running':{d:"Usually an ignitor, flame sensor, or thermostat issue. Could also be a tripped safety switch.",tip:"Check your breaker and make sure the furnace switch (looks like a light switch near the unit) is ON."},
+      'heating|weak-heat':{d:"Dirty filters, duct leaks, or an undersized system are common causes. If it's a heat pump, it may be struggling in cold weather without auxiliary heat.",tip:"Change your filter if it's been more than 30 days. Also check that all your vents are open."},
+      'heating|short-cycle':{d:"Short cycling often means a dirty flame sensor, overheating due to restricted airflow, or a cracked heat exchanger. This should be checked promptly.",tip:"Replace your air filter first. If it keeps short cycling with a clean filter, you need a tech - this could indicate a safety issue."},
+      'heating|ignition':{d:"Ignitor failure is one of the most common furnace repairs. The hot surface ignitor is a wear part that typically lasts 3-7 years.",tip:"You can hear the furnace try to ignite (clicking or glowing) but it doesn't catch. Don't keep trying - call a tech."},
+      'noise|grinding':{d:"Grinding usually means a motor bearing is failing. Running it in this condition can burn out the motor entirely.",tip:"Turn the system off to prevent further damage. This is a same-day repair for us."},
+      'noise|banging':{d:"Banging from the outdoor unit could be a loose or broken part. From the furnace, it's often delayed ignition (gas buildup).",tip:"If it's coming from your furnace, turn it off. Delayed ignition can be dangerous."},
+      'noise|buzzing':{d:"Electrical buzzing often points to a failing contactor, relay, or capacitor. Not immediately dangerous but should be checked.",tip:"The system may still work intermittently, but the part will fail completely soon."},
+      'noise|clicking':{d:"Clicking at startup but no ignition means the ignitor or flame sensor needs replacement. Repetitive clicking from the outdoor unit could be a relay issue.",tip:"If your furnace clicks but doesn't start, it's the ignitor 90% of the time. Common repair."},
+      'smell|burning':{d:"<strong>If you smell gas or a strong burning smell, turn off the system, leave the house, and call 911 first.</strong> A mild dusty smell when first turning on heat is normal. A persistent burning smell needs immediate attention.",tip:"This could be a serious safety issue. Don't wait on this one."}
+    };
+    var key=system+'|'+symptom;
+    var info=dx[key]||{d:"That sounds like it needs a professional diagnosis. Our techs see this kind of issue regularly.",tip:"Best to have a tech take a look."};
+    this.data.diagnosis=info.d;
+    this.data.issue=system+'-'+symptom;
+    if(this.data.urgency!=='emergency'&&(symptom==='freezing'||symptom==='short-cycle'||symptom==='burning'))this.data.urgency='urgent';
+
+    this.addBot("<strong>Here's what I think:</strong><br>"+info.d,700);
+    this.addBot("💡 "+info.tip,1400);
+
+    if(this.data.urgency==='emergency'){
+      this.addBot("⚠️ <strong>This sounds urgent.</strong> I'd recommend calling Chris directly right now.",2100);
+      setTimeout(function(){HB.showCallCta();HB.askContact();},2300);
+    } else {
+      this.addBot("Want me to get a Hughes tech out there? I just need your name and number.",2100);
+      setTimeout(function(){HB.askContact();},2300);
+    }
+  },
+
+  skipToDiagnosis:function(type){
+    if(type==='maintenance'){
+      this.data.diagnosis="Interested in maintenance plans";
+      this.addBot("Smart move. Regular maintenance prevents 95% of emergency breakdowns. Our plans start at $149/yr with priority scheduling and repair discounts.",600);
+      this.addBot("Want me to schedule a maintenance visit, or would you prefer to talk to Chris about our plan options?",1300);
+    } else {
+      this.data.diagnosis="Interested in new system estimate";
+      this.addBot("New system estimates are always free with no obligation. A Hughes tech will do a proper Manual J load calculation to make sure you get the right size system.",600);
+      this.addBot("Let me get your info so we can schedule an in-home estimate.",1300);
+    }
+    setTimeout(function(){HB.askContact();},1500);
+  },
+
+  askContact:function(){
+    this.addBot("What's your name?",500);
+    this.showInput("Your name",function(name){
+      HB.data.name=name;
+      HB.addBot("Thanks, "+name.split(' ')[0]+"! What's the best number to reach you?",500);
+      HB.showInput("Phone number",function(phone){
+        HB.data.phone=phone;
+        HB.hideInput();
+        HB.submitLead();
+      });
+    });
+  },
+
+  submitLead:function(){
+    var d=this.data;
+    document.getElementById('hb-name').value=d.name;
+    document.getElementById('hb-phone').value=d.phone;
+    document.getElementById('hb-issue').value=d.issue;
+    document.getElementById('hb-diagnosis').value=d.diagnosis;
+    document.getElementById('hb-urgency').value=d.urgency;
+    document.getElementById('hb-page').value=window.location.pathname;
+    document.getElementById('hb-timestamp').value=new Date().toISOString();
+
+    var form=document.getElementById('hbForm');
+    var fd=new FormData(form);
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()}).then(function(){
+      HB.addBot("You're all set, "+HB.data.name.split(' ')[0]+"! Chris will call you within 1 hour to get this sorted. 🐝",600);
+      HB.addBot("In the meantime, if it's urgent, you can reach us directly:",1200);
+      HB.showCallCta();
+      if(typeof gtag==='function')gtag('event','honeybell_lead',{event_category:'honeybell',event_label:d.issue,value:150});
+    }).catch(function(){
+      HB.addBot("Hmm, something went wrong submitting your info. Please call us directly:",600);
+      HB.showCallCta();
+    });
+  }
+};
+
+/* Auto-open after 30s on first visit */
+(function(){
+  if(sessionStorage.getItem('hb-greeted'))return;
+  setTimeout(function(){
+    if(!HB.open){
+      sessionStorage.setItem('hb-greeted','1');
+    }
+  },30000);
+})();
+</script>
+
 </body>
 </html>
