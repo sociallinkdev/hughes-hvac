@@ -1330,117 +1330,195 @@ input[type="email"] { text-transform: none; }
 /* ═══════════════════════════════════════
    HERO
    ═══════════════════════════════════════ */
+/* ── Hero (matches live hugheshvacservices.com layout) ── */
 .hp-hero {
   position: relative;
-  background: linear-gradient(135deg, var(--h-navy-deep) 0%, var(--h-navy) 50%, var(--h-navy-dark) 100%);
-  padding: calc(var(--h-space-24) + 72px) 0 var(--h-space-16);
+  background: var(--h-navy);
+  padding: calc(var(--h-space-16) + 64px) 0 var(--h-space-12);
   overflow: hidden;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
 }
 .hp-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(212,135,15,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hp-hero::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-  height: 80px;
-  background: linear-gradient(to top, var(--h-canvas), transparent);
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size: 48px 48px;
   pointer-events: none;
 }
 @media (max-width: 768px) {
-  .hp-hero {
-    min-height: auto;
-    padding: calc(var(--h-space-16) + 72px) 0 var(--h-space-12);
-  }
+  .hp-hero { padding: calc(var(--h-space-10) + 64px) 0 var(--h-space-8); }
 }
 .hp-hero-inner {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--h-space-12);
-  align-items: center;
+  grid-template-columns: 1fr 400px;
+  gap: var(--h-space-10);
+  align-items: start;
 }
 @media (max-width: 968px) {
-  .hp-hero-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
+  .hp-hero-inner { grid-template-columns: 1fr; }
 }
 .hp-hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--h-space-2);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-family: var(--h-font-display);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--h-orange-light);
-  margin-bottom: var(--h-space-4);
-}
-.hp-hero-eyebrow svg {
-  width: 16px;
-  height: 16px;
+  color: var(--h-orange);
+  margin-bottom: var(--h-space-2);
 }
 .hp-hero h1 {
   font-family: var(--h-font-display);
-  font-size: clamp(2rem, 5vw, 3.25rem);
-  font-weight: 800;
-  line-height: 1.08;
+  font-size: clamp(2.375rem, 5vw, 3.875rem);
+  font-weight: 900;
+  line-height: 0.92;
   color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
   margin-bottom: var(--h-space-4);
-  letter-spacing: -0.02em;
 }
 .hp-hero h1 em {
   font-style: normal;
   color: var(--h-orange);
 }
 .hp-hero-sub {
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.7);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.55);
   margin-bottom: var(--h-space-6);
-  max-width: 480px;
+  max-width: 460px;
 }
-@media (max-width: 968px) {
-  .hp-hero-sub { margin-left: auto; margin-right: auto; }
+.hp-hero-sub strong {
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
 }
 .hp-hero-actions {
   display: flex;
   gap: var(--h-space-3);
   flex-wrap: wrap;
+  margin-bottom: var(--h-space-6);
 }
-@media (max-width: 968px) {
-  .hp-hero-actions { justify-content: center; }
-}
-.hp-hero-trust {
+/* Stats row */
+.hp-stat-row {
   display: flex;
-  gap: var(--h-space-6);
-  margin-top: var(--h-space-8);
-  font-size: 0.8125rem;
-  color: rgba(255,255,255,0.5);
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 9px;
+  overflow: hidden;
+  margin-top: var(--h-space-4);
 }
-.hp-hero-trust span {
+.hp-stat-cell {
+  flex: 1;
+  padding: 14px 10px;
+  background: rgba(255,255,255,0.03);
+  border-right: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+.hp-stat-cell:last-child { border-right: none; }
+.hp-stat-n {
+  font-family: var(--h-font-display);
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+}
+.hp-stat-l {
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+@media (max-width: 480px) {
+  .hp-stat-row { flex-direction: column; }
+  .hp-stat-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 10px; display: flex; align-items: center; gap: 8px; text-align: left; }
+  .hp-stat-cell:last-child { border-bottom: none; }
+}
+/* Hero form card */
+.hp-hero-form {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 11px;
+  padding: 22px;
+}
+.hp-hero-form-title {
+  font-family: var(--h-font-display);
+  font-size: 15px;
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
-  gap: var(--h-space-1);
+  gap: 7px;
 }
-.hp-hero-trust svg {
-  width: 14px;
-  height: 14px;
-  color: var(--h-orange-light);
+.hp-hero-form-title::before {
+  content: '';
+  width: 3px;
+  height: 18px;
+  background: var(--h-orange);
+  border-radius: 2px;
+  flex-shrink: 0;
 }
-@media (max-width: 968px) {
-  .hp-hero-trust { justify-content: center; flex-wrap: wrap; }
+.hp-fl { margin-bottom: 12px; }
+.hp-fl label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 4px;
+}
+.hp-fi,.hp-fs,.hp-ft {
+  width: 100%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 11px 13px;
+  font-size: 14px;
+  color: #fff;
+  font-family: var(--h-font-body);
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.hp-fi::placeholder,.hp-ft::placeholder { color: rgba(255,255,255,0.25); }
+.hp-fi:focus,.hp-fs:focus,.hp-ft:focus { border-color: var(--h-orange); background: rgba(255,255,255,0.09); }
+.hp-fs {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+  padding-right: 34px;
+}
+.hp-fs option { background: var(--h-navy-mid); color: #fff; }
+.hp-fsub {
+  width: 100%;
+  background: var(--h-orange);
+  color: #fff;
+  font-family: var(--h-font-display);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 13px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.hp-fsub:hover { background: var(--h-orange-hover); }
+.hp-fnote {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  text-align: center;
+  margin-top: 7px;
 }
 
 /* ═══════════════════════════════════════
@@ -1768,65 +1846,81 @@ input[type="email"] { text-transform: none; }
     <div class="hp-hero-inner">
 
       <div class="hp-hero-content">
-        <div class="hp-hero-eyebrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Licensed Nashville HVAC Contractor</div>
-        <h1>Nashville's Most Trusted<br><em>HVAC Experts</em></h1>
-        <p class="hp-hero-sub">Same-day service, upfront pricing, no commission sales. Honest diagnostics from technicians who are paid to fix your system — not sell you a new one.</p>
+        <div class="hp-hero-eyebrow">Nashville &amp; Madison, Tennessee</div>
+        <h1>Nashville<br><em>HVAC Experts</em></h1>
+        <p class="hp-hero-sub">AC repair, furnace service &amp; emergency HVAC &mdash; Nashville and Madison, TN. <strong>Based at 200 Madison St. No commission. Upfront pricing.</strong></p>
         <div class="hp-hero-actions">
-          <a href="tel:+16152199882" class="h-btn h-btn-call h-btn-lg" onclick="gtag('event','phone_click',{event_category:'engagement',event_label:'hero'})">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Call (615) 219-9882
-          </a>
-          <a href="#contact" class="h-btn h-btn-primary h-btn-lg">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Schedule Service
+          <a href="#contact" class="h-btn h-btn-primary h-btn-lg">Schedule Service</a>
+          <a href="tel:+16152199882" class="h-btn h-btn-ghost h-btn-lg" onclick="gtag('event','phone_click',{event_category:'engagement',event_label:'hero'})">
+            Call (615) 219-9882
           </a>
         </div>
-        <div class="hp-hero-trust">
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> $89 Diagnostic</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Same-Day Service</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="#D4541A" stroke="#D4541A" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> No Commission Sales</span>
+        <div class="hp-stat-row">
+          <div class="hp-stat-cell">
+            <div class="hp-stat-n">$89</div>
+            <div class="hp-stat-l">Diagnostic / Waived w/ Repair</div>
+          </div>
+          <div class="hp-stat-cell">
+            <div class="hp-stat-n">Same<span style="color:var(--h-orange)">-Day</span></div>
+            <div class="hp-stat-l">Service Available</div>
+          </div>
+          <div class="hp-stat-cell">
+            <div class="hp-stat-n">24<span style="color:var(--h-orange)">/7</span></div>
+            <div class="hp-stat-l">Emergency Line</div>
+          </div>
         </div>
       </div>
 
-      <div class="hp-hero-selector">
-        <div class="h-selector">
-          <div class="h-selector-title">
-            <h2>What can we help with?</h2>
-            <p>Select your situation and we&rsquo;ll get you scheduled.</p>
+      <div class="hp-hero-form-wrap">
+        <form class="hp-hero-form" name="hero-schedule" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="hero-schedule">
+          <input type="hidden" name="page" value="homepage-hero">
+          <input type="hidden" name="lead_source" value="">
+          <input type="hidden" name="utm_source" value="">
+          <input type="hidden" name="utm_medium" value="">
+          <input type="hidden" name="utm_campaign" value="">
+          <label style="display:none">Don&rsquo;t fill this out: <input name="bot-field"></label>
+          <div class="hp-hero-form-title">Schedule Service</div>
+          <div class="hp-fl">
+            <label for="hero-name">Full Name*</label>
+            <input class="hp-fi" type="text" id="hero-name" name="name" placeholder="Full Name" required>
           </div>
-          <div class="h-selector-options">
-            <button class="h-selector-option" data-service="AC Repair" type="button">
-              <div class="h-selector-option-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M20 16l-4-4 4-4"/><path d="M4 8l4 4-4 4"/><path d="M16 4l-4 4-4-4"/><path d="M8 20l4-4 4 4"/></svg></div>
-              <div class="h-selector-option-text">
-                <strong>My AC isn&rsquo;t cooling</strong>
-                <span>AC repair &amp; diagnostics</span>
-              </div>
-            </button>
-            <button class="h-selector-option" data-service="Furnace Repair" type="button">
-              <div class="h-selector-option-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg></div>
-              <div class="h-selector-option-text">
-                <strong>My heat isn&rsquo;t working</strong>
-                <span>Furnace &amp; heating repair</span>
-              </div>
-            </button>
-            <button class="h-selector-option" data-service="Maintenance" type="button">
-              <div class="h-selector-option-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-              <div class="h-selector-option-text">
-                <strong>I need maintenance</strong>
-                <span>Tune-ups &amp; prevention</span>
-              </div>
-            </button>
-            <button class="h-selector-option" data-service="AC Installation" type="button">
-              <div class="h-selector-option-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-              <div class="h-selector-option-text">
-                <strong>I&rsquo;m considering a new system</strong>
-                <span>Free installation estimates</span>
-              </div>
-            </button>
+          <div class="hp-fl">
+            <label for="hero-email">Email*</label>
+            <input class="hp-fi" type="email" id="hero-email" name="email" placeholder="Email" required>
           </div>
-          <div class="h-selector-divider">or</div>
-          <a href="tel:+16152199882" class="h-btn h-btn-call h-btn-full" style="justify-content:center" onclick="gtag('event','phone_click',{event_category:'engagement',event_label:'selector'})">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Call Now — (615) 219-9882
-          </a>
-        </div>
+          <div class="hp-fl">
+            <label for="hero-phone">Phone*</label>
+            <input class="hp-fi" type="tel" id="hero-phone" name="phone" placeholder="Phone" required>
+          </div>
+          <div class="hp-fl">
+            <label for="hero-service">Select Your Service*</label>
+            <select class="hp-fs" id="hero-service" name="service" required>
+              <option value="New System Estimate (FREE)" selected>New System Estimate (FREE)</option>
+              <option value="AC Repair">AC Repair</option>
+              <option value="AC Installation">AC Installation</option>
+              <option value="Furnace Repair">Furnace Repair</option>
+              <option value="Furnace Installation">Furnace Installation</option>
+              <option value="Heat Pump Repair">Heat Pump Repair</option>
+              <option value="Heat Pump Installation">Heat Pump Installation</option>
+              <option value="Maintenance Tune-Up">Maintenance Tune-Up</option>
+              <option value="Emergency Service">Emergency Service</option>
+              <option value="Duct Cleaning">Duct Cleaning</option>
+              <option value="Mini Split">Mini Split</option>
+              <option value="Custom Job / Not Sure">Custom Job / Not Sure</option>
+            </select>
+          </div>
+          <div class="hp-fl">
+            <label for="hero-message">How Can We Help?*</label>
+            <textarea class="hp-ft" id="hero-message" name="message" rows="3" placeholder="Please include as many details as possible." required></textarea>
+          </div>
+          <div class="hp-fl">
+            <label for="hero-address">Service Address</label>
+            <input class="hp-fi" type="text" id="hero-address" name="address" placeholder="Search address">
+          </div>
+          <button type="submit" class="hp-fsub" onclick="if(typeof gtag==='function')gtag('event','generate_lead',{event_category:'conversion',event_label:'hero-form'})">Request a Callback</button>
+          <div class="hp-fnote">Someone will call you within 1 hour to confirm your appointment.</div>
+        </form>
       </div>
 
     </div>
