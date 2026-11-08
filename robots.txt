@@ -1,9 +1,29 @@
+# Hughes HVAC Services — https://hugheshvacservices.com
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /thank-you
+Disallow: /_next/
+Disallow: /api/
 
-Sitemap: https://hugheshvac.com/sitemap.xml
+# Sitemap
+Sitemap: https://hugheshvacservices.com/sitemap.xml
 
-# Block admin and private paths
-Disallow: /wp-admin/
-Disallow: /wp-login.php
-Disallow: /cgi-bin/
+# AI Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
