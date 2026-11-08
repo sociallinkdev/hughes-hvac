@@ -16,7 +16,7 @@
 <meta name="geo.placename" content="Nashville">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   /* ── Brand Colors (Hughes HVAC) ── */
@@ -109,8 +109,8 @@
   --h-gutter: 16px;
 
   /* ── Typography ── */
-  --h-font-display: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --h-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --h-font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --h-font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -185,20 +185,20 @@ ul, ol { list-style: none; }
 .is-visible .h-area-service-link:nth-child(n+5) { transition-delay: 240ms; }
 
 /* ── Type Scale ── */
-.h-display { font-family: var(--h-font-display); font-size: clamp(2.5rem, 5vw, 3.875rem); font-weight: 900; line-height: 0.92; letter-spacing: 0.01em; text-transform: uppercase; }
-.h-h1 { font-family: var(--h-font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 0.95; letter-spacing: 0.01em; text-transform: uppercase; }
-.h-h2 { font-family: var(--h-font-display); font-size: clamp(1.625rem, 3.5vw, 2.625rem); font-weight: 900; line-height: 0.95; letter-spacing: 0.01em; text-transform: uppercase; }
-.h-h3 { font-family: var(--h-font-display); font-size: clamp(1.25rem, 2.5vw, 1.5rem); font-weight: 700; line-height: 1.1; letter-spacing: 0.03em; text-transform: uppercase; }
-.h-h4 { font-family: var(--h-font-display); font-size: 1.125rem; font-weight: 700; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.03em; }
-.h-body-lg { font-size: 1.125rem; line-height: 1.75; }
-.h-body { font-size: 1rem; line-height: 1.6; }
-.h-body-sm { font-size: 0.875rem; line-height: 1.5; }
-.h-caption { font-size: 0.75rem; line-height: 1.5; letter-spacing: 0.02em; }
+.h-display { font-family: var(--h-font-display); font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+.h-h1 { font-family: var(--h-font-display); font-size: clamp(1.875rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+.h-h2 { font-family: var(--h-font-display); font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+.h-h3 { font-family: var(--h-font-display); font-size: clamp(1.125rem, 2.5vw, 1.375rem); font-weight: 600; line-height: 1.3; }
+.h-h4 { font-family: var(--h-font-display); font-size: 1.0625rem; font-weight: 600; line-height: 1.35; }
+.h-body-lg { font-size: 1.0625rem; line-height: 1.75; }
+.h-body { font-size: 0.9375rem; line-height: 1.7; }
+.h-body-sm { font-size: 0.8125rem; line-height: 1.6; }
+.h-caption { font-size: 0.75rem; line-height: 1.5; letter-spacing: 0.01em; }
 .h-eyebrow {
   font-family: var(--h-font-display);
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--h-orange);
 }
@@ -265,15 +265,13 @@ ul, ol { list-style: none; }
   justify-content: center;
   gap: var(--h-space-2);
   font-family: var(--h-font-display);
-  font-weight: 900;
+  font-weight: 600;
   font-size: 0.875rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
   line-height: 1;
-  border-radius: 5px;
-  padding: 0.75rem 1.375rem;
+  border-radius: 50px;
+  padding: 0.875rem 2rem;
   min-height: var(--h-touch);
-  transition: background 0.2s, transform 0.15s;
+  transition: all 0.2s ease;
   white-space: nowrap;
   text-decoration: none;
   position: relative;
@@ -281,6 +279,7 @@ ul, ol { list-style: none; }
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   border: none;
+  cursor: pointer;
 }
 .h-btn svg { flex-shrink: 0; }
 .h-btn:active { transform: scale(0.97); transition-duration: 0.1s; }
@@ -289,9 +288,11 @@ ul, ol { list-style: none; }
 .h-btn-primary {
   background: var(--h-orange);
   color: #fff;
+  box-shadow: 0 2px 8px rgba(212,84,26,0.25);
 }
 .h-btn-primary:hover {
   background: var(--h-orange-hover);
+  box-shadow: 0 4px 16px rgba(212,84,26,0.35);
   transform: translateY(-1px);
 }
 .h-btn-primary:active { transform: translateY(0) scale(0.97); }
@@ -306,14 +307,17 @@ ul, ol { list-style: none; }
   transform: translateY(-1px);
 }
 
-/* Ghost -- outlined */
+/* Ghost -- outlined + glass */
 .h-btn-ghost {
-  background: transparent;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #fff;
-  border: 1.5px solid rgba(255,255,255,0.2);
+  border: 1.5px solid rgba(255,255,255,0.15);
 }
 .h-btn-ghost:hover {
-  border-color: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.3);
 }
 
 /* White ghost (for dark backgrounds) */
@@ -366,36 +370,37 @@ ul, ol { list-style: none; }
 .h-card {
   background: var(--h-canvas);
   border: 1px solid var(--h-line);
-  border-radius: var(--h-radius-md);
-  padding: var(--h-space-6);
-  transition: all 0.35s var(--h-ease);
+  border-radius: 16px;
+  padding: var(--h-space-6) var(--h-space-8);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 .h-card:hover {
-  border-color: rgba(212,135,15,0.25);
-  box-shadow: var(--h-shadow-md), 0 0 0 1px rgba(212,135,15,0.08);
-  transform: translateY(-3px);
+  border-color: var(--h-orange);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08), 0 0 0 1px rgba(212,84,26,0.1);
+  transform: translateY(-4px);
 }
 .h-card-elevated {
   border: none;
-  box-shadow: var(--h-shadow);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 .h-card-elevated:hover {
-  box-shadow: var(--h-shadow-xl);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
   transform: translateY(-4px);
 }
 .h-card-navy {
   background: var(--h-navy);
-  border-color: var(--h-navy-mid);
+  border-color: rgba(255,255,255,0.1);
   color: var(--h-ink-inverse);
 }
 .h-card-orange {
   background: var(--h-orange-subtle);
-  border-color: rgba(212,135,15,0.2);
+  border-color: rgba(212,84,26,0.15);
 }
 .h-card-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--h-radius);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -403,11 +408,11 @@ ul, ol { list-style: none; }
   flex-shrink: 0;
 }
 .h-card-icon-orange {
-  background: var(--h-orange-subtle);
+  background: linear-gradient(135deg, rgba(212,84,26,0.1) 0%, rgba(212,84,26,0.05) 100%);
   color: var(--h-orange);
 }
 .h-card-icon-navy {
-  background: var(--h-surface-navy);
+  background: linear-gradient(135deg, rgba(14,28,47,0.08) 0%, rgba(14,28,47,0.04) 100%);
   color: var(--h-navy);
 }
 
@@ -486,12 +491,15 @@ input[type="email"] { text-transform: none; }
   left: 0;
   right: 0;
   z-index: 300;
-  background: var(--h-navy);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  transition: box-shadow 0.3s var(--h-ease);
+  background: rgba(14,28,47,0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.3s ease;
 }
 .h-header.is-scrolled {
-  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  background: rgba(14,28,47,0.95);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
 }
 .h-header-inner {
   display: flex;
@@ -521,11 +529,9 @@ input[type="email"] { text-transform: none; }
 }
 .h-nav-link {
   font-family: var(--h-font-display);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
   padding: var(--h-space-2) var(--h-space-3);
   transition: color 0.2s;
   white-space: nowrap;
@@ -556,19 +562,20 @@ input[type="email"] { text-transform: none; }
   align-items: center;
   gap: var(--h-space-4);
 }
-.h-nav-schedule-btn { font-size: 0.75rem; padding: 0.5rem 1rem; }
+.h-nav-schedule-btn { font-size: 0.8125rem; padding: 0.625rem 1.5rem; border-radius: 50px; }
 .h-nav-phone {
   display: none;
-  font-family: var(--h-font-display);
-  font-weight: 700;
-  font-size: 0.8125rem;
+  font-weight: 600;
+  font-size: 0.875rem;
   color: #fff;
   white-space: nowrap;
+  text-decoration: none;
 }
+.h-nav-phone:hover { color: var(--h-orange-light); }
 .h-nav-phone-sub {
   display: none;
-  font-size: 0.625rem;
-  color: rgba(255,255,255,0.5);
+  font-size: 0.6875rem;
+  color: rgba(255,255,255,0.45);
   white-space: nowrap;
 }
 @media (min-width: 769px) {
@@ -1330,195 +1337,206 @@ input[type="email"] { text-transform: none; }
 /* ═══════════════════════════════════════
    HERO
    ═══════════════════════════════════════ */
-/* ── Hero (matches live hugheshvacservices.com layout) ── */
+/* ── Hero ── */
 .hp-hero {
   position: relative;
-  background: var(--h-navy);
-  padding: calc(var(--h-space-16) + 64px) 0 var(--h-space-12);
+  background: linear-gradient(165deg, #091525 0%, var(--h-navy) 40%, #1B3050 100%);
+  padding: calc(var(--h-space-20) + 64px) 0 var(--h-space-16);
   overflow: hidden;
 }
 .hp-hero::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size: 48px 48px;
+  top: -30%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(212,84,26,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 @media (max-width: 768px) {
-  .hp-hero { padding: calc(var(--h-space-10) + 64px) 0 var(--h-space-8); }
+  .hp-hero { padding: calc(var(--h-space-12) + 64px) 0 var(--h-space-10); }
 }
 .hp-hero-inner {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: var(--h-space-10);
+  grid-template-columns: 1fr 420px;
+  gap: var(--h-space-12);
   align-items: start;
 }
-@media (max-width: 968px) {
-  .hp-hero-inner { grid-template-columns: 1fr; }
+@media (max-width: 1024px) {
+  .hp-hero-inner { grid-template-columns: 1fr; max-width: 560px; }
 }
 .hp-hero-eyebrow {
-  font-family: var(--h-font-display);
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--h-orange);
-  margin-bottom: var(--h-space-2);
+  margin-bottom: var(--h-space-4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hp-hero-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--h-orange);
+  border-radius: 1px;
 }
 .hp-hero h1 {
   font-family: var(--h-font-display);
-  font-size: clamp(2.375rem, 5vw, 3.875rem);
-  font-weight: 900;
-  line-height: 0.92;
+  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
   color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  margin-bottom: var(--h-space-4);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--h-space-5);
 }
 .hp-hero h1 em {
   font-style: normal;
   color: var(--h-orange);
+  display: block;
 }
 .hp-hero-sub {
-  font-size: 0.875rem;
-  line-height: 1.75;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: var(--h-space-6);
-  max-width: 460px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: var(--h-space-8);
+  max-width: 480px;
 }
 .hp-hero-sub strong {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.9);
   font-weight: 500;
 }
 .hp-hero-actions {
   display: flex;
-  gap: var(--h-space-3);
+  gap: var(--h-space-4);
   flex-wrap: wrap;
-  margin-bottom: var(--h-space-6);
+  margin-bottom: var(--h-space-8);
 }
 /* Stats row */
 .hp-stat-row {
   display: flex;
-  gap: 0;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 9px;
-  overflow: hidden;
-  margin-top: var(--h-space-4);
+  gap: var(--h-space-4);
+  margin-top: var(--h-space-2);
 }
 .hp-stat-cell {
   flex: 1;
-  padding: 14px 10px;
-  background: rgba(255,255,255,0.03);
-  border-right: 1px solid rgba(255,255,255,0.08);
+  padding: 18px 16px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
   text-align: center;
+  transition: all 0.2s;
 }
-.hp-stat-cell:last-child { border-right: none; }
+.hp-stat-cell:hover { border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.07); }
 .hp-stat-n {
   font-family: var(--h-font-display);
-  font-size: 22px;
-  font-weight: 900;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: #fff;
   line-height: 1;
 }
 .hp-stat-l {
-  font-size: 10px;
-  color: rgba(255,255,255,0.35);
-  margin-top: 2px;
+  font-size: 0.6875rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
   line-height: 1.3;
 }
 @media (max-width: 480px) {
-  .hp-stat-row { flex-direction: column; }
-  .hp-stat-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 10px; display: flex; align-items: center; gap: 8px; text-align: left; }
-  .hp-stat-cell:last-child { border-bottom: none; }
+  .hp-stat-row { flex-direction: column; gap: var(--h-space-2); }
+  .hp-stat-cell { display: flex; align-items: center; gap: 12px; text-align: left; padding: 12px 16px; }
 }
-/* Hero form card */
+/* Hero form card -- glass */
 .hp-hero-form {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 11px;
-  padding: 22px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.1);
 }
 .hp-hero-form-title {
   font-family: var(--h-font-display);
-  font-size: 15px;
-  font-weight: 900;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 16px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--h-navy);
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 10px;
 }
 .hp-hero-form-title::before {
   content: '';
-  width: 3px;
-  height: 18px;
+  width: 4px;
+  height: 20px;
   background: var(--h-orange);
   border-radius: 2px;
   flex-shrink: 0;
 }
-.hp-fl { margin-bottom: 12px; }
+.hp-fl { margin-bottom: 14px; }
 .hp-fl label {
   display: block;
-  font-size: 10px;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 4px;
+  color: var(--h-ink-secondary);
+  margin-bottom: 6px;
 }
 .hp-fi,.hp-fs,.hp-ft {
   width: 100%;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 6px;
-  padding: 11px 13px;
-  font-size: 14px;
-  color: #fff;
+  background: #f8f9fa;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 13px 16px;
+  font-size: 0.9375rem;
+  color: var(--h-ink);
   font-family: var(--h-font-body);
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
   -webkit-appearance: none;
   appearance: none;
 }
-.hp-fi::placeholder,.hp-ft::placeholder { color: rgba(255,255,255,0.25); }
-.hp-fi:focus,.hp-fs:focus,.hp-ft:focus { border-color: var(--h-orange); background: rgba(255,255,255,0.09); }
+.hp-fi::placeholder,.hp-ft::placeholder { color: #9ca3af; }
+.hp-fi:focus,.hp-fs:focus,.hp-ft:focus {
+  border-color: var(--h-orange);
+  box-shadow: 0 0 0 4px rgba(212,84,26,0.08);
+  background: #fff;
+}
 .hp-fs {
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239ca3af' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: calc(100% - 12px) center;
-  padding-right: 34px;
+  background-position: calc(100% - 14px) center;
+  padding-right: 36px;
 }
-.hp-fs option { background: var(--h-navy-mid); color: #fff; }
+.hp-fs option { background: #fff; color: var(--h-ink); }
 .hp-fsub {
   width: 100%;
   background: var(--h-orange);
   color: #fff;
   font-family: var(--h-font-display);
-  font-size: 15px;
-  font-weight: 900;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  padding: 13px;
-  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 50px;
   border: none;
-  margin-top: 4px;
+  margin-top: 8px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
   touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 4px 16px rgba(212,84,26,0.3);
 }
-.hp-fsub:hover { background: var(--h-orange-hover); }
+.hp-fsub:hover { background: var(--h-orange-hover); box-shadow: 0 6px 24px rgba(212,84,26,0.4); transform: translateY(-1px); }
 .hp-fnote {
-  font-size: 11px;
-  color: rgba(255,255,255,0.25);
+  font-size: 0.75rem;
+  color: #9ca3af;
   text-align: center;
-  margin-top: 7px;
+  margin-top: 10px;
 }
 
 /* ═══════════════════════════════════════
@@ -1847,8 +1865,8 @@ input[type="email"] { text-transform: none; }
 
       <div class="hp-hero-content">
         <div class="hp-hero-eyebrow">Nashville &amp; Madison, Tennessee</div>
-        <h1>Nashville<br><em>HVAC Experts</em></h1>
-        <p class="hp-hero-sub">AC repair, furnace service &amp; emergency HVAC &mdash; Nashville and Madison, TN. <strong>Based at 200 Madison St. No commission. Upfront pricing.</strong></p>
+        <h1>Nashville's Most Trusted<em>HVAC Experts</em></h1>
+        <p class="hp-hero-sub">Same-day service, upfront pricing, no commission sales. <strong>Honest diagnostics from technicians who are paid to fix your system.</strong></p>
         <div class="hp-hero-actions">
           <a href="#contact" class="h-btn h-btn-primary h-btn-lg">Schedule Service</a>
           <a href="tel:+16152199882" class="h-btn h-btn-ghost h-btn-lg" onclick="gtag('event','phone_click',{event_category:'engagement',event_label:'hero'})">
