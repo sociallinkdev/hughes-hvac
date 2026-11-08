@@ -129,7 +129,7 @@ export async function handler(event) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-5-5',
         max_tokens: 512,
         system: systemWithContext,
         messages: messages.slice(-10), // Keep last 10 turns for context window
