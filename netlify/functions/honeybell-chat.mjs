@@ -150,7 +150,9 @@ export async function handler(event) {
     }
 
     const data = await response.json();
-    const reply = data.content?.[0]?.text || "I'd love to help - call us at (615) 219-9882 and we'll get this sorted.";
+    const textBlock = (data.content || []).find(b => b.type === 'text');
+    if (!textBlock) console.error('Claude API returned no text block:', JSON.stringify(data).slice(0, 500));
+    const reply = textBlock?.text || "I'd love to help - call us at (615) 219-9882 and we'll get this sorted.";
 
     return {
       statusCode: 200,
