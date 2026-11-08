@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hughes HVAC Services — Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── Reset ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:#1a1a2e;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+code,pre{font-family:'JetBrains Mono','Fira Code',monospace;font-size:0.85em}
+
+/* ── Layout ── */
+.gl-sidebar{position:fixed;top:0;left:0;bottom:0;width:260px;background:#0B2341;color:#fff;overflow-y:auto;z-index:100;padding:32px 0 80px}
+.gl-main{margin-left:260px;min-height:100vh}
+.gl-content{max-width:920px;margin:0 auto;padding:48px 40px 80px}
+
+@media(max-width:900px){
+  .gl-sidebar{position:relative;width:100%;height:auto;padding:20px 0 12px}
+  .gl-main{margin-left:0}
+  .gl-content{padding:32px 20px 60px}
+  .gl-sidebar .gl-nav{display:flex;flex-wrap:wrap;gap:4px;padding:0 20px}
+  .gl-sidebar .gl-nav a{font-size:12px;padding:6px 12px}
+  .gl-sidebar .gl-brand{padding:0 20px 12px}
+}
+
+@media print{
+  .gl-sidebar{display:none}
+  .gl-main{margin-left:0}
+  .gl-content{padding:20px}
+  section{page-break-inside:avoid}
+}
+
+/* ── Sidebar ── */
+.gl-brand{padding:0 24px 28px;border-bottom:1px solid rgba(255,255,255,.1)}
+.gl-brand-logo{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:17px;margin-bottom:4px}
+.gl-brand-sub{font-size:11px;font-weight:500;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.12em}
+.gl-nav{padding:20px 0}
+.gl-nav a{display:block;padding:8px 24px;font-size:13px;font-weight:500;color:rgba(255,255,255,.55);transition:all .15s}
+.gl-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.gl-nav a.active{color:#F5A623;background:rgba(212,135,15,.1);border-right:3px solid #D4870F}
+.gl-nav-group{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:20px 24px 6px}
+
+/* ── Content ── */
+.gl-section{padding-bottom:56px;margin-bottom:56px;border-bottom:1px solid #E5E7EB}
+.gl-section:last-child{border-bottom:none;margin-bottom:0}
+.gl-section-tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D4870F;margin-bottom:8px}
+.gl-section h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:8px;color:#0B2341}
+.gl-section-intro{font-size:16px;color:#4B5563;line-height:1.65;margin-bottom:32px;max-width:680px}
+.gl-h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:700;color:#0B2341;margin:32px 0 12px}
+.gl-h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;color:#0B2341;margin:24px 0 8px}
+.gl-p{font-size:15px;color:#4B5563;line-height:1.7;margin-bottom:16px}
+.gl-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.gl-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gl-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:700px){.gl-grid-2,.gl-grid-3,.gl-grid-4{grid-template-columns:1fr}}
+
+/* ── Color swatches ── */
+.gl-swatch-group{margin-bottom:28px}
+.gl-swatch-group-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6B7280;margin-bottom:10px}
+.gl-swatch{border-radius:10px;overflow:hidden;border:1px solid #E5E7EB}
+.gl-swatch-color{height:80px}
+.gl-swatch-info{padding:10px 12px;background:#fff}
+.gl-swatch-name{font-size:13px;font-weight:600;color:#111827;margin-bottom:2px}
+.gl-swatch-hex{font-size:12px;color:#6B7280;font-family:'JetBrains Mono','Fira Code',monospace}
+
+/* ── Code block ── */
+.gl-code{background:#0B2341;color:#E5E7EB;border-radius:10px;padding:20px 24px;overflow-x:auto;font-size:13px;line-height:1.7;margin:16px 0 24px;position:relative}
+.gl-code .hl-prop{color:#F5A623}
+.gl-code .hl-val{color:#93C5FD}
+.gl-code .hl-comment{color:#6B7280}
+.gl-code-copy{position:absolute;top:12px;right:12px;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);font-size:11px;font-weight:600;cursor:pointer;border:none;font-family:inherit}
+.gl-code-copy:hover{background:rgba(255,255,255,.15);color:#fff}
+
+/* ── Tables ── */
+.gl-table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px}
+.gl-table th{text-align:left;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6B7280;padding:10px 12px;border-bottom:2px solid #E5E7EB}
+.gl-table td{padding:10px 12px;border-bottom:1px solid #F3F4F6;color:#374151}
+.gl-table tr:last-child td{border-bottom:none}
+.gl-table .mono{font-family:'JetBrains Mono','Fira Code',monospace;font-size:12px}
+
+/* ── Contrast grid ── */
+.gl-contrast{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;margin:2px}
+.gl-contrast.pass{background:#ECFDF5;color:#059669}
+.gl-contrast.fail{background:#FEF2F2;color:#DC2626}
+
+/* ── Component demos ── */
+.gl-demo{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;padding:24px;margin:16px 0 24px}
+.gl-demo-dark{background:#0B2341;border-color:#1E4D7B}
+
+/* ── Buttons (demo) ── */
+.demo-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:10px;font-weight:700;font-size:15px;border:none;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:all .15s}
+.demo-btn-primary{background:#D4870F;color:#fff}
+.demo-btn-primary:hover{background:#BF7A0D}
+.demo-btn-secondary{background:#0B2341;color:#fff}
+.demo-btn-secondary:hover{background:#0E2A4A}
+.demo-btn-outline{background:transparent;border:2px solid #D8DCE4;color:#0B2341}
+.demo-btn-outline:hover{border-color:#0B2341}
+.demo-btn-ghost{background:transparent;color:#0B2341;border:none;text-decoration:underline;text-underline-offset:3px}
+
+/* ── Card (demo) ── */
+.demo-card{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:24px}
+.demo-card h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;margin-bottom:6px}
+.demo-card p{font-size:14px;color:#4B5563;line-height:1.6}
+
+/* ── Trust indicator (demo) ── */
+.demo-trust{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:9999px;font-size:13px;font-weight:600;color:#374151}
+.demo-trust svg{color:#059669}
+
+/* ── Do/Don't ── */
+.gl-do-dont{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 24px}
+@media(max-width:600px){.gl-do-dont{grid-template-columns:1fr}}
+.gl-do,.gl-dont{border-radius:10px;padding:20px;font-size:14px;line-height:1.6}
+.gl-do{background:#ECFDF5;border:1px solid #A7F3D0}
+.gl-dont{background:#FEF2F2;border:1px solid #FECACA}
+.gl-do-label,.gl-dont-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.gl-do-label{color:#059669}
+.gl-dont-label{color:#DC2626}
+
+/* ── Logo display ── */
+.gl-logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:16px 0 24px}
+@media(max-width:600px){.gl-logo-grid{grid-template-columns:1fr}}
+.gl-logo-box{display:flex;align-items:center;justify-content:center;padding:40px 20px;border-radius:12px;border:1px solid #E5E7EB;min-height:120px}
+.gl-logo-box.dark{background:#0B2341;border-color:#0B2341}
+.gl-logo-box.light{background:#F9FAFB}
+.gl-logo-box.orange{background:#D4870F;border-color:#D4870F}
+.gl-logo-box-label{font-size:11px;font-weight:600;color:#6B7280;text-align:center;margin-top:8px}
+
+/* ── Type specimen ── */
+.gl-type-display{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:48px;letter-spacing:-.025em;line-height:1.1;color:#0B2341;margin-bottom:8px}
+.gl-type-heading{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:28px;letter-spacing:-.02em;line-height:1.2;color:#0B2341;margin-bottom:8px}
+.gl-type-body{font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;color:#4B5563;margin-bottom:8px}
+.gl-type-caption{font-family:'Inter',sans-serif;font-size:13px;color:#6B7280;line-height:1.5;margin-bottom:8px}
+.gl-type-label{font-size:11px;font-weight:700;color:#D4870F;letter-spacing:.06em;text-transform:uppercase;margin-top:16px;margin-bottom:4px}
+
+/* ── Spacing demo ── */
+.gl-spacing-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.gl-spacing-bar{height:24px;background:#D4870F;border-radius:4px;opacity:.8}
+.gl-spacing-label{font-size:12px;font-weight:600;color:#6B7280;min-width:120px;font-family:'JetBrains Mono','Fira Code',monospace}
+
+/* ── Footer ── */
+.gl-footer{background:#0B2341;color:rgba(255,255,255,.5);padding:32px 40px;text-align:center;font-size:12px}
+.gl-footer a{color:rgba(255,255,255,.6)}
+.gl-footer a:hover{color:#fff}
+.gl-footer-brand{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:13px;color:rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+
+<!-- ════════ SIDEBAR ════════ -->
+<aside class="gl-sidebar" id="sidebar">
+  <div class="gl-brand">
+    <div class="gl-brand-logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#D4870F"/><path d="M8 11h4v10H8V11zm12 0h4v10h-4V11zm-6 3h4v4h-4v-4z" fill="#fff"/><path d="M12 14h8v1h-8v-1zm0 3h8v1h-8v-1z" fill="rgba(255,255,255,.6)"/></svg>
+      Hughes HVAC
+    </div>
+    <div class="gl-brand-sub">Brand Guidelines v1.0</div>
+  </div>
+  <nav class="gl-nav">
+    <div class="gl-nav-group">Foundation</div>
+    <a href="#brand-overview">Brand Overview</a>
+    <a href="#logo-system">Logo System</a>
+    <a href="#color-system">Color System</a>
+    <a href="#typography">Typography</a>
+    <div class="gl-nav-group">System</div>
+    <a href="#spacing-layout">Spacing &amp; Layout</a>
+    <a href="#components">Components</a>
+    <div class="gl-nav-group">Content</div>
+    <a href="#voice-tone">Voice &amp; Tone</a>
+    <a href="#photography">Photography</a>
+    <div class="gl-nav-group">Developer</div>
+    <a href="#design-tokens">Design Tokens</a>
+  </nav>
+</aside>
+
+<!-- ════════ MAIN ════════ -->
+<main class="gl-main">
+<div class="gl-content">
+
+<!-- ──────── 1. Brand Overview ──────── -->
+<section class="gl-section" id="brand-overview">
+  <div class="gl-section-tag">01 Foundation</div>
+  <h2>Brand Overview</h2>
+  <p class="gl-section-intro">Hughes HVAC Services is a residential HVAC contractor based in Madison, Tennessee, serving Nashville and all of Middle Tennessee. The brand stands for honest diagnostics, upfront pricing, and technically excellent service delivered by hourly-paid (not commission-based) technicians.</p>
+
+  <h3 class="gl-h3">Brand Positioning</h3>
+  <p class="gl-p">For Nashville-area homeowners who need HVAC repair, installation, or maintenance, Hughes HVAC is the honest, technically competent contractor that delivers same-day service with upfront pricing and no commission-driven upselling.</p>
+
+  <h3 class="gl-h3">Brand Promise</h3>
+  <p class="gl-p">You will know the price before we start the work, and our technicians will tell you the truth about what your system needs.</p>
+
+  <h3 class="gl-h3">Brand Personality</h3>
+  <div class="gl-grid-2">
+    <div class="demo-card">
+      <h4>Confident, Not Arrogant</h4>
+      <p>We know HVAC. We lead with expertise, not ego. We let our work speak for itself.</p>
+    </div>
+    <div class="demo-card">
+      <h4>Direct, Not Cold</h4>
+      <p>We say what we mean. We respect your time. No fluff, no runaround, no sales pitch.</p>
+    </div>
+    <div class="demo-card">
+      <h4>Warm, Not Soft</h4>
+      <p>We care about your comfort and safety. We show up when you need us, especially in emergencies.</p>
+    </div>
+    <div class="demo-card">
+      <h4>Technical, Not Jargony</h4>
+      <p>We explain what is wrong and how to fix it in plain language you can act on.</p>
+    </div>
+  </div>
+
+  <h3 class="gl-h3">Core Values</h3>
+  <table class="gl-table">
+    <thead><tr><th>Value</th><th>In Practice</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Honesty</strong></td><td>Hourly-paid techs have no incentive to upsell. We recommend repair when repair makes sense.</td></tr>
+      <tr><td><strong>Transparency</strong></td><td>You approve the price before any work begins. Published rates on every service page.</td></tr>
+      <tr><td><strong>Reliability</strong></td><td>Same-day service for most calls. 24/7 emergency response. We answer the phone.</td></tr>
+      <tr><td><strong>Safety</strong></td><td>Carbon monoxide checks included on every furnace call. We never skip a safety step.</td></tr>
+      <tr><td><strong>Local Commitment</strong></td><td>Based in Madison, serving 17+ Middle Tennessee communities. We are your neighbors.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ──────── 2. Logo System ──────── -->
+<section class="gl-section" id="logo-system">
+  <div class="gl-section-tag">02 Identity</div>
+  <h2>Logo System</h2>
+  <p class="gl-section-intro">The Hughes HVAC mark is a compact icon featuring a stylized "H" connector motif in orange on a navy rounded rectangle. It represents strength, reliability, and the connection between systems that keep homes comfortable.</p>
+
+  <h3 class="gl-h3">Primary Mark</h3>
+  <div class="gl-logo-grid">
+    <div>
+      <div class="gl-logo-box light">
+        <svg width="64" height="64" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#0B2341"/><path d="M8 11h4v10H8V11zm12 0h4v10h-4V11zm-6 3h4v4h-4v-4z" fill="#D4870F"/><path d="M12 14h8v1h-8v-1zm0 3h8v1h-8v-1z" fill="rgba(255,255,255,.6)"/></svg>
+      </div>
+      <div class="gl-logo-box-label">On light background</div>
+    </div>
+    <div>
+      <div class="gl-logo-box dark">
+        <svg width="64" height="64" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="rgba(255,255,255,.1)"/><path d="M8 11h4v10H8V11zm12 0h4v10h-4V11zm-6 3h4v4h-4v-4z" fill="#D4870F"/><path d="M12 14h8v1h-8v-1zm0 3h8v1h-8v-1z" fill="rgba(255,255,255,.6)"/></svg>
+      </div>
+      <div class="gl-logo-box-label">On dark background</div>
+    </div>
+    <div>
+      <div class="gl-logo-box orange">
+        <svg width="64" height="64" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="rgba(255,255,255,.15)"/><path d="M8 11h4v10H8V11zm12 0h4v10h-4V11zm-6 3h4v4h-4v-4z" fill="#fff"/><path d="M12 14h8v1h-8v-1zm0 3h8v1h-8v-1z" fill="rgba(255,255,255,.6)"/></svg>
+      </div>
+      <div class="gl-logo-box-label">On brand orange</div>
+    </div>
+  </div>
+
+  <h3 class="gl-h3">Wordmark Lockup</h3>
+  <div class="gl-demo" style="display:flex;align-items:center;gap:12px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:#0B2341">
+    <svg width="36" height="36" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#0B2341"/><path d="M8 11h4v10H8V11zm12 0h4v10h-4V11zm-6 3h4v4h-4v-4z" fill="#D4870F"/><path d="M12 14h8v1h-8v-1zm0 3h8v1h-8v-1z" fill="rgba(255,255,255,.6)"/></svg>
+    Hughes HVAC
+  </div>
+
+  <h3 class="gl-h3">Clear Space &amp; Minimum Size</h3>
+  <p class="gl-p">The minimum clear space around the logo mark is equal to 50% of the mark's height on all sides. Do not place text, graphics, or other logos within this zone.</p>
+  <p class="gl-p">Minimum sizes: <strong>24px</strong> for digital (favicon context), <strong>32px</strong> for standard digital use, <strong>10mm</strong> for print.</p>
+
+  <h3 class="gl-h3">Usage Rules</h3>
+  <div class="gl-do-dont">
+    <div class="gl-do">
+      <div class="gl-do-label">Do</div>
+      <ul style="padding-left:16px;color:#374151">
+        <li>Use the mark on approved background colors</li>
+        <li>Maintain the clear space zone</li>
+        <li>Use the SVG format for all digital applications</li>
+        <li>Pair the icon with the "Hughes HVAC" wordmark</li>
+      </ul>
+    </div>
+    <div class="gl-dont">
+      <div class="gl-dont-label">Don't</div>
+      <ul style="padding-left:16px;color:#374151">
+        <li>Stretch, rotate, or skew the mark</li>
+        <li>Place on busy photographic backgrounds</li>
+        <li>Apply drop shadows, glows, or 3D effects</li>
+        <li>Change the orange or navy brand colors</li>
+        <li>Add a white box behind the mark on dark backgrounds</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ──────── 3. Color System ──────── -->
+<section class="gl-section" id="color-system">
+  <div class="gl-section-tag">03 Color</div>
+  <h2>Color System</h2>
+  <p class="gl-section-intro">The Hughes HVAC palette centers on a navy-to-orange axis: navy communicates trust, authority, and technical competence; orange signals action, warmth, and the brand's approachable energy. Neutrals and state colors round out the system.</p>
+
+  <h3 class="gl-h3">Primary Navy</h3>
+  <div class="gl-swatch-group">
+    <div class="gl-grid-4" style="margin-bottom:12px">
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#061729"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Navy Deep</div><div class="gl-swatch-hex">#061729</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#0B2341"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Navy (Primary)</div><div class="gl-swatch-hex">#0B2341</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#0E2A4A"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Navy Dark</div><div class="gl-swatch-hex">#0E2A4A</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#163A5E"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Navy Mid</div><div class="gl-swatch-hex">#163A5E</div></div></div>
+    </div>
+    <div class="gl-grid-4">
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#1E4D7B"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Navy Light</div><div class="gl-swatch-hex">#1E4D7B</div></div></div>
+    </div>
+  </div>
+
+  <h3 class="gl-h3">Orange Accent</h3>
+  <div class="gl-swatch-group">
+    <div class="gl-grid-4">
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#D4870F"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Orange (Primary)</div><div class="gl-swatch-hex">#D4870F</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#BF7A0D"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Orange Hover</div><div class="gl-swatch-hex">#BF7A0D</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#F5A623"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Orange Light</div><div class="gl-swatch-hex">#F5A623</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#FFF8ED"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Orange Subtle</div><div class="gl-swatch-hex">#FFF8ED</div></div></div>
+    </div>
+  </div>
+
+  <h3 class="gl-h3">Semantic Surfaces</h3>
+  <div class="gl-swatch-group">
+    <div class="gl-grid-4">
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#111827"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Ink</div><div class="gl-swatch-hex">#111827</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#4B5563"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Ink Secondary</div><div class="gl-swatch-hex">#4B5563</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#6B7280"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Ink Tertiary</div><div class="gl-swatch-hex">#6B7280</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#FFFFFF;border:1px solid #E5E7EB"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Canvas</div><div class="gl-swatch-hex">#FFFFFF</div></div></div>
+    </div>
+    <div class="gl-grid-4" style="margin-top:12px">
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#F9FAFB"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Surface</div><div class="gl-swatch-hex">#F9FAFB</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#FDF8F3"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Surface Warm</div><div class="gl-swatch-hex">#FDF8F3</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#F0F4F8"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Surface Navy</div><div class="gl-swatch-hex">#F0F4F8</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#E5E7EB"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Line</div><div class="gl-swatch-hex">#E5E7EB</div></div></div>
+    </div>
+  </div>
+
+  <h3 class="gl-h3">State Colors</h3>
+  <div class="gl-swatch-group">
+    <div class="gl-grid-4">
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#059669"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Success</div><div class="gl-swatch-hex">#059669</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#D97706"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Warning</div><div class="gl-swatch-hex">#D97706</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#DC2626"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Error / Emergency</div><div class="gl-swatch-hex">#DC2626</div></div></div>
+      <div class="gl-swatch"><div class="gl-swatch-color" style="background:#2563EB"></div><div class="gl-swatch-info"><div class="gl-swatch-name">Info / Focus</div><div class="gl-swatch-hex">#2563EB</div></div></div>
+    </div>
+  </div>
+
+  <h3 class="gl-h3">Accessible Contrast Combinations</h3>
+  <table class="gl-table">
+    <thead><tr><th>Foreground</th><th>Background</th><th>Ratio</th><th>WCAG</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">#FFFFFF</td><td class="mono">#0B2341 Navy</td><td class="mono">14.8:1</td><td><span class="gl-contrast pass">AAA</span></td></tr>
+      <tr><td class="mono">#FFFFFF</td><td class="mono">#D4870F Orange</td><td class="mono">3.7:1</td><td><span class="gl-contrast pass">AA Large</span></td></tr>
+      <tr><td class="mono">#0B2341</td><td class="mono">#FFFFFF Canvas</td><td class="mono">14.8:1</td><td><span class="gl-contrast pass">AAA</span></td></tr>
+      <tr><td class="mono">#111827</td><td class="mono">#F9FAFB Surface</td><td class="mono">16.4:1</td><td><span class="gl-contrast pass">AAA</span></td></tr>
+      <tr><td class="mono">#4B5563</td><td class="mono">#FFFFFF Canvas</td><td class="mono">7.0:1</td><td><span class="gl-contrast pass">AAA</span></td></tr>
+      <tr><td class="mono">#6B7280</td><td class="mono">#FFFFFF Canvas</td><td class="mono">4.6:1</td><td><span class="gl-contrast pass">AA</span></td></tr>
+      <tr><td class="mono">#F5A623</td><td class="mono">#0B2341 Navy</td><td class="mono">6.5:1</td><td><span class="gl-contrast pass">AA</span></td></tr>
+      <tr><td class="mono">#FFFFFF</td><td class="mono">#059669 Success</td><td class="mono">4.6:1</td><td><span class="gl-contrast pass">AA</span></td></tr>
+      <tr><td class="mono">#FFFFFF</td><td class="mono">#DC2626 Error</td><td class="mono">4.6:1</td><td><span class="gl-contrast pass">AA</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="gl-h3">Orange Usage Rules</h3>
+  <div class="gl-do-dont">
+    <div class="gl-do">
+      <div class="gl-do-label">Orange Is For</div>
+      <ul style="padding-left:16px;color:#374151">
+        <li>Primary CTA buttons</li>
+        <li>The logo accent mark</li>
+        <li>Pricing highlights</li>
+        <li>Key trust badges and stats</li>
+        <li>Hover and focus accents</li>
+      </ul>
+    </div>
+    <div class="gl-dont">
+      <div class="gl-dont-label">Orange Is Not For</div>
+      <ul style="padding-left:16px;color:#374151">
+        <li>Body text or headings</li>
+        <li>Full-section backgrounds</li>
+        <li>Navigation elements</li>
+        <li>Every icon and border</li>
+        <li>Decorative use without purpose</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ──────── 4. Typography ──────── -->
+<section class="gl-section" id="typography">
+  <div class="gl-section-tag">04 Typography</div>
+  <h2>Typography</h2>
+  <p class="gl-section-intro">The type system pairs Plus Jakarta Sans (display) for impact and authority with Inter (body) for clarity and comfort at all sizes. Both are open-source Google Fonts with excellent web performance.</p>
+
+  <h3 class="gl-h3">Type Specimen</h3>
+  <div class="gl-demo">
+    <div class="gl-type-label">Display / Plus Jakarta Sans 800</div>
+    <div class="gl-type-display">Best AC Repair in Nashville</div>
+    <div class="gl-type-label">Heading / Plus Jakarta Sans 700</div>
+    <div class="gl-type-heading">What Sets Us Apart</div>
+    <div class="gl-type-label">Body / Inter 400</div>
+    <div class="gl-type-body">Our technicians are paid hourly, not on commission, so you get an honest diagnosis and only the repairs you actually need. We provide same-day service across Nashville, Madison, and Middle Tennessee.</div>
+    <div class="gl-type-label">Caption / Inter 500</div>
+    <div class="gl-type-caption">Licensed &amp; insured in Tennessee. Serving Davidson, Sumner, Wilson, and Williamson counties.</div>
+  </div>
+
+  <h3 class="gl-h3">Type Scale</h3>
+  <table class="gl-table">
+    <thead><tr><th>Role</th><th>Family</th><th>Weight</th><th>Size</th><th>Line Height</th><th>Tracking</th></tr></thead>
+    <tbody>
+      <tr><td>Display</td><td class="mono">Plus Jakarta Sans</td><td>800</td><td class="mono">clamp(32px, 5vw, 52px)</td><td class="mono">1.1</td><td class="mono">-0.025em</td></tr>
+      <tr><td>H1</td><td class="mono">Plus Jakarta Sans</td><td>800</td><td class="mono">clamp(28px, 4.5vw, 44px)</td><td class="mono">1.12</td><td class="mono">-0.02em</td></tr>
+      <tr><td>H2</td><td class="mono">Plus Jakarta Sans</td><td>700</td><td class="mono">clamp(22px, 3.5vw, 32px)</td><td class="mono">1.2</td><td class="mono">-0.015em</td></tr>
+      <tr><td>H3</td><td class="mono">Plus Jakarta Sans</td><td>700</td><td class="mono">clamp(18px, 2.5vw, 24px)</td><td class="mono">1.25</td><td class="mono">-0.01em</td></tr>
+      <tr><td>H4</td><td class="mono">Plus Jakarta Sans</td><td>700</td><td class="mono">16px</td><td class="mono">1.3</td><td class="mono">0</td></tr>
+      <tr><td>Eyebrow</td><td class="mono">Inter</td><td>700</td><td class="mono">11px</td><td class="mono">1</td><td class="mono">0.14em</td></tr>
+      <tr><td>Body</td><td class="mono">Inter</td><td>400</td><td class="mono">16px</td><td class="mono">1.7</td><td class="mono">0</td></tr>
+      <tr><td>Body Small</td><td class="mono">Inter</td><td>400</td><td class="mono">14px</td><td class="mono">1.6</td><td class="mono">0</td></tr>
+      <tr><td>Caption</td><td class="mono">Inter</td><td>500</td><td class="mono">13px</td><td class="mono">1.5</td><td class="mono">0</td></tr>
+      <tr><td>Label</td><td class="mono">Inter</td><td>600</td><td class="mono">14px</td><td class="mono">1</td><td class="mono">0</td></tr>
+      <tr><td>Button</td><td class="mono">Inter</td><td>700</td><td class="mono">15px</td><td class="mono">1</td><td class="mono">0</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="gl-h3">Font Fallbacks</h3>
+  <div class="gl-code">
+    <span class="hl-prop">--h-font-display</span>: <span class="hl-val">'Plus Jakarta Sans', system-ui, -apple-system, sans-serif</span>;<br>
+    <span class="hl-prop">--h-font-body</span>: <span class="hl-val">'Inter', system-ui, -apple-system, sans-serif</span>;
+  </div>
+</section>
+
+<!-- ──────── 5. Spacing & Layout ──────── -->
+<section class="gl-section" id="spacing-layout">
+  <div class="gl-section-tag">05 Layout</div>
+  <h2>Spacing &amp; Layout</h2>
+  <p class="gl-section-intro">An 8px base unit governs all spacing. The layout uses a single-column container with generous padding. All interactive targets meet 44px minimum touch size.</p>
+
+  <h3 class="gl-h3">Spacing Scale</h3>
+  <div style="margin:16px 0 24px">
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-1 (4px)</div><div class="gl-spacing-bar" style="width:4px"></div></div>
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-2 (8px)</div><div class="gl-spacing-bar" style="width:8px"></div></div>
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-3 (12px)</div><div class="gl-spacing-bar" style="width:12px"></div></div>
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-4 (16px)</div><div class="gl-spacing-bar" style="width:16px"></div></div>
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-5 (20px)</div><div class="gl-spacing-bar" style="width:20px"></div></div>
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-6 (24px)</div><div class="gl-spacing-bar" style="width:24px"></div></div>
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-8 (32px)</div><div class="gl-spacing-bar" style="width:32px"></div></div>
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-10 (40px)</div><div class="gl-spacing-bar" style="width:40px"></div></div>
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-12 (48px)</div><div class="gl-spacing-bar" style="width:48px"></div></div>
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-16 (64px)</div><div class="gl-spacing-bar" style="width:64px"></div></div>
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-20 (80px)</div><div class="gl-spacing-bar" style="width:80px"></div></div>
+    <div class="gl-spacing-row"><div class="gl-spacing-label">--h-space-24 (96px)</div><div class="gl-spacing-bar" style="width:96px"></div></div>
+  </div>
+
+  <h3 class="gl-h3">Layout Constants</h3>
+  <table class="gl-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">--h-container</td><td class="mono">1200px</td><td>Max content width</td></tr>
+      <tr><td class="mono">--h-gutter</td><td class="mono">16px</td><td>Side padding on mobile and up</td></tr>
+      <tr><td class="mono">--h-touch</td><td class="mono">44px</td><td>Minimum interactive target</td></tr>
+      <tr><td class="mono">--h-touch-primary</td><td class="mono">52px</td><td>Primary mobile CTA height</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="gl-h3">Breakpoints</h3>
+  <table class="gl-table">
+    <thead><tr><th>Name</th><th>Width</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr><td>Mobile</td><td class="mono">&lt; 640px</td><td>Single column, stacked layout, sticky bottom CTA</td></tr>
+      <tr><td>Tablet</td><td class="mono">640px &ndash; 768px</td><td>Two-column grids begin</td></tr>
+      <tr><td>Desktop</td><td class="mono">768px+</td><td>Full navigation, hero grid, pricing cards alongside hero</td></tr>
+      <tr><td>Wide</td><td class="mono">1280px+</td><td>Content centers within container max-width</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="gl-h3">Border Radii</h3>
+  <table class="gl-table">
+    <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">--h-radius-sm</td><td class="mono">6px</td><td>Small inputs, tags</td></tr>
+      <tr><td class="mono">--h-radius</td><td class="mono">10px</td><td>Buttons, cards, default</td></tr>
+      <tr><td class="mono">--h-radius-md</td><td class="mono">12px</td><td>Larger cards, containers</td></tr>
+      <tr><td class="mono">--h-radius-lg</td><td class="mono">16px</td><td>Prominent cards, heroes</td></tr>
+      <tr><td class="mono">--h-radius-xl</td><td class="mono">20px</td><td>Feature sections</td></tr>
+      <tr><td class="mono">--h-radius-full</td><td class="mono">9999px</td><td>Badges, pills</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ──────── 6. Components ──────── -->
+<section class="gl-section" id="components">
+  <div class="gl-section-tag">06 Components</div>
+  <h2>Components</h2>
+  <p class="gl-section-intro">A focused component library built for HVAC service conversion. Every component is designed mobile-first with accessible interaction states.</p>
+
+  <h3 class="gl-h3">Buttons</h3>
+  <div class="gl-demo" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+    <button class="demo-btn demo-btn-primary">Schedule Service</button>
+    <button class="demo-btn demo-btn-secondary">Learn More</button>
+    <button class="demo-btn demo-btn-outline">View Pricing</button>
+    <button class="demo-btn demo-btn-ghost">See all services</button>
+  </div>
+  <table class="gl-table">
+    <thead><tr><th>Variant</th><th>Background</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td>Primary</td><td class="mono">#D4870F orange</td><td>Primary conversion actions: Schedule, Call, Submit</td></tr>
+      <tr><td>Secondary</td><td class="mono">#0B2341 navy</td><td>Important secondary actions: Learn More, View Details</td></tr>
+      <tr><td>Outline</td><td>transparent + border</td><td>Tertiary actions on light backgrounds</td></tr>
+      <tr><td>Ghost</td><td>transparent</td><td>Inline text-level actions, "See more" links</td></tr>
+    </tbody>
+  </table>
+  <p class="gl-p">All buttons have a minimum touch target of 44px height on mobile and 52px for primary conversion CTAs. Border radius is 10px. Font weight is 700 (bold).</p>
+
+  <h3 class="gl-h3">Trust Indicators</h3>
+  <div class="gl-demo" style="display:flex;flex-wrap:wrap;gap:10px">
+    <span class="demo-trust"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Licensed &amp; Insured</span>
+    <span class="demo-trust"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No Commission Techs</span>
+    <span class="demo-trust"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Same-Day Service</span>
+    <span class="demo-trust"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Upfront Pricing</span>
+  </div>
+  <p class="gl-p">Trust indicators use a pill shape with a success-green check icon. They appear below the hero and at key decision points throughout the page. Keep language short, factual, and verifiable.</p>
+
+  <h3 class="gl-h3">Service Cards</h3>
+  <div class="gl-grid-3">
+    <div class="demo-card">
+      <h4>AC Repair</h4>
+      <p>Same-day AC repair across Nashville. $89 diagnostic waived with repair.</p>
+    </div>
+    <div class="demo-card">
+      <h4>Furnace Repair</h4>
+      <p>Gas and electric furnaces. CO safety check included on every call.</p>
+    </div>
+    <div class="demo-card">
+      <h4>Maintenance Plans</h4>
+      <p>Starting at $149/yr. Annual tune-ups, priority scheduling, repair discounts.</p>
+    </div>
+  </div>
+
+  <h3 class="gl-h3">Pricing Cards</h3>
+  <div class="gl-demo-dark gl-demo" style="max-width:360px">
+    <div style="padding:4px">
+      <div style="color:#F5A623;font-size:17px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;margin-bottom:4px">AC Repair Pricing</div>
+      <div style="color:rgba(255,255,255,.5);font-size:14px;margin-bottom:20px">Honest, upfront pricing</div>
+      <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div><div style="color:rgba(255,255,255,.6);font-size:14px">Diagnostic Fee</div><div style="color:rgba(255,255,255,.4);font-size:12px;margin-top:2px">Waived when you proceed with repair</div></div>
+        <div style="color:#fff;font-size:20px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif">$89</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div><div style="color:rgba(255,255,255,.6);font-size:14px">Standard Rate</div><div style="color:rgba(255,255,255,.4);font-size:12px;margin-top:2px">Mon-Fri, 7 AM - 6 PM</div></div>
+        <div style="color:#fff;font-size:20px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif">$150/hr</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:12px 0">
+        <div><div style="color:rgba(255,255,255,.6);font-size:14px">After-Hours Rate</div><div style="color:rgba(255,255,255,.4);font-size:12px;margin-top:2px">Evenings, weekends, holidays</div></div>
+        <div style="color:#fff;font-size:20px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif">$225/hr</div>
+      </div>
+    </div>
+  </div>
+  <p class="gl-p">Pricing cards appear in the hero section on dark navy backgrounds. Use glass-morphism (translucent bg + backdrop blur). Orange-light for card titles. White for values.</p>
+
+  <h3 class="gl-h3">FAQ Accordions</h3>
+  <div class="gl-demo">
+    <div style="border-bottom:1px solid #E5E7EB;padding:16px 0">
+      <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer">
+        <span style="font-weight:600;font-size:15px">How much does AC repair cost in Nashville?</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+    <div style="border-bottom:1px solid #E5E7EB;padding:16px 0">
+      <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer">
+        <span style="font-weight:600;font-size:15px">Can you fix my AC today?</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+  </div>
+  <p class="gl-p">FAQ items use <code>aria-expanded</code> and <code>aria-controls</code> for accessibility. Chevron rotates 180 degrees on open. Max-height transition for smooth expand/collapse. FAQ sections feed both on-page usability and FAQPage structured data for AEO.</p>
+</section>
+
+<!-- ──────── 7. Voice & Tone ──────── -->
+<section class="gl-section" id="voice-tone">
+  <div class="gl-section-tag">07 Voice</div>
+  <h2>Voice &amp; Tone</h2>
+  <p class="gl-section-intro">Hughes HVAC speaks like the most competent, honest technician you have ever met. Direct language. No jargon. No sales pitch. Outcomes over features.</p>
+
+  <h3 class="gl-h3">Voice Attributes</h3>
+  <table class="gl-table">
+    <thead><tr><th>Attribute</th><th>Sounds Like</th><th>Never Sounds Like</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Confident</strong></td><td>"We fix it right the first time."</td><td>"We hope to resolve your issue."</td></tr>
+      <tr><td><strong>Honest</strong></td><td>"If it can be repaired, we repair it. If it cannot, we tell you straight."</td><td>"We always recommend the best solution for you."</td></tr>
+      <tr><td><strong>Direct</strong></td><td>"$89 diagnostic, waived with repair."</td><td>"Contact us for a personalized quote."</td></tr>
+      <tr><td><strong>Warm</strong></td><td>"We know how miserable a Nashville summer is without AC."</td><td>"Optimize your thermal comfort experience."</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="gl-h3">CTA Language</h3>
+  <div class="gl-do-dont">
+    <div class="gl-do">
+      <div class="gl-do-label">Preferred CTAs</div>
+      <ul style="padding-left:16px;color:#374151">
+        <li>Call (615) 219-9882</li>
+        <li>Schedule Service</li>
+        <li>Request Service</li>
+        <li>Get a Free Estimate</li>
+      </ul>
+    </div>
+    <div class="gl-dont">
+      <div class="gl-dont-label">Avoid</div>
+      <ul style="padding-left:16px;color:#374151">
+        <li>"Get Started" (too vague)</li>
+        <li>"Contact Us" (too passive)</li>
+        <li>"Book Now" (implies instant booking)</li>
+        <li>"Claim Your Offer" (too salesy)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="gl-h3">Copy Rules</h3>
+  <div class="gl-do-dont">
+    <div class="gl-do">
+      <div class="gl-do-label">Do</div>
+      <ul style="padding-left:16px;color:#374151">
+        <li>Lead with the customer's problem, then the solution</li>
+        <li>State pricing where available</li>
+        <li>Use "you" and "your" (customer-centered)</li>
+        <li>Mention specific Nashville neighborhoods and conditions</li>
+        <li>Explain technical concepts in plain language</li>
+      </ul>
+    </div>
+    <div class="gl-dont">
+      <div class="gl-dont-label">Don't</div>
+      <ul style="padding-left:16px;color:#374151">
+        <li>Fabricate guarantees, response times, or certifications</li>
+        <li>Use deceptive urgency ("Only 2 slots left today!")</li>
+        <li>Claim "#1 Rated" without verified source</li>
+        <li>Use HVAC jargon without explanation</li>
+        <li>Use "we're passionate about HVAC"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="gl-h3">Headline Formula</h3>
+  <p class="gl-p">Service page headlines follow the "Best + Service + Location" pattern for local SEO targeting:</p>
+  <div class="gl-code" style="font-size:14px">
+    Best AC Repair in Nashville &amp; Middle Tennessee<br>
+    Best Furnace &amp; Heater Repair in Nashville<br>
+    Best 24/7 Emergency HVAC Service in Nashville<br>
+    Best HVAC Service in Brentwood, TN
+  </div>
+</section>
+
+<!-- ──────── 8. Photography ──────── -->
+<section class="gl-section" id="photography">
+  <div class="gl-section-tag">08 Photography</div>
+  <h2>Photography Direction</h2>
+  <p class="gl-section-intro">Photography should feel real, local, and professional. When real photography is not available, the design system uses navy gradient heroes with subtle orange radial accents instead of stock photography.</p>
+
+  <h3 class="gl-h3">Photo Principles</h3>
+  <table class="gl-table">
+    <thead><tr><th>Principle</th><th>Direction</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Authentic</strong></td><td>Real technicians, real homes, real equipment. No staged stock photography with models in hard hats giving thumbs up.</td></tr>
+      <tr><td><strong>Local</strong></td><td>Nashville landmarks, Tennessee landscapes, recognizable neighborhoods where possible.</td></tr>
+      <tr><td><strong>Technical Competence</strong></td><td>Show real work: clean installations, organized service vehicles, professional diagnostic equipment.</td></tr>
+      <tr><td><strong>Warm Light</strong></td><td>Natural light preferred. Avoid harsh flash or clinical fluorescent lighting.</td></tr>
+      <tr><td><strong>Clean Composition</strong></td><td>Uncluttered frames. Focus on the subject. Avoid busy backgrounds.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="gl-do-dont">
+    <div class="gl-do">
+      <div class="gl-do-label">Do Use</div>
+      <ul style="padding-left:16px;color:#374151">
+        <li>Photos of actual Hughes HVAC technicians at work</li>
+        <li>Clean equipment installations completed by the team</li>
+        <li>The service vehicle, office, and workspace</li>
+        <li>Nashville-area homes (exterior, with permission)</li>
+      </ul>
+    </div>
+    <div class="gl-dont">
+      <div class="gl-dont-label">Don't Use</div>
+      <ul style="padding-left:16px;color:#374151">
+        <li>Generic stock photos of smiling workers</li>
+        <li>Fabricated "before/after" images</li>
+        <li>AI-generated imagery of people or equipment</li>
+        <li>Customer photos without explicit permission</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="gl-h3">Image Treatment</h3>
+  <p class="gl-p">When photos are used as hero backgrounds, apply a dark navy overlay at 60-70% opacity to maintain text readability. All images should be served as responsive formats (WebP with JPEG fallback) and lazy-loaded below the fold.</p>
+</section>
+
+<!-- ──────── 9. Design Tokens ──────── -->
+<section class="gl-section" id="design-tokens" style="border-bottom:none;margin-bottom:0">
+  <div class="gl-section-tag">09 Developer</div>
+  <h2>Design Tokens</h2>
+  <p class="gl-section-intro">The complete token set as CSS custom properties. Copy this block into your stylesheet root. All component styles reference these tokens.</p>
+
+  <div class="gl-code" id="token-block">
+<button class="gl-code-copy" onclick="navigator.clipboard.writeText(document.getElementById('token-text').textContent).then(()=>this.textContent='Copied!').catch(()=>this.textContent='Copy failed');setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
+<pre id="token-text" style="margin:0;white-space:pre;overflow-x:auto"><span class="hl-comment">/* Hughes HVAC Design Tokens v1.0 */</span>
+:root {
+  <span class="hl-comment">/* Navy */</span>
+  <span class="hl-prop">--h-navy</span>: <span class="hl-val">#0B2341</span>;
+  <span class="hl-prop">--h-navy-deep</span>: <span class="hl-val">#061729</span>;
+  <span class="hl-prop">--h-navy-dark</span>: <span class="hl-val">#0E2A4A</span>;
+  <span class="hl-prop">--h-navy-mid</span>: <span class="hl-val">#163A5E</span>;
+  <span class="hl-prop">--h-navy-light</span>: <span class="hl-val">#1E4D7B</span>;
+
+  <span class="hl-comment">/* Orange */</span>
+  <span class="hl-prop">--h-orange</span>: <span class="hl-val">#D4870F</span>;
+  <span class="hl-prop">--h-orange-hover</span>: <span class="hl-val">#BF7A0D</span>;
+  <span class="hl-prop">--h-orange-light</span>: <span class="hl-val">#F5A623</span>;
+  <span class="hl-prop">--h-orange-subtle</span>: <span class="hl-val">#FFF8ED</span>;
+  <span class="hl-prop">--h-orange-glow</span>: <span class="hl-val">rgba(212,135,15,0.12)</span>;
+
+  <span class="hl-comment">/* Semantic */</span>
+  <span class="hl-prop">--h-ink</span>: <span class="hl-val">#111827</span>;
+  <span class="hl-prop">--h-ink-secondary</span>: <span class="hl-val">#4B5563</span>;
+  <span class="hl-prop">--h-ink-tertiary</span>: <span class="hl-val">#6B7280</span>;
+  <span class="hl-prop">--h-ink-inverse</span>: <span class="hl-val">#FFFFFF</span>;
+  <span class="hl-prop">--h-canvas</span>: <span class="hl-val">#FFFFFF</span>;
+  <span class="hl-prop">--h-surface</span>: <span class="hl-val">#F9FAFB</span>;
+  <span class="hl-prop">--h-surface-warm</span>: <span class="hl-val">#FDF8F3</span>;
+  <span class="hl-prop">--h-surface-navy</span>: <span class="hl-val">#F0F4F8</span>;
+  <span class="hl-prop">--h-line</span>: <span class="hl-val">#E5E7EB</span>;
+  <span class="hl-prop">--h-line-light</span>: <span class="hl-val">#F3F4F6</span>;
+
+  <span class="hl-comment">/* States */</span>
+  <span class="hl-prop">--h-success</span>: <span class="hl-val">#059669</span>;
+  <span class="hl-prop">--h-warning</span>: <span class="hl-val">#D97706</span>;
+  <span class="hl-prop">--h-error</span>: <span class="hl-val">#DC2626</span>;
+  <span class="hl-prop">--h-info</span>: <span class="hl-val">#2563EB</span>;
+  <span class="hl-prop">--h-emergency</span>: <span class="hl-val">#DC2626</span>;
+  <span class="hl-prop">--h-focus</span>: <span class="hl-val">#2563EB</span>;
+  <span class="hl-prop">--h-overlay</span>: <span class="hl-val">rgba(6,23,41,0.6)</span>;
+
+  <span class="hl-comment">/* Typography */</span>
+  <span class="hl-prop">--h-font-display</span>: <span class="hl-val">'Plus Jakarta Sans', system-ui, sans-serif</span>;
+  <span class="hl-prop">--h-font-body</span>: <span class="hl-val">'Inter', system-ui, sans-serif</span>;
+
+  <span class="hl-comment">/* Spacing (8px base) */</span>
+  <span class="hl-prop">--h-space-1</span>: <span class="hl-val">0.25rem</span>;  <span class="hl-comment">/* 4px */</span>
+  <span class="hl-prop">--h-space-2</span>: <span class="hl-val">0.5rem</span>;   <span class="hl-comment">/* 8px */</span>
+  <span class="hl-prop">--h-space-3</span>: <span class="hl-val">0.75rem</span>;  <span class="hl-comment">/* 12px */</span>
+  <span class="hl-prop">--h-space-4</span>: <span class="hl-val">1rem</span>;     <span class="hl-comment">/* 16px */</span>
+  <span class="hl-prop">--h-space-5</span>: <span class="hl-val">1.25rem</span>;  <span class="hl-comment">/* 20px */</span>
+  <span class="hl-prop">--h-space-6</span>: <span class="hl-val">1.5rem</span>;   <span class="hl-comment">/* 24px */</span>
+  <span class="hl-prop">--h-space-8</span>: <span class="hl-val">2rem</span>;     <span class="hl-comment">/* 32px */</span>
+  <span class="hl-prop">--h-space-10</span>: <span class="hl-val">2.5rem</span>;  <span class="hl-comment">/* 40px */</span>
+  <span class="hl-prop">--h-space-12</span>: <span class="hl-val">3rem</span>;    <span class="hl-comment">/* 48px */</span>
+  <span class="hl-prop">--h-space-16</span>: <span class="hl-val">4rem</span>;    <span class="hl-comment">/* 64px */</span>
+  <span class="hl-prop">--h-space-20</span>: <span class="hl-val">5rem</span>;    <span class="hl-comment">/* 80px */</span>
+  <span class="hl-prop">--h-space-24</span>: <span class="hl-val">6rem</span>;    <span class="hl-comment">/* 96px */</span>
+
+  <span class="hl-comment">/* Radii */</span>
+  <span class="hl-prop">--h-radius-sm</span>: <span class="hl-val">6px</span>;
+  <span class="hl-prop">--h-radius</span>: <span class="hl-val">10px</span>;
+  <span class="hl-prop">--h-radius-md</span>: <span class="hl-val">12px</span>;
+  <span class="hl-prop">--h-radius-lg</span>: <span class="hl-val">16px</span>;
+  <span class="hl-prop">--h-radius-xl</span>: <span class="hl-val">20px</span>;
+  <span class="hl-prop">--h-radius-full</span>: <span class="hl-val">9999px</span>;
+
+  <span class="hl-comment">/* Shadows */</span>
+  <span class="hl-prop">--h-shadow-sm</span>: <span class="hl-val">0 1px 2px rgba(6,23,41,0.05)</span>;
+  <span class="hl-prop">--h-shadow</span>: <span class="hl-val">0 1px 3px rgba(6,23,41,0.08), 0 1px 2px rgba(6,23,41,0.06)</span>;
+  <span class="hl-prop">--h-shadow-md</span>: <span class="hl-val">0 4px 6px rgba(6,23,41,0.07), 0 2px 4px rgba(6,23,41,0.05)</span>;
+  <span class="hl-prop">--h-shadow-lg</span>: <span class="hl-val">0 10px 15px rgba(6,23,41,0.08), 0 4px 6px rgba(6,23,41,0.04)</span>;
+
+  <span class="hl-comment">/* Timing */</span>
+  <span class="hl-prop">--h-timing-fast</span>: <span class="hl-val">150ms</span>;
+  <span class="hl-prop">--h-timing-medium</span>: <span class="hl-val">250ms</span>;
+  <span class="hl-prop">--h-timing-slow</span>: <span class="hl-val">350ms</span>;
+
+  <span class="hl-comment">/* Layout */</span>
+  <span class="hl-prop">--h-container</span>: <span class="hl-val">1200px</span>;
+  <span class="hl-prop">--h-gutter</span>: <span class="hl-val">16px</span>;
+  <span class="hl-prop">--h-touch</span>: <span class="hl-val">44px</span>;
+  <span class="hl-prop">--h-touch-primary</span>: <span class="hl-val">52px</span>;
+}</pre>
+  </div>
+
+  <h3 class="gl-h3">Implementation Order</h3>
+  <table class="gl-table">
+    <thead><tr><th>Priority</th><th>Component</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Design tokens + reset</td><td>Foundation for everything else</td></tr>
+      <tr><td>2</td><td>Typography scale</td><td>Headings, body, eyebrows</td></tr>
+      <tr><td>3</td><td>Buttons + forms</td><td>Core conversion components</td></tr>
+      <tr><td>4</td><td>Header + footer + sticky CTA</td><td>Global navigation</td></tr>
+      <tr><td>5</td><td>Hero sections</td><td>Service hero + area hero</td></tr>
+      <tr><td>6</td><td>Content sections</td><td>Benefits, issues, deep content, FAQ</td></tr>
+      <tr><td>7</td><td>Trust sections + pricing cards</td><td>Conversion support</td></tr>
+      <tr><td>8</td><td>Contact form</td><td>Lead capture</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div><!-- /gl-content -->
+
+<!-- Footer -->
+<footer class="gl-footer">
+  <p>Hughes HVAC Services Brand Guidelines v1.0 &mdash; hugheshvacservices.com &mdash; (615) 219-9882</p>
+  <div class="gl-footer-brand">Created by your growth partner &mdash; <a href="https://sociallink.com" target="_blank" rel="noopener" style="font-weight:600">Social Link</a></div>
+</footer>
+</main>
+
+<!-- Scroll spy -->
+<script>
+(function(){
+  var links = document.querySelectorAll('.gl-nav a[href^="#"]');
+  var sections = [];
+  links.forEach(function(a){ var s = document.querySelector(a.getAttribute('href')); if(s) sections.push({el:s,link:a}); });
+  function update(){
+    var scrollTop = window.scrollY + 120;
+    var current = null;
+    sections.forEach(function(s){ if(s.el.offsetTop <= scrollTop) current = s; });
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if(current) current.link.classList.add('active');
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+</script>
+</body>
+</html>

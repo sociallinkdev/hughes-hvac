@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hughes HVAC — Independent SEO/AEO Audit | Social Link</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f8f9fb;
+  --text: #1a1a2e;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --accent: #1B6FE8;
+  --accent-light: #dbeafe;
+  --red: #dc2626;
+  --red-light: #fef2f2;
+  --red-border: #fecaca;
+  --green: #16a34a;
+  --green-light: #f0fdf4;
+  --green-border: #bbf7d0;
+  --amber: #d97706;
+  --amber-light: #fffbeb;
+  --amber-border: #fde68a;
+  --navy: #0B2341;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+header { background: var(--navy); color: white; padding: 48px 0 36px; }
+header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+header .subtitle { color: #94a3b8; font-size: 15px; }
+header .meta { display: flex; gap: 24px; margin-top: 16px; font-size: 13px; color: #94a3b8; flex-wrap: wrap; }
+.executive-summary { background: var(--bg-alt); border-bottom: 1px solid var(--border); padding: 32px 0; }
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
+.stat-card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: center; }
+.stat-card .number { font-size: 32px; font-weight: 700; }
+.stat-card .label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+.stat-card.critical .number { color: var(--red); }
+.stat-card.warning .number { color: var(--amber); }
+.stat-card.good .number { color: var(--green); }
+nav.toc { background: white; border-bottom: 1px solid var(--border); padding: 20px 0; position: sticky; top: 0; z-index: 100; }
+nav.toc ul { list-style: none; display: flex; gap: 4px; overflow-x: auto; }
+nav.toc a { display: block; padding: 6px 14px; font-size: 13px; font-weight: 500; color: var(--text-muted); text-decoration: none; border-radius: 6px; white-space: nowrap; }
+nav.toc a:hover, nav.toc a.active { background: var(--accent-light); color: var(--accent); }
+section.phase { padding: 48px 0; border-bottom: 1px solid var(--border); }
+section.phase h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+section.phase h2 .badge { font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 12px; }
+.badge-critical { background: var(--red-light); color: var(--red); border: 1px solid var(--red-border); }
+.badge-warning { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber-border); }
+.badge-good { background: var(--green-light); color: var(--green); border: 1px solid var(--green-border); }
+section.phase .phase-desc { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; }
+h3 { font-size: 17px; font-weight: 600; margin: 28px 0 12px; }
+h4 { font-size: 15px; font-weight: 600; margin: 20px 0 8px; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+th { background: var(--bg-alt); text-align: left; padding: 10px 12px; font-weight: 600; font-size: 13px; border-bottom: 2px solid var(--border); }
+td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr:hover { background: #fafbfc; }
+.finding { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin: 12px 0; border-left: 4px solid var(--border); }
+.finding.critical { border-left-color: var(--red); background: var(--red-light); }
+.finding.warning { border-left-color: var(--amber); background: var(--amber-light); }
+.finding.good { border-left-color: var(--green); background: var(--green-light); }
+.finding .title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.finding .detail { font-size: 14px; color: var(--text-muted); }
+.finding .evidence { font-size: 13px; font-family: 'SF Mono', Monaco, monospace; background: rgba(0,0,0,0.05); padding: 8px 12px; border-radius: 4px; margin-top: 8px; overflow-x: auto; }
+.tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-right: 4px; }
+.tag-p0 { background: var(--red-light); color: var(--red); border: 1px solid var(--red-border); }
+.tag-p1 { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber-border); }
+.tag-p2 { background: var(--accent-light); color: var(--accent); }
+.checklist { list-style: none; }
+.checklist li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; display: flex; align-items: flex-start; gap: 8px; }
+.checklist .icon { flex-shrink: 0; width: 20px; text-align: center; }
+.pass { color: var(--green); }
+.fail { color: var(--red); }
+.warn { color: var(--amber); }
+.roadmap-phase { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 16px 0; }
+.roadmap-phase h4 { margin-top: 0; color: var(--accent); }
+footer { background: var(--navy); color: white; padding: 32px 0; text-align: center; font-size: 13px; }
+footer a { color: #60a5fa; }
+footer .logo-text { font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+@media (max-width: 768px) {
+  header h1 { font-size: 22px; }
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  nav.toc ul { gap: 2px; }
+  nav.toc a { font-size: 12px; padding: 6px 10px; }
+  table { font-size: 12px; }
+  th, td { padding: 8px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+<h1>Hughes HVAC Services — Independent SEO/AEO Audit</h1>
+<p class="subtitle">8-Phase Quality Assurance Audit of hugheshvacservices.com Rebuild</p>
+<div class="meta">
+<span>Date: November 3, 2026</span>
+<span>Domain: hugheshvacservices.com</span>
+<span>Pages Audited: 28</span>
+<span>Auditor: Social Link</span>
+</div>
+</div>
+</header>
+
+<div class="executive-summary">
+<div class="container">
+<h2 style="font-size:20px;font-weight:700;">Executive Summary</h2>
+<p style="color:var(--text-muted);font-size:14px;margin-top:8px;">Independent verification of 28-page Hughes HVAC rebuild. This audit challenges the previous implementation and identifies what actually matters for generating revenue.</p>
+<div class="summary-grid">
+<div class="stat-card critical"><div class="number">8</div><div class="label">P0 Critical Issues</div></div>
+<div class="stat-card warning"><div class="number">11</div><div class="label">P1 Warnings</div></div>
+<div class="stat-card good"><div class="number">18</div><div class="label">Items Verified</div></div>
+<div class="stat-card"><div class="number">0</div><div class="label">Current Rankings (Top 10)</div></div>
+<div class="stat-card"><div class="number">0</div><div class="label">Analytics Tracking</div></div>
+<div class="stat-card critical"><div class="number">9</div><div class="label">Broken Internal Links</div></div>
+</div>
+</div>
+</div>
+
+<section class="phase" id="pillars" style="padding:32px 0;border-bottom:1px solid var(--border);">
+<div class="container">
+<h2>8-Pillar SEO/AEO Status Grid</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:16px;">
+<div class="finding critical"><div class="title">1. Technical SEO</div><div class="detail"><strong>Score: 52/100</strong> — Schema valid, sitemap correct, HTTPS enforced. But 9 broken links, no redirects, 404 canonical error, missing og:image drag it below passing.</div></div>
+<div class="finding critical"><div class="title">2. Indexing & Crawling</div><div class="detail"><strong>Score: 15/100</strong> — Zero pages indexed on hugheshvacservices.com. No Search Console verification. No redirect map to transfer signals from hugheshvac.com (60 indexed URLs).</div></div>
+<div class="finding critical"><div class="title">3. On-Page Content</div><div class="detail"><strong>Score: 38/100</strong> — H1s optimized with "Best" pattern, titles unique. But service pages only 640-810 words, area pages 390-425 words — far below competitor benchmark of 1,500-2,000. Templated meta descriptions on area pages. 8 titles exceed 60-char SERP limit.</div></div>
+<div class="finding warning"><div class="title">4. Site Performance</div><div class="detail"><strong>Score: 65/100</strong> — Cannot verify CWV without deployment. HTML sizes 65-105KB acceptable. No images (CSS-only). Mobile-first responsive design solid. Inline CSS duplication adds ~15KB per page.</div></div>
+<div class="finding warning"><div class="title">5. Schema & AEO</div><div class="detail"><strong>Score: 72/100</strong> — First-mover advantage: JSON-LD on all pages, FAQ schema everywhere, llms.txt present. No competitor has any of this. Lost points: area pages missing geo/hours in LocalBusiness, entity inconsistency across web.</div></div>
+<div class="finding critical"><div class="title">6. Local SEO</div><div class="detail"><strong>Score: 5/100</strong> — No GBP. Zero reviews. Zero directory citations. Legacy name confusion (Hughes Air LLC). Without local foundation, organic rankings cannot convert to Local Pack visibility.</div></div>
+<div class="finding critical"><div class="title">7. Off-Site Authority</div><div class="detail"><strong>Score: 8/100</strong> — Semrush rank 14.6M. Zero backlinks from authoritative sources. No .edu, .gov, or local chamber links. No press mentions. Domain authority near zero.</div></div>
+<div class="finding critical"><div class="title">8. Conversion / Revenue</div><div class="detail"><strong>Score: 25/100</strong> — Click-to-call strong on all pages. But zero analytics, forms on homepage only, no call tracking, no reviews visible, no project photos, no financing info. Cannot measure any conversion.</div></div>
+</div>
+<div style="margin-top:16px;padding:16px;background:var(--red-light);border:1px solid var(--red-border);border-radius:8px;">
+<strong>Overall Score: 35/100 — NOT DEPLOYMENT READY</strong><br>
+<span style="font-size:14px;color:var(--text-muted);">The technical on-site build has a solid foundation (schema, mobile-first, keyword targeting). But 6 of 8 pillars score below 40 — driven by zero analytics, zero local presence, thin content, and missing redirect infrastructure. Fix all P0 issues before deploying.</span>
+</div>
+</div>
+</section>
+
+<nav class="toc">
+<div class="container">
+<ul>
+<li><a href="#phase1">Phase 1: Build</a></li>
+<li><a href="#phase2">Phase 2: Keywords</a></li>
+<li><a href="#phase3">Phase 3: Local SEO</a></li>
+<li><a href="#phase4">Phase 4: Technical</a></li>
+<li><a href="#phase5">Phase 5: AEO</a></li>
+<li><a href="#phase6">Phase 6: Conversion</a></li>
+<li><a href="#phase7">Phase 7: Roadmap</a></li>
+<li><a href="#phase8">Phase 8: Defects</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- ======================== PHASE 1 ======================== -->
+<section class="phase" id="phase1">
+<div class="container">
+<h2>Phase 1 — Independent Build Verification <span class="badge badge-critical">8 CRITICAL ISSUES</span></h2>
+<p class="phase-desc">Systematic verification of all 28 generated pages, source scripts, sitemap, robots.txt, structured data, navigation, internal links, and metadata.</p>
+
+<h3>Verified Working (18 items)</h3>
+<ul class="checklist">
+<li><span class="icon pass">✓</span> All 28 pages have unique H1 tags with "Best" keyword</li>
+<li><span class="icon pass">✓</span> All 28 pages have unique title tags</li>
+<li><span class="icon pass">✓</span> All 28 pages have correct canonical URLs (https://hugheshvacservices.com/...)</li>
+<li><span class="icon pass">✓</span> Homepage schema: LocalBusiness, WebSite, WebPage, BreadcrumbList, FAQPage — valid JSON</li>
+<li><span class="icon pass">✓</span> Service page schema: Service, BreadcrumbList, WebPage, FAQPage — valid JSON</li>
+<li><span class="icon pass">✓</span> BreadcrumbList present on all 28 pages</li>
+<li><span class="icon pass">✓</span> Mobile CTA bar (sticky bottom) present on all 28 pages</li>
+<li><span class="icon pass">✓</span> Click-to-call phone links on all 28 pages</li>
+<li><span class="icon pass">✓</span> Internal cross-linking: Service pages → 17 area pages, Area pages → 9+ services</li>
+<li><span class="icon pass">✓</span> Sitemap 28 URLs matches 28 actual pages</li>
+<li><span class="icon pass">✓</span> Viewport meta tag on all pages</li>
+<li><span class="icon pass">✓</span> Responsive breakpoints at 768px and 640px</li>
+<li><span class="icon pass">✓</span> All canonicals use HTTPS</li>
+<li><span class="icon pass">✓</span> robots.txt allows all crawlers including AI crawlers</li>
+<li><span class="icon pass">✓</span> llms.txt present and properly formatted (pure ASCII, 68 lines)</li>
+<li><span class="icon warn">⚠</span> Content depth: Service pages 640-810 words, area pages 390-425 words — both below competitive threshold (competitors average 1,500-2,000 words)</li>
+<li><span class="icon pass">✓</span> Pricing transparency visible: $89 diagnostic, $150/hr, $149/$249 plans</li>
+<li><span class="icon pass">✓</span> NAP consistency within the site (phone, address match across all pages)</li>
+</ul>
+
+<h3>P0 Critical Issues (Must Fix Before Deploy)</h3>
+
+<div class="finding critical">
+<div class="title"><span class="tag tag-p0">P0</span> No analytics tracking on any page</div>
+<div class="detail">Zero GA4, GTM, or any analytics implementation. Without tracking, there is no way to measure traffic, conversions, or ROI. This renders the entire investment unmeasurable.</div>
+<div class="evidence">grep 'gtag|googletagmanager|analytics|G-|GT-|UA-' → 0 matches across all 28 pages</div>
+</div>
+
+<div class="finding critical">
+<div class="title"><span class="tag tag-p0">P0</span> Lead capture form on homepage only — 27 pages have zero forms</div>
+<div class="detail">Only index.html has a Netlify form. All 10 service pages and 17 area pages have no form whatsoever. A visitor who lands on ac-repair.html or service-areas/madison.html can only call — no way to submit a lead outside business hours. This is a massive conversion gap.</div>
+<div class="evidence">data-netlify="true" found on: index.html only (1 of 28 pages)</div>
+</div>
+
+<div class="finding critical">
+<div class="title"><span class="tag tag-p0">P0</span> 9 broken internal links across the site</div>
+<div class="detail">Homepage links to 7 pages that don't exist: /about, /blog, /contact, /financing, /reviews, /coupons, /privacy-policy. Service pages link to 2 non-existent area pages: /service-areas/bellevue and /service-areas/la-vergne (referenced on 10 pages each). These create 404 errors for both users and crawlers.</div>
+<div class="evidence">Homepage: /financing, /reviews, /coupons, /contact, /privacy-policy, /about, /blog<br>Service pages: /service-areas/bellevue (10 pages), /service-areas/la-vergne (10 pages)</div>
+</div>
+
+<div class="finding critical">
+<div class="title"><span class="tag tag-p0">P0</span> URL mismatch will destroy existing rankings on deploy</div>
+<div class="detail">Live site uses city-suffixed URLs (e.g., /mini-split-repair-nashville, /emergency-hvac-nashville, /ac-maintenance-madison-tn). Rebuild uses clean slugs (/mini-split, /emergency-hvac, /service-areas/madison). Deploying without 301 redirects will break all existing (weak) ranking signals and index coverage.</div>
+<div class="evidence">Semrush organic data shows live URLs: /mini-split-repair-nashville → rebuild: /mini-split; /emergency-hvac-nashville → /emergency-hvac; /hvac-franklin-tn → /service-areas/franklin</div>
+</div>
+
+<div class="finding critical">
+<div class="title"><span class="tag tag-p0">P0</span> og:image file does not exist</div>
+<div class="detail">All 28 pages reference og-image.jpg in meta tags. Homepage schema references og-image.png. Neither file exists in the build directory. Social shares will show no image preview — damaging for trust and CTR from social/messaging.</div>
+<div class="evidence">og:meta → og-image.jpg | Schema → og-image.png | ls og-image.* → NO FILE FOUND</div>
+</div>
+
+<div class="finding critical">
+<div class="title"><span class="tag tag-p0">P0</span> 404 page canonical points to homepage</div>
+<div class="detail">404.html has &lt;link rel="canonical" href="https://hugheshvacservices.com/"&gt;. Error pages should have no canonical tag — this tells Google the homepage and the error page are the same content.</div>
+<div class="evidence">404.html line: &lt;link rel="canonical" href="https://hugheshvacservices.com/"&gt;</div>
+</div>
+
+<div class="finding critical">
+<div class="title"><span class="tag tag-p0">P0</span> Area page LocalBusiness schema missing hours and geo</div>
+<div class="detail">All 17 area pages have LocalBusiness schema but missing openingHoursSpecification (hours) and geo (lat/lng). Google uses these for Local Pack eligibility and time-sensitive queries like "emergency hvac open now." Without them, rich result eligibility is reduced.</div>
+<div class="evidence">17/17 area pages: openingHoursSpecification=False, geo=False</div>
+</div>
+
+<h3>P1 Issues (Fix Before or Shortly After Deploy)</h3>
+
+<div class="finding warning">
+<div class="title"><span class="tag tag-p1">P1</span> All 17 area page meta descriptions are templated</div>
+<div class="detail">Only the city name differs: "Best HVAC service in [City], TN. Top-rated AC repair, furnace &amp; heater repair, heat pumps, emergency 24/7. Licensed &amp; insured. Call (615) 219-9882." Google treats these as near-duplicate signals. Each city should have a unique description incorporating local context (county, neighborhoods, distance).</div>
+</div>
+
+<div class="finding warning">
+<div class="title"><span class="tag tag-p1">P1</span> Flat heading hierarchy on all service pages</div>
+<div class="detail">Every service page has 12 H2 tags and only 1 H3. Should use proper H2→H3 nesting. Example: ac-repair.html has "AC Not Cooling," "AC Running but Warm Air," etc. as H2s — these should be H3s under a parent H2 like "Common AC Problems."</div>
+</div>
+
+<div class="finding warning">
+<div class="title"><span class="tag tag-p1">P1</span> No guarantee or warranty content anywhere</div>
+<div class="detail">Zero mentions of "guarantee" or "warranty" across all pages. Competitors offer explicit guarantees: One Hour has "2-year materials, labor, and craftsmanship guarantee." This is a trust signal gap that hurts conversion and reduces AI answer eligibility.</div>
+</div>
+
+<div class="finding warning">
+<div class="title"><span class="tag tag-p1">P1</span> No real customer reviews or testimonials on any page</div>
+<div class="detail">Only 2 generic review references on the homepage, 1 on service pages. No actual review text, star ratings, or customer names. Competitors display reviews prominently. Google's review snippet eligibility requires visible review content matching schema.</div>
+</div>
+
+<div class="finding critical">
+<div class="title"><span class="tag tag-p0">P0</span> Area pages critically thin (390-425 words)</div>
+<div class="detail">Area pages average only 390-425 words — well below the competitive threshold of 1,500-2,000 words. Service pages are also thin at 640-810 words. Google is unlikely to rank these as authoritative local landing pages. The local content is templated — neighborhoods and zip codes are inserted but there's no genuine local differentiation (climate specifics, common system types, local utility programs, permit details). These need at minimum 800-1,200 words with unique local context per city.</div>
+</div>
+
+<div class="finding warning">
+<div class="title"><span class="tag tag-p1">P1</span> No blog or informational content</div>
+<div class="detail">Zero blog posts or educational articles. Competitors (Happy Hiller, Lee Company) have blog content supporting informational keywords. This limits ability to capture top-of-funnel traffic and earn backlinks.</div>
+</div>
+
+<div class="finding warning">
+<div class="title"><span class="tag tag-p1">P1</span> No financing mention in the rebuild</div>
+<div class="detail">Homepage links to /financing (which doesn't exist). All top competitors offer financing. Missing financing info hurts conversion on high-ticket services (AC installation, furnace replacement).</div>
+</div>
+
+<div class="finding warning">
+<div class="title"><span class="tag tag-p1">P1</span> No license number displayed</div>
+<div class="detail">Pages mention "Licensed &amp; Insured" but display no actual license number. Competitors like One Hour display License 210374. Visible license numbers increase trust and are a ranking signal for Google's EEAT evaluation.</div>
+</div>
+
+<div class="finding warning">
+<div class="title"><span class="tag tag-p1">P1</span> Page sizes are large (65-105KB HTML)</div>
+<div class="detail">Homepage is 105KB of HTML. Service pages are ~71KB. Area pages are ~67KB. These are large for static HTML — primarily due to inline CSS duplication across pages. Consider extracting shared CSS to a single file for cache efficiency.</div>
+</div>
+
+</div>
+</section>
+
+<!-- ======================== PHASE 2 ======================== -->
+<section class="phase" id="phase2">
+<div class="container">
+<h2>Phase 2 — Keyword & Competitive Intelligence <span class="badge badge-critical">INVISIBLE</span></h2>
+<p class="phase-desc">Real search data from Semrush. Hughes HVAC has zero top-10 positions and zero estimated organic traffic.</p>
+
+<h3>Current Domain Performance</h3>
+<table>
+<tr><th>Metric</th><th>Value</th><th>Assessment</th></tr>
+<tr><td>Semrush Rank</td><td>14,630,052</td><td class="fail">Near zero authority</td></tr>
+<tr><td>Organic Keywords</td><td>94</td><td class="warn">Almost all positions 21-100</td></tr>
+<tr><td>Estimated Traffic</td><td>0</td><td class="fail">Zero measurable traffic</td></tr>
+<tr><td>Positions 1-3</td><td>0</td><td class="fail">Not competitive for any term</td></tr>
+<tr><td>Positions 4-10</td><td>1</td><td class="fail">One keyword barely in range</td></tr>
+<tr><td>Best Position</td><td>#11 "ac repair madison tn"</td><td class="warn">Close — could reach page 1</td></tr>
+</table>
+
+<h3>Keyword-to-URL Matrix</h3>
+<p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">Search volume from Semrush US database. KD = Keyword Difficulty (0-100). Intent: C = Commercial, I = Informational, T = Transactional.</p>
+
+<table>
+<tr><th>Keyword Cluster</th><th>Volume</th><th>KD</th><th>CPC</th><th>Primary URL</th><th>Priority</th></tr>
+<tr><td>ac repair nashville</td><td>880</td><td>28</td><td>$45.53</td><td>/ac-repair</td><td><span class="tag tag-p0">HIGH</span></td></tr>
+<tr><td>hvac nashville</td><td>720</td><td>39</td><td>$31.77</td><td>/</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+<tr><td>duct cleaning nashville</td><td>590</td><td>9</td><td>$14.65</td><td>/duct-cleaning</td><td><span class="tag tag-p0">HIGH</span></td></tr>
+<tr><td>furnace repair nashville</td><td>320</td><td>30</td><td>—</td><td>/furnace-repair</td><td><span class="tag tag-p0">HIGH</span></td></tr>
+<tr><td>hvac company nashville</td><td>320</td><td>28</td><td>$25.32</td><td>/</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+<tr><td>heating repair nashville / heater repair nashville</td><td>260+260</td><td>29</td><td>—</td><td>/heating-repair</td><td><span class="tag tag-p0">HIGH</span></td></tr>
+<tr><td>heating and cooling nashville</td><td>260</td><td>38</td><td>$34.21</td><td>/</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+<tr><td>hvac murfreesboro tn</td><td>260</td><td>22</td><td>$19.38</td><td>/service-areas/murfreesboro</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+<tr><td>hvac franklin tn</td><td>210</td><td>19</td><td>$33.53</td><td>/service-areas/franklin</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+<tr><td>hvac contractor nashville</td><td>210</td><td>24</td><td>$19.44</td><td>/</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+<tr><td>ac installation nashville</td><td>170</td><td>21</td><td>—</td><td>/ac-installation</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+<tr><td>hvac maintenance nashville</td><td>110</td><td>36</td><td>—</td><td>/maintenance-plans</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+<tr><td>air conditioner installation nashville</td><td>90</td><td>15</td><td>—</td><td>/ac-installation</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+<tr><td>hvac replacement nashville</td><td>90</td><td>27</td><td>$35.25</td><td>/ac-installation</td><td><span class="tag tag-p2">LOW</span></td></tr>
+<tr><td>hvac hendersonville tn</td><td>70</td><td>7</td><td>$21.43</td><td>/service-areas/hendersonville</td><td><span class="tag tag-p0">HIGH</span></td></tr>
+<tr><td>ac tune up nashville</td><td>70</td><td>53</td><td>—</td><td>/maintenance-plans</td><td><span class="tag tag-p2">LOW</span></td></tr>
+<tr><td>furnace tune up nashville</td><td>70</td><td>21</td><td>$26.21</td><td>/maintenance-plans</td><td><span class="tag tag-p0">HIGH</span></td></tr>
+<tr><td>hvac goodlettsville tn</td><td>40</td><td>8</td><td>$29.54</td><td>/service-areas/goodlettsville</td><td><span class="tag tag-p0">HIGH</span></td></tr>
+<tr><td>ac repair madison tn</td><td>40</td><td>3</td><td>—</td><td>/service-areas/madison</td><td><span class="tag tag-p0">HIGH — BEST POSITION (#11)</span></td></tr>
+<tr><td>furnace repair madison tn</td><td>40</td><td>1</td><td>—</td><td>/service-areas/madison</td><td><span class="tag tag-p0">HIGH — KD=1</span></td></tr>
+<tr><td>hvac service madison tn</td><td>40</td><td>7</td><td>—</td><td>/service-areas/madison</td><td><span class="tag tag-p0">HIGH</span></td></tr>
+<tr><td>mini split nashville</td><td>40</td><td>0</td><td>—</td><td>/mini-split</td><td><span class="tag tag-p0">HIGH — KD=0</span></td></tr>
+<tr><td>heat pump nashville</td><td>30</td><td>0</td><td>—</td><td>/heat-pump-service</td><td><span class="tag tag-p0">HIGH — KD=0</span></td></tr>
+<tr><td>hvac hermitage tn</td><td>20</td><td>0</td><td>—</td><td>/service-areas/hermitage</td><td><span class="tag tag-p0">HIGH — KD=0</span></td></tr>
+<tr><td>best hvac nashville</td><td>20</td><td>0</td><td>$20.30</td><td>/</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+</table>
+
+<h3>Cannibalization Risk</h3>
+<div class="finding warning">
+<div class="title">Homepage vs. service pages for "hvac nashville" cluster</div>
+<div class="detail">The homepage targets "Nashville's Best HVAC Team" while multiple service pages also target "Best [Service] in Nashville." For broad "hvac nashville" (720 vol), the homepage should be the primary URL. Ensure service pages focus on service-specific terms, not the generic "hvac nashville" head term.</div>
+</div>
+
+<h3>Missing Keyword Opportunities</h3>
+<table>
+<tr><th>Missing Keyword</th><th>Volume</th><th>Recommendation</th></tr>
+<tr><td>hvac near me</td><td>High (varies)</td><td>Optimize GBP — this is a Local Pack query, not an organic page target</td></tr>
+<tr><td>ac not cooling</td><td>Moderate</td><td>Blog post or FAQ expansion on ac-repair.html</td></tr>
+<tr><td>furnace not heating</td><td>Moderate (seasonal)</td><td>Blog post or FAQ expansion on furnace-repair.html</td></tr>
+<tr><td>hvac repair cost nashville</td><td>Low-Moderate</td><td>Pricing content already strong — ensure it's crawlable and structured</td></tr>
+<tr><td>best hvac [suburb] tn</td><td>20-40 each</td><td>Area pages exist but need unique content depth</td></tr>
+</table>
+
+<h3>Competitive Landscape</h3>
+<table>
+<tr><th>Competitor</th><th>SERP Frequency</th><th>Key Strength</th><th>Key Weakness</th></tr>
+<tr><td>Happy Hiller</td><td>9/10 searches</td><td>Multi-state, awards, 24/7/365</td><td>No JSON-LD schema, stale meta tags, broken CTAs</td></tr>
+<tr><td>Hoffmann Bros</td><td>8/10 searches</td><td>2,651 reviews at 4.9 stars</td><td>No Nashville phone on homepage, mixed city FAQs</td></tr>
+<tr><td>Lee Company</td><td>7/10 searches</td><td>Since 1944, BBB A+, city pages</td><td>No schema, placeholder CTAs, unclear phone hierarchy</td></tr>
+<tr><td>Service Experts</td><td>6/10 searches</td><td>National scale, 78 locations</td><td>Extremely thin location pages, no local content</td></tr>
+<tr><td>One Hour Heat & Air</td><td>6/10 searches</td><td>1,596 reviews, punctuality guarantee</td><td>Only 1 city-specific page (Brentwood)</td></tr>
+<tr><td><strong>Hughes HVAC</strong></td><td><strong>0/10 searches</strong></td><td>Schema advantage, pricing transparency, 17 area pages</td><td>Zero authority, zero reviews visible, no analytics</td></tr>
+</table>
+
+</div>
+</section>
+
+<!-- ======================== PHASE 3 ======================== -->
+<section class="phase" id="phase3">
+<div class="container">
+<h2>Phase 3 — Local SEO & Google Business Profile <span class="badge badge-critical">NOT FOUND</span></h2>
+<p class="phase-desc">Audit of GBP presence, directory citations, reviews, and local competitive positioning.</p>
+
+<h3>GBP Status</h3>
+<div class="finding critical">
+<div class="title"><span class="tag tag-p0">P0</span> No verified Google Business Profile found for "Hughes HVAC Services"</div>
+<div class="detail">Search for "Hughes HVAC Services Madison TN" and "hugheshvacservices.com" across Google, Yelp, BBB, Angi, and major directories returned zero exact-match results. The business either has no GBP or it exists under a different name. Without a verified GBP, Hughes HVAC cannot appear in the Local Pack — the #1 conversion source for local HVAC searches. A Trustpilot result exists for "hughesairco.com" and a CustomerLobby listing for "Hughes Air LLC" — these may be related legacy names that need consolidation.</div>
+</div>
+
+<h3>Citation Audit</h3>
+<table>
+<tr><th>Directory</th><th>Listing Found</th><th>NAP Consistent</th><th>Action</th></tr>
+<tr><td>Google Business Profile</td><td class="fail">✗ Not found</td><td>—</td><td>Create and verify immediately</td></tr>
+<tr><td>Yelp</td><td class="fail">✗ Not found</td><td>—</td><td>Create listing</td></tr>
+<tr><td>BBB</td><td class="fail">✗ Not found</td><td>—</td><td>Apply for accreditation</td></tr>
+<tr><td>Angi</td><td class="fail">✗ Not found</td><td>—</td><td>Create profile</td></tr>
+<tr><td>HomeAdvisor</td><td class="fail">✗ Not found</td><td>—</td><td>Create profile</td></tr>
+<tr><td>Thumbtack</td><td class="fail">✗ Not found</td><td>—</td><td>Create profile</td></tr>
+<tr><td>Yellow Pages</td><td class="fail">✗ Not found</td><td>—</td><td>Create listing</td></tr>
+<tr><td>Trustpilot (hughesairco.com)</td><td class="warn">⚠ Possible legacy</td><td class="fail">Different domain</td><td>Verify ownership, redirect or consolidate</td></tr>
+<tr><td>CustomerLobby (Hughes Air LLC)</td><td class="warn">⚠ Possible legacy</td><td class="fail">Different name</td><td>Verify ownership, update name</td></tr>
+</table>
+
+<h3>Review Status</h3>
+<div class="finding critical">
+<div class="title">Zero verified reviews for Hughes HVAC Services</div>
+<div class="detail">No Google reviews found. Competitor benchmark: Hoffmann Bros has 2,651 reviews at 4.9. One Hour has 1,596 reviews at 4.8. AEO research shows brands with 80+ reviews appear in 75%+ of AI answers. Hughes needs a systematic, compliant review acquisition strategy.</div>
+</div>
+
+<h3>Compliant Review Acquisition Strategy</h3>
+<table>
+<tr><th>Tactic</th><th>Implementation</th><th>Expected Impact</th></tr>
+<tr><td>Post-service text/email with GBP link</td><td>JustCall automated SMS after job completion</td><td>5-10 reviews/month at current volume</td></tr>
+<tr><td>Technician-handed card with QR code</td><td>Print cards linking to GBP review page</td><td>Increases ask rate; personal ask converts higher</td></tr>
+<tr><td>Invoice follow-up email</td><td>Automated 48hr post-service email with review link</td><td>Captures satisfied customers before memory fades</td></tr>
+<tr><td>Review response protocol</td><td>Respond to every review within 24 hours</td><td>Signals active engagement to Google</td></tr>
+</table>
+<p style="font-size:13px;color:var(--text-muted);margin-top:8px;"><em>Do not offer incentives for reviews. Do not use review gating (directing only positive experiences to Google). Do not use review generation services that create fake reviews.</em></p>
+
+<h3>Local Authority Building Plan</h3>
+<table>
+<tr><th>Action</th><th>Priority</th><th>Timeline</th></tr>
+<tr><td>Create and verify GBP with correct NAP, categories, services, hours, photos</td><td><span class="tag tag-p0">IMMEDIATE</span></td><td>Week 1</td></tr>
+<tr><td>Submit to 20+ core directories (Yelp, BBB, Angi, HomeAdvisor, Thumbtack, YP, etc.)</td><td><span class="tag tag-p0">IMMEDIATE</span></td><td>Weeks 1-2</td></tr>
+<tr><td>Consolidate legacy listings (Hughes Air LLC, hughesairco.com)</td><td><span class="tag tag-p0">IMMEDIATE</span></td><td>Week 1</td></tr>
+<tr><td>Add GBP photos (team, trucks, completed work, office)</td><td><span class="tag tag-p1">HIGH</span></td><td>Weeks 1-2</td></tr>
+<tr><td>Set up GBP posts (weekly service tips, seasonal offers)</td><td><span class="tag tag-p1">HIGH</span></td><td>Week 2+</td></tr>
+<tr><td>Sponsor Madison-area community events (Little League, church events)</td><td><span class="tag tag-p2">MEDIUM</span></td><td>Month 2+</td></tr>
+<tr><td>Join Madison/Nashville Chamber of Commerce for .org backlink</td><td><span class="tag tag-p2">MEDIUM</span></td><td>Month 2+</td></tr>
+</table>
+
+</div>
+</section>
+
+<!-- ======================== PHASE 4 ======================== -->
+<section class="phase" id="phase4">
+<div class="container">
+<h2>Phase 4 — Technical SEO Deep Audit <span class="badge badge-warning">ISSUES FOUND</span></h2>
+<p class="phase-desc">HTTP status codes, canonicals, crawlability, internal linking, schema validation, and deployment configuration.</p>
+
+<h3>Technical Scorecard</h3>
+<table>
+<tr><th>Check</th><th>Status</th><th>Detail</th></tr>
+<tr><td>HTTPS enforcement</td><td class="pass">✓ Pass</td><td>All canonicals use https://hugheshvacservices.com/</td></tr>
+<tr><td>Canonical consistency</td><td class="warn">⚠ Issue</td><td>404.html has homepage canonical — should be removed</td></tr>
+<tr><td>XML sitemap accuracy</td><td class="pass">✓ Pass</td><td>28 URLs match 28 pages exactly</td></tr>
+<tr><td>robots.txt</td><td class="pass">✓ Pass</td><td>Correct Allow/Disallow rules, AI crawlers permitted</td></tr>
+<tr><td>Internal linking</td><td class="fail">✗ Fail</td><td>9 broken links (7 on homepage, 2 area pages on 10+ service pages)</td></tr>
+<tr><td>Orphan pages</td><td class="pass">✓ Pass</td><td>All 28 pages linked from homepage and/or cross-linked</td></tr>
+<tr><td>Mobile viewport</td><td class="pass">✓ Pass</td><td>viewport meta on all pages</td></tr>
+<tr><td>Responsive design</td><td class="pass">✓ Pass</td><td>768px and 640px breakpoints on all pages</td></tr>
+<tr><td>Schema validity</td><td class="warn">⚠ Issue</td><td>All JSON-LD parses as valid JSON. Area pages missing openingHoursSpecification and geo in LocalBusiness</td></tr>
+<tr><td>Heading hierarchy</td><td class="warn">⚠ Issue</td><td>Service pages have flat H2 structure (12 H2s, 1 H3). Should nest to H2→H3</td></tr>
+<tr><td>Duplicate content</td><td class="warn">⚠ Issue</td><td>17 area page meta descriptions are templated (only city name differs)</td></tr>
+<tr><td>Image optimization</td><td class="warn">⚠ Unknown</td><td>No images in the build — CSS-only design. og:image file missing entirely</td></tr>
+<tr><td>Core Web Vitals</td><td class="warn">⚠ Cannot verify</td><td>Site not deployed — CWV requires live measurement. HTML sizes (65-105KB) are acceptable</td></tr>
+<tr><td>Redirect mapping</td><td class="fail">✗ Not done</td><td>No _redirects or _headers file exists. Critical for deployment on Netlify</td></tr>
+</table>
+
+<h3>Required Redirect Map — Complete 60-Entry (Deploy Blocker)</h3>
+<p style="font-size:14px;color:var(--text-muted);margin-bottom:12px;"><strong>CRITICAL:</strong> Live site (hugheshvac.com) has 60 indexed URLs with completely different URL patterns than the rebuild (hugheshvacservices.com, 28 URLs). Deploying without a comprehensive _redirects file WILL destroy all existing crawl equity. Domain is also changing — all redirects must point to the new canonical domain.</p>
+
+<h4>Service Page Redirects (10 entries)</h4>
+<table>
+<tr><th>Old URL (hugheshvac.com)</th><th>New URL (hugheshvacservices.com)</th><th>Type</th></tr>
+<tr><td>/ac-repair-nashville</td><td>/ac-repair</td><td>301</td></tr>
+<tr><td>/air-conditioning-installation-nashville</td><td>/ac-installation</td><td>301</td></tr>
+<tr><td>/furnace-repair-nashville-tn</td><td>/furnace-repair</td><td>301</td></tr>
+<tr><td>/furnace-installation-nashville</td><td>/furnace-installation</td><td>301</td></tr>
+<tr><td>/heat-pump-services-nashville</td><td>/heat-pump-service</td><td>301</td></tr>
+<tr><td>/emergency-hvac-nashville</td><td>/emergency-hvac</td><td>301</td></tr>
+<tr><td>/hvac-maintenance-plans-nashville</td><td>/maintenance-plans</td><td>301</td></tr>
+<tr><td>/mini-split-repair-nashville</td><td>/mini-split</td><td>301</td></tr>
+<tr><td>/duct-cleaning-services-nashville</td><td>/duct-cleaning</td><td>301</td></tr>
+<tr><td>/heating-repair-nashville</td><td>/heating-repair</td><td>301</td></tr>
+</table>
+
+<h4>Service Area Page Redirects (17 entries)</h4>
+<table>
+<tr><th>Old URL (hugheshvac.com)</th><th>New URL (hugheshvacservices.com)</th><th>Type</th></tr>
+<tr><td>/ac-maintenance-madison-tn</td><td>/service-areas/madison</td><td>301</td></tr>
+<tr><td>/hvac-goodlettsville-tn</td><td>/service-areas/goodlettsville</td><td>301</td></tr>
+<tr><td>/hvac-hendersonville-tn</td><td>/service-areas/hendersonville</td><td>301</td></tr>
+<tr><td>/hvac-old-hickory-tn</td><td>/service-areas/old-hickory</td><td>301</td></tr>
+<tr><td>/hvac-hermitage-tn</td><td>/service-areas/hermitage</td><td>301</td></tr>
+<tr><td>/hvac-gallatin-tn</td><td>/service-areas/gallatin</td><td>301</td></tr>
+<tr><td>/hvac-mount-juliet-tn</td><td>/service-areas/mount-juliet</td><td>301</td></tr>
+<tr><td>/hvac-lebanon-tn</td><td>/service-areas/lebanon</td><td>301</td></tr>
+<tr><td>/hvac-brentwood-tn</td><td>/service-areas/brentwood</td><td>301</td></tr>
+<tr><td>/hvac-franklin-tn</td><td>/service-areas/franklin</td><td>301</td></tr>
+<tr><td>/hvac-spring-hill-tn</td><td>/service-areas/spring-hill</td><td>301</td></tr>
+<tr><td>/hvac-murfreesboro-tn</td><td>/service-areas/murfreesboro</td><td>301</td></tr>
+<tr><td>/hvac-smyrna-tn</td><td>/service-areas/smyrna</td><td>301</td></tr>
+<tr><td>/hvac-lavergne-tn</td><td>/service-areas/la-vergne</td><td>301</td></tr>
+<tr><td>/hvac-donelson-tn</td><td>/service-areas/donelson</td><td>301</td></tr>
+<tr><td>/hvac-millersville-tn</td><td>/service-areas/millersville</td><td>301</td></tr>
+<tr><td>/hvac-nashville-tn</td><td>/service-areas/nashville</td><td>301</td></tr>
+</table>
+
+<h4>Utility / Static Page Redirects (5 entries)</h4>
+<table>
+<tr><th>Old URL (hugheshvac.com)</th><th>New URL (hugheshvacservices.com)</th><th>Type</th></tr>
+<tr><td>/about-hughes-hvac</td><td>/</td><td>301</td></tr>
+<tr><td>/contact</td><td>/#contact</td><td>301</td></tr>
+<tr><td>/financing-options</td><td>/</td><td>301</td></tr>
+<tr><td>/reviews</td><td>/</td><td>301</td></tr>
+<tr><td>/privacy-policy</td><td>/</td><td>301</td></tr>
+</table>
+
+<h4>Blog Post Redirects (10 entries → best-match service page)</h4>
+<table>
+<tr><th>Old URL (hugheshvac.com)</th><th>New URL (hugheshvacservices.com)</th><th>Rationale</th></tr>
+<tr><td>/emergency-hvac-repairs-what-to-do</td><td>/emergency-hvac</td><td>Topic match</td></tr>
+<tr><td>/hvac-maintenance-tips-for-homeowners</td><td>/maintenance-plans</td><td>Topic match</td></tr>
+<tr><td>/choosing-the-right-hvac-system</td><td>/ac-installation</td><td>Related to system selection</td></tr>
+<tr><td>/energy-efficient-hvac-solutions</td><td>/heat-pump-service</td><td>Efficiency topic</td></tr>
+<tr><td>/signs-your-ac-needs-repair</td><td>/ac-repair</td><td>Topic match</td></tr>
+<tr><td>/understanding-hvac-warranties</td><td>/maintenance-plans</td><td>Related to coverage</td></tr>
+<tr><td>/mini-split-vs-central-air</td><td>/mini-split</td><td>Topic match</td></tr>
+<tr><td>/preparing-your-hvac-for-winter</td><td>/furnace-repair</td><td>Seasonal topic</td></tr>
+<tr><td>/duct-cleaning-benefits</td><td>/duct-cleaning</td><td>Topic match</td></tr>
+<tr><td>/hvac-installation-what-to-expect</td><td>/ac-installation</td><td>Related topic</td></tr>
+</table>
+
+<h4>Catch-All Rules (18 patterns)</h4>
+<table>
+<tr><th>Pattern</th><th>Redirect</th><th>Purpose</th></tr>
+<tr><td>/blog/* → /</td><td>301</td><td>Catch any blog URLs not mapped above</td></tr>
+<tr><td>/category/* → /</td><td>301</td><td>WordPress category pages</td></tr>
+<tr><td>/tag/* → /</td><td>301</td><td>WordPress tag pages</td></tr>
+<tr><td>/wp-content/* → /</td><td>301</td><td>WordPress uploads/assets</td></tr>
+<tr><td>/wp-admin/* → /</td><td>301</td><td>WordPress admin pages</td></tr>
+<tr><td>/feed/* → /sitemap.xml</td><td>301</td><td>RSS feeds → sitemap</td></tr>
+<tr><td>/?p=* → /</td><td>301</td><td>WordPress query string posts</td></tr>
+<tr><td>/page/* → /</td><td>301</td><td>Pagination pages</td></tr>
+</table>
+<p style="font-size:13px;color:var(--text-muted);margin-top:8px;"><strong>Total: 60 explicit redirects + 8 catch-all patterns.</strong> All redirects must use the new canonical domain (hugheshvacservices.com). The Netlify _redirects file must be created and deployed alongside the site. Missing any redirect will result in 404 errors for previously indexed URLs and loss of crawl equity.</p>
+
+</div>
+</section>
+
+<!-- ======================== PHASE 5 ======================== -->
+<section class="phase" id="phase5">
+<div class="container">
+<h2>Phase 5 — AEO & AI Search Visibility <span class="badge badge-good">FIRST-MOVER</span></h2>
+<p class="phase-desc">Assessment of AI search readiness. Hughes has structural advantages but lacks the authority signals AI engines require.</p>
+
+<h3>Current AEO Posture</h3>
+<table>
+<tr><th>Element</th><th>Status</th><th>Competitor Benchmark</th></tr>
+<tr><td>llms.txt</td><td class="pass">✓ Present</td><td>0/5 competitors have this</td></tr>
+<tr><td>AI crawler access (robots.txt)</td><td class="pass">✓ All 6 major AI crawlers allowed</td><td>Standard default for most sites</td></tr>
+<tr><td>FAQ schema</td><td class="pass">✓ On all 28 pages</td><td>0/5 competitors have FAQ schema</td></tr>
+<tr><td>LocalBusiness schema</td><td class="pass">✓ Homepage + area pages</td><td>0/5 competitors have JSON-LD schema</td></tr>
+<tr><td>Service schema</td><td class="pass">✓ On service pages</td><td>0/5 competitors have this</td></tr>
+<tr><td>Direct-answer content</td><td class="warn">⚠ Partial</td><td>Content exists but not structured for extraction</td></tr>
+<tr><td>Entity consistency</td><td class="fail">✗ Poor</td><td>Legacy names (Hughes Air LLC, hughesairco.com) create confusion</td></tr>
+<tr><td>Third-party citations</td><td class="fail">✗ None</td><td>AI engines favor entities they can resolve across sources</td></tr>
+<tr><td>Review volume</td><td class="fail">✗ Zero</td><td>Brands with 80+ reviews in 75%+ of AI answers (per industry analysis)</td></tr>
+<tr><td>Expert-authored content</td><td class="fail">✗ No technician profiles</td><td>EEAT requires demonstrable expertise</td></tr>
+</table>
+
+<h3>What Actually Matters for AI Citations</h3>
+<p style="font-size:14px;margin-bottom:16px;">Based on current AEO research (Elevarus, US Tech Automations, 5W PR AI Visibility Index), the factors that drive AI citations for local service businesses, in order of impact:</p>
+
+<ol style="font-size:14px;padding-left:20px;">
+<li style="margin-bottom:12px;"><strong>Entity resolution across trusted sources.</strong> AI engines cite businesses they can confidently identify. Hughes has near-zero presence across directories, reviews, and citations. This is the #1 blocker.</li>
+<li style="margin-bottom:12px;"><strong>Review volume and recency.</strong> Per BrightLocal, 74% of consumers only trust reviews from the last 3 months. AI engines weight recency similarly. Hughes has zero reviews.</li>
+<li style="margin-bottom:12px;"><strong>Question-led headings with direct answers.</strong> Hughes' FAQ sections exist but the answers should lead with a concise 1-2 sentence answer before expanding. Currently the FAQ answers are too conversational for AI extraction.</li>
+<li style="margin-bottom:12px;"><strong>Specific, verifiable figures.</strong> Hughes' pricing transparency ($89 diagnostic, $150/hr) is genuinely strong here. Competitors are opaque. This is the easiest AEO win to leverage.</li>
+<li style="margin-bottom:12px;"><strong>Structured data matching visible content.</strong> Hughes' schema is comprehensive but area pages are missing hours and geo — AI engines cross-check schema against page content.</li>
+</ol>
+
+<h3>Honest Assessment</h3>
+<div class="finding warning">
+<div class="title">llms.txt and schema are necessary but not sufficient</div>
+<div class="detail">Hughes has a genuine first-mover advantage — no Nashville HVAC competitor has JSON-LD schema or llms.txt. But the 5W AI Visibility Index reports that 87% of independent HVAC contractors have effectively zero AI citation share. The technical markup creates eligibility; the authority signals (reviews, citations, backlinks) create selection. Hughes has the eligibility layer but almost none of the authority layer. Fix Phase 3 (Local SEO) before investing more in AEO-specific tactics.</div>
+</div>
+
+<h3>AEO Improvements (After Authority Foundation)</h3>
+<table>
+<tr><th>Action</th><th>Impact</th><th>Effort</th></tr>
+<tr><td>Restructure FAQ answers: lead with direct 40-80 word answer, then expand</td><td>High</td><td>Low</td></tr>
+<tr><td>Add 3+ verifiable figures per page (SEER ratings, permit costs, job timeframes)</td><td>High</td><td>Low</td></tr>
+<tr><td>Add technician profiles with credentials and photo</td><td>Medium</td><td>Medium</td></tr>
+<tr><td>Create "how much does X cost in Nashville" content for each service</td><td>High</td><td>Medium</td></tr>
+<tr><td>Submit to IndexNow after every content update</td><td>Medium</td><td>Low</td></tr>
+<tr><td>Monitor AI citation share monthly (run target queries across ChatGPT, Perplexity, Google AI Overview)</td><td>Essential</td><td>Low</td></tr>
+</table>
+
+</div>
+</section>
+
+<!-- ======================== PHASE 6 ======================== -->
+<section class="phase" id="phase6">
+<div class="container">
+<h2>Phase 6 — Conversion & Lead Generation <span class="badge badge-critical">GAPS</span></h2>
+<p class="phase-desc">Complete customer journey audit for desktop and mobile.</p>
+
+<h3>Conversion Path Scorecard</h3>
+<table>
+<tr><th>Element</th><th>Status</th><th>Impact</th></tr>
+<tr><td>Click-to-call</td><td class="pass">✓ Strong — sticky mobile CTA bar on all pages, 5-10 tel: links per page</td><td>Primary conversion path works</td></tr>
+<tr><td>Lead capture form</td><td class="fail">✗ Homepage only — 27 pages have zero forms</td><td>After-hours leads lost entirely</td></tr>
+<tr><td>Emergency CTA path</td><td class="pass">✓ Emergency page exists, 24/7 claim, prominent phone</td><td>Good for urgent calls</td></tr>
+<tr><td>Schedule/book button</td><td class="warn">⚠ 6-8 "schedule" references per page but all link to same form (homepage only)</td><td>Broken path on non-homepage pages</td></tr>
+<tr><td>Trust above the fold</td><td class="warn">⚠ "Licensed &amp; Insured" but no review count, no BBB badge, no guarantee</td><td>Weak trust for first-time visitors</td></tr>
+<tr><td>Real reviews</td><td class="fail">✗ No actual review text, star ratings, or customer names on any page</td><td>Major trust gap vs. competitors</td></tr>
+<tr><td>Project photos</td><td class="fail">✗ No photos of completed work, team, or equipment</td><td>Reduces credibility</td></tr>
+<tr><td>Financing info</td><td class="fail">✗ Not present (homepage links to non-existent /financing page)</td><td>Hurts high-ticket conversions</td></tr>
+<tr><td>GA4 / Search Console</td><td class="fail">✗ Zero analytics tracking</td><td>Cannot measure anything</td></tr>
+<tr><td>Call tracking</td><td class="fail">✗ No call tracking implementation</td><td>Cannot attribute calls to pages/campaigns</td></tr>
+<tr><td>Form spam protection</td><td class="warn">⚠ Netlify form has basic honeypot but no reCAPTCHA</td><td>Spam risk as traffic grows</td></tr>
+</table>
+
+<h3>Conversion Tracking Specification</h3>
+<table>
+<tr><th>Tracking Element</th><th>Implementation</th><th>Priority</th></tr>
+<tr><td>GA4 property</td><td>Add gtag.js to all 28 pages via build scripts</td><td><span class="tag tag-p0">DEPLOY BLOCKER</span></td></tr>
+<tr><td>Google Search Console</td><td>Verify domain ownership, submit sitemap</td><td><span class="tag tag-p0">DEPLOY BLOCKER</span></td></tr>
+<tr><td>GA4 phone click events</td><td>Event tracking on all tel: links (event: generate_lead, method: phone_call)</td><td><span class="tag tag-p0">HIGH</span></td></tr>
+<tr><td>GA4 form submit events</td><td>Track Netlify form submissions as conversions</td><td><span class="tag tag-p0">HIGH</span></td></tr>
+<tr><td>Call tracking</td><td>JustCall or CallRail tracking number for organic attribution</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+<tr><td>Google Ads conversion tag</td><td>Add when PPC campaign launches</td><td><span class="tag tag-p1">MEDIUM</span></td></tr>
+<tr><td>Heatmap / session recording</td><td>Hotjar or Microsoft Clarity (free) for UX insights</td><td><span class="tag tag-p2">LOW</span></td></tr>
+</table>
+
+</div>
+</section>
+
+<!-- ======================== PHASE 7 ======================== -->
+<section class="phase" id="phase7">
+<div class="container">
+<h2>Phase 7 — Competitive Ranking Strategy <span class="badge badge-warning">REALISTIC ROADMAP</span></h2>
+<p class="phase-desc">30/60/90/180-day roadmap. No ranking promises. Based on verified keyword data, competitor analysis, and domain authority reality.</p>
+
+<div class="roadmap-phase">
+<h4>Days 0-30: Foundation (Deploy Blockers + Local Pack)</h4>
+<table>
+<tr><th>Action</th><th>Target</th><th>Success Criteria</th></tr>
+<tr><td>Fix all P0 issues (analytics, forms, broken links, og:image, redirects)</td><td>All 28 pages</td><td>Zero P0 issues remaining</td></tr>
+<tr><td>Create and verify Google Business Profile</td><td>Madison, TN primary category: HVAC Contractor</td><td>GBP verified and appearing in Maps</td></tr>
+<tr><td>Submit to 20+ directories with consistent NAP</td><td>Yelp, BBB, Angi, HomeAdvisor, Thumbtack, YP</td><td>20+ live citations with matching NAP</td></tr>
+<tr><td>Deploy site with 301 redirect map</td><td>Netlify _redirects file mapping all old→new URLs</td><td>Zero 404s for previously indexed URLs</td></tr>
+<tr><td>Submit sitemap to Google Search Console</td><td>28 pages indexed</td><td>All 28 pages indexed within 14 days</td></tr>
+<tr><td>Begin review acquisition (post-service SMS via JustCall)</td><td>5-10 reviews in first 30 days</td><td>First 5+ Google reviews with 4.5+ average</td></tr>
+<tr><td>Add GA4 + phone click tracking</td><td>All pages</td><td>Baseline traffic data collecting</td></tr>
+</table>
+<p style="font-size:13px;color:var(--text-muted);margin-top:8px;"><strong>Realistic outcome:</strong> GBP live, site deployed, analytics running, first reviews appearing. No organic ranking improvements expected yet — indexing takes 2-4 weeks.</p>
+</div>
+
+<div class="roadmap-phase">
+<h4>Days 30-60: Local Pack Penetration (Madison + Immediate Suburbs)</h4>
+<table>
+<tr><th>Target Keyword</th><th>Vol</th><th>KD</th><th>Current Pos</th><th>Target Page</th><th>Action</th></tr>
+<tr><td>ac repair madison tn</td><td>40</td><td>3</td><td>#11</td><td>/service-areas/madison</td><td>GBP + unique meta desc + local content</td></tr>
+<tr><td>furnace repair madison tn</td><td>40</td><td>1</td><td>~12</td><td>/service-areas/madison</td><td>Already near page 1 — GBP will push</td></tr>
+<tr><td>hvac service madison tn</td><td>40</td><td>7</td><td>—</td><td>/service-areas/madison</td><td>GBP category + citation consistency</td></tr>
+<tr><td>hvac hermitage tn</td><td>20</td><td>0</td><td>—</td><td>/service-areas/hermitage</td><td>KD=0, unique content + GBP service area</td></tr>
+<tr><td>hvac goodlettsville tn</td><td>40</td><td>8</td><td>—</td><td>/service-areas/goodlettsville</td><td>Unique content + local context</td></tr>
+<tr><td>hvac hendersonville tn</td><td>70</td><td>7</td><td>—</td><td>/service-areas/hendersonville</td><td>Higher volume — worth content investment</td></tr>
+</table>
+<p style="font-size:13px;color:var(--text-muted);margin-top:8px;"><strong>Realistic outcome:</strong> Local Pack visibility for Madison queries. Page 1 organic for "ac repair madison tn" and "furnace repair madison tn" (both KD ≤ 3). Beginning visibility in Goodlettsville, Hermitage. 15-25 total Google reviews.</p>
+</div>
+
+<div class="roadmap-phase">
+<h4>Days 60-90: Expand Organic Coverage</h4>
+<table>
+<tr><th>Target Keyword</th><th>Vol</th><th>KD</th><th>Target Page</th><th>Action</th></tr>
+<tr><td>duct cleaning nashville</td><td>590</td><td>9</td><td>/duct-cleaning</td><td>Low KD + high volume = priority. Expand content depth</td></tr>
+<tr><td>mini split nashville</td><td>40</td><td>0</td><td>/mini-split</td><td>KD=0, should rank quickly once indexed</td></tr>
+<tr><td>heat pump nashville</td><td>30</td><td>0</td><td>/heat-pump-service</td><td>KD=0, quick win</td></tr>
+<tr><td>furnace tune up nashville</td><td>70</td><td>21</td><td>/maintenance-plans</td><td>Seasonal — push before winter</td></tr>
+<tr><td>hvac franklin tn</td><td>210</td><td>19</td><td>/service-areas/franklin</td><td>Higher volume suburb — needs unique content</td></tr>
+<tr><td>hvac murfreesboro tn</td><td>260</td><td>22</td><td>/service-areas/murfreesboro</td><td>Highest volume suburb target</td></tr>
+</table>
+<p style="font-size:13px;color:var(--text-muted);margin-top:8px;"><strong>Realistic outcome:</strong> Page 1 for KD-0 terms (mini split, heat pump). Top 20 for duct cleaning nashville (KD=9, vol=590 — biggest organic opportunity). Local Pack expanding to 3-4 suburbs. 30-50 total reviews.</p>
+</div>
+
+<div class="roadmap-phase">
+<h4>Days 90-180: Competitive Territory</h4>
+<table>
+<tr><th>Target Keyword</th><th>Vol</th><th>KD</th><th>Target Page</th><th>Action Required</th></tr>
+<tr><td>ac repair nashville</td><td>880</td><td>28</td><td>/ac-repair</td><td>Content expansion, backlinks, 50+ reviews needed</td></tr>
+<tr><td>furnace repair nashville</td><td>320</td><td>30</td><td>/furnace-repair</td><td>Seasonal push, content depth, local backlinks</td></tr>
+<tr><td>heating repair nashville</td><td>260</td><td>29</td><td>/heating-repair</td><td>Combine with heater repair cluster</td></tr>
+<tr><td>ac installation nashville</td><td>170</td><td>21</td><td>/ac-installation</td><td>Cost calculator content, financing info</td></tr>
+<tr><td>hvac nashville</td><td>720</td><td>39</td><td>/</td><td>Head term — requires sustained authority building</td></tr>
+</table>
+<p style="font-size:13px;color:var(--text-muted);margin-top:8px;"><strong>Realistic outcome:</strong> Top 20 for mid-difficulty Nashville terms (ac repair, furnace repair). Consistent Local Pack presence across 5-8 suburbs. Blog content driving informational traffic. 75-100+ reviews. First measurable leads from organic. <em>Do not expect page 1 for "hvac nashville" (KD=39) at this stage — that requires 12+ months of sustained authority building.</em></p>
+</div>
+
+<h3>What Cannot Be Won Near-Term</h3>
+<div class="finding warning">
+<div class="title">Head terms are a 12+ month play</div>
+<div class="detail">"hvac nashville" (720 vol, KD=39), "heating and cooling nashville" (260, KD=38), "ac tune up nashville" (70, KD=53) — these require domain authority that takes years to build when starting from near zero. Happy Hiller and Lee Company have decades of backlinks and brand recognition. Hughes should not invest disproportionate effort here until the local foundation is generating revenue from easier wins.</div>
+</div>
+
+</div>
+</section>
+
+<!-- ======================== PHASE 8 ======================== -->
+<section class="phase" id="phase8">
+<div class="container">
+<h2>Phase 8 — Deployment Readiness & Defect Register <span class="badge badge-critical">NOT READY</span></h2>
+<p class="phase-desc">Final QA. The site is not deployment-ready until all P0 issues are resolved.</p>
+
+<h3>Deployment Readiness Checklist</h3>
+<ul class="checklist">
+<li><span class="icon fail">✗</span> <strong>GA4 tracking code on all pages</strong> — MISSING. Cannot deploy without analytics.</li>
+<li><span class="icon fail">✗</span> <strong>Lead capture forms on service and area pages</strong> — Only homepage has a form.</li>
+<li><span class="icon fail">✗</span> <strong>301 redirect map (_redirects file)</strong> — MISSING. Will lose existing rankings.</li>
+<li><span class="icon fail">✗</span> <strong>og:image file</strong> — MISSING. Social shares will have no preview image.</li>
+<li><span class="icon fail">✗</span> <strong>Fix 9 broken internal links</strong> — 7 homepage links + 2 area page links to non-existent pages.</li>
+<li><span class="icon fail">✗</span> <strong>Remove 404 page canonical tag</strong></li>
+<li><span class="icon fail">✗</span> <strong>Add openingHoursSpecification and geo to area page schemas</strong></li>
+<li><span class="icon fail">✗</span> <strong>Google Search Console verification</strong> — Verify domain ownership.</li>
+<li><span class="icon fail">✗</span> <strong>Google Business Profile</strong> — Must be created and verified.</li>
+<li><span class="icon pass">✓</span> Sitemap valid and complete (28 URLs)</li>
+<li><span class="icon pass">✓</span> robots.txt correct</li>
+<li><span class="icon pass">✓</span> llms.txt present</li>
+<li><span class="icon pass">✓</span> Canonical URLs correct and HTTPS</li>
+<li><span class="icon pass">✓</span> Mobile CTA bar on all pages</li>
+<li><span class="icon pass">✓</span> Click-to-call on all pages</li>
+<li><span class="icon pass">✓</span> JSON-LD schema valid on all pages</li>
+<li><span class="icon fail">✗</span> <strong>Content depth below competitive threshold</strong> — Service pages: 640-810 words (need 1,500+), Area pages: 390-425 words (need 1,000+). Competitors average 1,500-2,000 words.</li>
+</ul>
+
+<h3>Page-by-Page SEO/AEO Scorecard</h3>
+<p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">Each page scored on: Title ≤60 chars, Meta desc ≤160 chars, H1 with "Best" keyword, Schema (JSON-LD valid), Form present, Internal links (no broken), Content depth (≥1,000 words), Unique local content. Score out of 8.</p>
+<table>
+<tr><th>Page</th><th>Title Len</th><th>Meta Len</th><th>H1 ✓</th><th>Schema</th><th>Form</th><th>Links</th><th>Words</th><th>Score</th></tr>
+<tr><td><strong>/ (Homepage)</strong></td><td class="pass">56 ✓</td><td class="pass">148 ✓</td><td class="pass">✓</td><td class="pass">5 types</td><td class="pass">✓</td><td class="fail">7 broken</td><td class="warn">~1,100</td><td><strong>5/8</strong></td></tr>
+<tr><td>/ac-repair</td><td class="fail">63 ✗</td><td class="pass">155 ✓</td><td class="pass">✓</td><td class="pass">4 types</td><td class="fail">✗</td><td class="fail">2 broken</td><td class="warn">~810</td><td><strong>3/8</strong></td></tr>
+<tr><td>/ac-installation</td><td class="fail">71 ✗</td><td class="fail">168 ✗</td><td class="pass">✓</td><td class="pass">4 types</td><td class="fail">✗</td><td class="fail">2 broken</td><td class="warn">~780</td><td><strong>2/8</strong></td></tr>
+<tr><td>/furnace-repair</td><td class="fail">65 ✗</td><td class="pass">158 ✓</td><td class="pass">✓</td><td class="pass">4 types</td><td class="fail">✗</td><td class="fail">2 broken</td><td class="warn">~740</td><td><strong>3/8</strong></td></tr>
+<tr><td>/furnace-installation</td><td class="fail">73 ✗</td><td class="fail">172 ✗</td><td class="pass">✓</td><td class="pass">4 types</td><td class="fail">✗</td><td class="fail">2 broken</td><td class="warn">~720</td><td><strong>2/8</strong></td></tr>
+<tr><td>/heat-pump-service</td><td class="fail">68 ✗</td><td class="fail">165 ✗</td><td class="pass">✓</td><td class="pass">4 types</td><td class="fail">✗</td><td class="fail">2 broken</td><td class="warn">~780</td><td><strong>2/8</strong></td></tr>
+<tr><td>/emergency-hvac</td><td class="pass">59 ✓</td><td class="pass">152 ✓</td><td class="pass">✓</td><td class="pass">4 types</td><td class="fail">✗</td><td class="fail">2 broken</td><td class="warn">~790</td><td><strong>4/8</strong></td></tr>
+<tr><td>/maintenance-plans</td><td class="fail">67 ✗</td><td class="fail">162 ✗</td><td class="pass">✓</td><td class="pass">4 types</td><td class="fail">✗</td><td class="fail">2 broken</td><td class="warn">~760</td><td><strong>2/8</strong></td></tr>
+<tr><td>/heating-repair</td><td class="fail">64 ✗</td><td class="pass">156 ✓</td><td class="pass">✓</td><td class="pass">4 types</td><td class="fail">✗</td><td class="fail">2 broken</td><td class="warn">~640</td><td><strong>3/8</strong></td></tr>
+<tr><td>/mini-split</td><td class="pass">58 ✓</td><td class="pass">149 ✓</td><td class="pass">✓</td><td class="pass">4 types</td><td class="fail">✗</td><td class="fail">2 broken</td><td class="warn">~680</td><td><strong>4/8</strong></td></tr>
+<tr><td>/duct-cleaning</td><td class="pass">57 ✓</td><td class="pass">153 ✓</td><td class="pass">✓</td><td class="pass">4 types</td><td class="fail">✗</td><td class="fail">2 broken</td><td class="warn">~700</td><td><strong>4/8</strong></td></tr>
+<tr style="background:var(--bg-alt);"><td colspan="9"><strong>Service Area Pages (17 pages)</strong> — All share same pattern</td></tr>
+<tr><td>/service-areas/madison</td><td class="pass">54 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~425</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/nashville</td><td class="pass">55 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~420</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/goodlettsville</td><td class="pass">60 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~400</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/hendersonville</td><td class="pass">60 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~410</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/hermitage</td><td class="pass">55 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~395</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/old-hickory</td><td class="pass">56 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~400</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/gallatin</td><td class="pass">53 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~390</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/mount-juliet</td><td class="pass">57 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~400</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/lebanon</td><td class="pass">52 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~390</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/brentwood</td><td class="pass">55 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~400</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/franklin</td><td class="pass">53 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~405</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/spring-hill</td><td class="pass">56 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~395</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/murfreesboro</td><td class="pass">57 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~410</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/smyrna</td><td class="pass">51 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~390</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/la-vergne</td><td class="pass">55 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~390</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/donelson</td><td class="pass">53 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~395</td><td><strong>2/8</strong></td></tr>
+<tr><td>/service-areas/millersville</td><td class="pass">57 ✓</td><td class="warn">Template</td><td class="pass">✓</td><td class="warn">Missing geo/hrs</td><td class="fail">✗</td><td class="pass">✓</td><td class="fail">~390</td><td><strong>2/8</strong></td></tr>
+</table>
+<div style="margin-top:12px;padding:12px 16px;background:var(--red-light);border:1px solid var(--red-border);border-radius:8px;font-size:14px;">
+<strong>Average score: 2.6 / 8.</strong> Every page fails on form presence and content depth. Service pages additionally fail on broken links (bellevue/la-vergne references). 8 of 10 service page titles exceed the 60-char SERP truncation limit. All 17 area pages have templated meta descriptions and missing schema fields.
+</div>
+
+<h3>Title Tag Length Warnings (8 pages over 60 chars)</h3>
+<table>
+<tr><th>Page</th><th>Title</th><th>Length</th><th>Fix</th></tr>
+<tr><td>/ac-repair</td><td>Best AC Repair in Nashville &amp; Middle Tennessee | Hughes HVAC</td><td class="fail">63</td><td>Drop "in" → "Best AC Repair Nashville &amp; Middle TN"</td></tr>
+<tr><td>/ac-installation</td><td>Best AC Installation in Nashville &amp; Middle Tennessee | Hughes HVAC</td><td class="fail">71</td><td>Shorten to "Best AC Installation Nashville TN | Hughes HVAC"</td></tr>
+<tr><td>/furnace-repair</td><td>Best Furnace Repair in Nashville &amp; Middle Tennessee | Hughes HVAC</td><td class="fail">65</td><td>Shorten to "Best Furnace Repair Nashville TN | Hughes HVAC"</td></tr>
+<tr><td>/furnace-installation</td><td>Best Furnace Installation in Nashville &amp; Middle Tennessee | Hughes HVAC</td><td class="fail">73</td><td>Shorten to "Best Furnace Installation Nashville | Hughes HVAC"</td></tr>
+<tr><td>/heat-pump-service</td><td>Best Heat Pump Service in Nashville &amp; Middle Tennessee | Hughes HVAC</td><td class="fail">68</td><td>Shorten to "Best Heat Pump Service Nashville TN | Hughes HVAC"</td></tr>
+<tr><td>/maintenance-plans</td><td>Best HVAC Maintenance Plans in Nashville &amp; Middle Tennessee | Hughes HVAC</td><td class="fail">67</td><td>Shorten to "HVAC Maintenance Plans Nashville | Hughes HVAC"</td></tr>
+<tr><td>/heating-repair</td><td>Best Heater &amp; Heating Repair in Nashville &amp; Middle Tennessee | Hughes HVAC</td><td class="fail">64</td><td>Shorten to "Best Heating Repair Nashville TN | Hughes HVAC"</td></tr>
+</table>
+
+<h3>Prioritized Technical Defect Register</h3>
+<table>
+<tr><th>#</th><th>Severity</th><th>Defect</th><th>File(s)</th><th>Fix</th></tr>
+<tr><td>1</td><td><span class="tag tag-p0">P0</span></td><td>No analytics tracking</td><td>All 28 pages + build scripts</td><td>Add GA4 gtag.js snippet to all build scripts</td></tr>
+<tr><td>2</td><td><span class="tag tag-p0">P0</span></td><td>Forms only on homepage</td><td>build_service_pages.py, build_area_pages.py</td><td>Add Netlify form to all page templates</td></tr>
+<tr><td>3</td><td><span class="tag tag-p0">P0</span></td><td>9 broken internal links</td><td>build_homepage.py (7 links), build_service_pages.py (2 links)</td><td>Remove /about, /blog, /contact, /financing, /reviews, /coupons, /privacy-policy from nav. Remove /service-areas/bellevue and /service-areas/la-vergne from service links OR create those pages</td></tr>
+<tr><td>4</td><td><span class="tag tag-p0">P0</span></td><td>No redirect map</td><td>New: _redirects</td><td>Create Netlify _redirects file mapping old URLs → new URLs</td></tr>
+<tr><td>5</td><td><span class="tag tag-p0">P0</span></td><td>og:image file missing</td><td>New: og-image.jpg</td><td>Create 1200x630px OG image. Fix schema to reference .jpg (not .png)</td></tr>
+<tr><td>6</td><td><span class="tag tag-p0">P0</span></td><td>404 canonical → homepage</td><td>404.html</td><td>Remove canonical tag from 404.html</td></tr>
+<tr><td>7</td><td><span class="tag tag-p0">P0</span></td><td>Area page schema incomplete</td><td>build_area_pages.py</td><td>Add openingHoursSpecification and geo to LocalBusiness schema</td></tr>
+<tr><td>8</td><td><span class="tag tag-p1">P1</span></td><td>Templated area meta descriptions</td><td>build_area_pages.py</td><td>Write unique descriptions with local context per city</td></tr>
+<tr><td>9</td><td><span class="tag tag-p1">P1</span></td><td>Flat heading hierarchy</td><td>build_service_pages.py</td><td>Nest common-problem H2s under a parent H2 as H3s</td></tr>
+<tr><td>10</td><td><span class="tag tag-p1">P1</span></td><td>No guarantee/warranty content</td><td>All service pages</td><td>Add guarantee section (work with client on terms)</td></tr>
+<tr><td>11</td><td><span class="tag tag-p1">P1</span></td><td>No real reviews/testimonials</td><td>build_homepage.py, build_service_pages.py</td><td>Add review widget or real testimonials (requires client input)</td></tr>
+<tr><td>12</td><td><span class="tag tag-p1">P1</span></td><td>Area pages thin on local context</td><td>build_area_pages.py</td><td>Add county-specific content, local utilities, common systems, permit info</td></tr>
+<tr><td>13</td><td><span class="tag tag-p1">P1</span></td><td>No blog/informational content</td><td>New build script</td><td>Create blog template and initial posts targeting informational keywords</td></tr>
+<tr><td>14</td><td><span class="tag tag-p1">P1</span></td><td>No financing info</td><td>build_homepage.py, service pages</td><td>Add financing section or remove broken /financing link</td></tr>
+<tr><td>15</td><td><span class="tag tag-p1">P1</span></td><td>No license number displayed</td><td>All pages</td><td>Get TN HVAC license number from client and add to footer</td></tr>
+<tr><td>16</td><td><span class="tag tag-p1">P1</span></td><td>Large inline CSS per page</td><td>All build scripts</td><td>Extract shared CSS to external stylesheet for caching</td></tr>
+<tr><td>17</td><td><span class="tag tag-p0">P0</span></td><td>All pages below competitive content depth</td><td>All build scripts</td><td>Service pages: 640-810 words → expand to 1,500+. Area pages: 390-425 words → expand to 1,000+. Add unique local context, HVAC-specific info, cost breakdowns, and FAQ answers per page.</td></tr>
+<tr><td>18</td><td><span class="tag tag-p1">P1</span></td><td>8 service page titles exceed 60-char SERP limit</td><td>build_service_pages.py, build_remaining_services.py, build_heating_page.py</td><td>Shorten title tags. Remove "in" and "Middle Tennessee" to fit within 60 chars. Google truncates at ~60.</td></tr>
+<tr><td>19</td><td><span class="tag tag-p1">P1</span></td><td>Donelson and Millersville area pages have only 1 inbound link each</td><td>build_service_pages.py</td><td>Add cross-links from nearby area pages and relevant service pages to improve crawl depth</td></tr>
+</table>
+
+<h3>Unresolved Findings Requiring Client Input</h3>
+<table>
+<tr><th>Finding</th><th>Client Action Needed</th></tr>
+<tr><td>TN HVAC license number</td><td>Provide license number for display</td></tr>
+<tr><td>Guarantee/warranty terms</td><td>Define what guarantees Hughes HVAC offers</td></tr>
+<tr><td>Real customer reviews</td><td>Provide testimonials or authorize review widget integration</td></tr>
+<tr><td>Financing availability</td><td>Confirm if financing is offered; provide terms or remove references</td></tr>
+<tr><td>Legacy business names</td><td>Confirm relationship to "Hughes Air LLC" and "hughesairco.com" — consolidate or separate</td></tr>
+<tr><td>Team/project photos</td><td>Provide photos of technicians, trucks, completed work</td></tr>
+<tr><td>GA4 property ID</td><td>Create GA4 property or provide existing G-XXXXXXXXXX ID</td></tr>
+<tr><td>Google Search Console access</td><td>Verify domain ownership</td></tr>
+<tr><td>Google Business Profile</td><td>Create GBP or provide access to existing profile</td></tr>
+<tr><td>Complete old URL list</td><td>Crawl live site to capture all existing URLs for redirect map</td></tr>
+</table>
+
+</div>
+</section>
+
+<footer>
+<div class="container">
+<div style="display:inline-block;background:#171717;border-radius:8px;padding:12px 24px;margin-bottom:12px;">
+<span style="color:#CEF962;font-weight:800;font-size:20px;font-family:Poppins,sans-serif;letter-spacing:-0.5px;">Social Link</span>
+</div>
+<div class="logo-text">Created by your growth partner Social Link</div>
+<p><a href="https://sociallink.com" style="color:#CEF962;">sociallink.com</a></p>
+<p style="margin-top:12px;">Independent QA Audit — November 3, 2026</p>
+<p style="margin-top:4px;font-size:12px;color:#64748b;">This audit does not promise ranking positions or invent ranking probabilities. All search volume, keyword difficulty, and competitive data is sourced from Semrush and verified web research. Items marked "Cannot verify" require production access or client input.</p>
+</div>
+</footer>
+
+</body>
+</html>
