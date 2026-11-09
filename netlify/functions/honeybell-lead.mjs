@@ -17,16 +17,13 @@ async function submitToNetlifyForm(lead) {
 
   const formData = {
     'form-name': 'honeybell-lead',
-    'name': lead.name || (isInsight ? '[No contact - insight only]' : 'Not provided'),
-    'phone': lead.phone || '',
-    'email': lead.email || '',
-    'issue': lead.issue || lead.service || (isInsight ? 'Non-conversion insight' : 'General inquiry'),
-    'urgency': lead.urgency || (isInsight ? 'insight' : 'normal'),
-    'page': lead.page || '/',
-    'source': lead.source || 'api',
-    'timestamp': new Date().toISOString(),
-    'diagnosis': isInsight ? convoText : (lead.diagnosis || ''),
-    'details': lead.details || '',
+    'hb-name': lead.name || (isInsight ? '[No contact - insight only]' : 'Not provided'),
+    'hb-phone': lead.phone || '',
+    'hb-issue': lead.issue || lead.service || (isInsight ? 'Non-conversion insight' : 'General inquiry'),
+    'hb-urgency': lead.urgency || (isInsight ? 'insight' : 'normal'),
+    'hb-page': lead.page || '/',
+    'hb-timestamp': new Date().toISOString(),
+    'hb-diagnosis': isInsight ? convoText : (lead.diagnosis || lead.details || ''),
   };
 
   try {
