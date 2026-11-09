@@ -2273,8 +2273,23 @@ var HB={
     var userMsgs=this.msgs.filter(function(m){return m.role==='user';});
     if(userMsgs.length<2)return;
     this.insightSent=true;
-    var payload={source:'insight',conversation:this.msgs,page:window.location.pathname,messageCount:this.msgs.length,userMessageCount:userMsgs.length};
+    var convoText=this.msgs.map(function(m){return(m.role==='user'?'Visitor':'Honeybell')+': '+m.content;}).join('
+').substring(0,3000);
+    /* Submit to Netlify Forms directly (triggers native email notifications) */
     try{
+      document.getElementById('hb-name').value='[No contact - insight only]';
+      document.getElementById('hb-phone').value='';
+      document.getElementById('hb-issue').value='Non-conversion insight';
+      document.getElementById('hb-diagnosis').value=convoText;
+      document.getElementById('hb-urgency').value='insight';
+      document.getElementById('hb-page').value=window.location.pathname;
+      document.getElementById('hb-timestamp').value=new Date().toISOString();
+      var fd=new FormData(document.getElementById('hbForm'));
+      navigator.sendBeacon('/',new URLSearchParams(fd).toString());
+    }catch(e){console.error('Insight form error:',e);}
+    /* Also POST to API for logging and Mega Honey */
+    try{
+      var payload={source:'insight',conversation:this.msgs,page:window.location.pathname,messageCount:this.msgs.length,userMessageCount:userMsgs.length};
       if(navigator.sendBeacon){
         navigator.sendBeacon('/api/honeybell-lead',JSON.stringify(payload));
       }else{
