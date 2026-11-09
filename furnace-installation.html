@@ -2282,8 +2282,7 @@ var HB={
     var userMsgs=this.msgs.filter(function(m){return m.role==='user';});
     if(userMsgs.length<2)return;
     this.insightSent=true;
-    var convoText=this.msgs.map(function(m){return(m.role==='user'?'Visitor':'Honeybell')+': '+m.content;}).join('
-').substring(0,3000);
+    var convoText=this.msgs.map(function(m){return(m.role==='user'?'Visitor':'Honeybell')+': '+m.content;}).join('\n').substring(0,3000);
     /* Submit to Netlify Forms directly (triggers native email notifications) */
     try{
       document.getElementById('hb-name').value='[No contact - insight only]';
