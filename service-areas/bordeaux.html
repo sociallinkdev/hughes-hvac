@@ -2147,8 +2147,11 @@ var HB={
   open:false,
   msgs:[],
   sending:false,
+  leadCaptured:false,
+  insightSent:false,
 
   toggle:function(){
+    var wasOpen=this.open;
     this.open=!this.open;
     document.getElementById('hbWin').classList.toggle('is-open',this.open);
     document.getElementById('hbPulse').style.display=this.open?'none':'block';
@@ -2156,6 +2159,8 @@ var HB={
     if(this.open&&this.msgs.length===0)this.init();
     if(this.open)document.getElementById('hbInput').focus();
     if(typeof gtag==='function')gtag('event',this.open?'honeybell_opened':'honeybell_closed',{event_category:'honeybell'});
+    /* Send non-conversion insight when chat closes */
+    if(wasOpen&&!this.open)this.maybeSendInsight();
   },
 
   init:function(){
@@ -2248,6 +2253,7 @@ var HB={
   },
 
   submitLead:function(name,phone,issue){
+    this.leadCaptured=true;
     document.getElementById('hb-name').value=name;
     document.getElementById('hb-phone').value=phone;
     document.getElementById('hb-issue').value=issue||'chat';
@@ -2257,13 +2263,32 @@ var HB={
     document.getElementById('hb-timestamp').value=new Date().toISOString();
     var fd=new FormData(document.getElementById('hbForm'));
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});
-    fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,issue:issue,conversation:this.msgs,page:window.location.pathname})});
+    fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'honeybell',name:name,phone:phone,issue:issue,conversation:this.msgs,page:window.location.pathname})});
     window.dataLayer=window.dataLayer||[];
     window.dataLayer.push({event:'honeybell_lead_captured',honeybell_source:'hvac',honeybell_client:'hughes'});
     if(typeof gtag==='function')gtag('event','generate_lead',{currency:'USD',value:150,lead_source:'honeybell-hvac'});
+  },
+
+  maybeSendInsight:function(){
+    /* Only send if: had real conversation (2+ user msgs), no lead captured, not already sent */
+    if(this.leadCaptured||this.insightSent)return;
+    var userMsgs=this.msgs.filter(function(m){return m.role==='user';});
+    if(userMsgs.length<2)return;
+    this.insightSent=true;
+    var payload={source:'insight',conversation:this.msgs,page:window.location.pathname,messageCount:this.msgs.length,userMessageCount:userMsgs.length};
+    try{
+      if(navigator.sendBeacon){
+        navigator.sendBeacon('/api/honeybell-lead',JSON.stringify(payload));
+      }else{
+        fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true});
+      }
+      if(typeof gtag==='function')gtag('event','honeybell_no_convert',{event_category:'honeybell',event_label:userMsgs.length+' messages'});
+    }catch(e){console.error('Insight send error:',e);}
   }
 };
 document.getElementById('hbInput').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();HB.send();}});
+/* Send insight on page unload if chat had meaningful conversation but no conversion */
+window.addEventListener('beforeunload',function(){HB.maybeSendInsight();});
 </script>
 
 </body>
