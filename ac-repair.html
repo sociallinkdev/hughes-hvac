@@ -2148,6 +2148,17 @@ input[type="email"] { text-transform: none; }
   <div class="hb-foot">Honeybell is an AI assistant; verify advice with a licensed technician. If you request service, Hughes HVAC keeps this conversation to follow up. <a href="/privacy-policy">Privacy</a></div>
   <form id="hbForm" name="honeybell-lead" method="POST" data-netlify="true" netlify-honeypot="hb-bot" style="display:none">
     <input type="hidden" name="form-name" value="honeybell-lead">
+    <!-- Fields used by visible forms (hero + bottom contact) -->
+    <input type="hidden" name="name">
+    <input type="hidden" name="phone">
+    <input type="hidden" name="email">
+    <input type="hidden" name="service">
+    <input type="hidden" name="urgency">
+    <input type="hidden" name="address">
+    <input type="hidden" name="details">
+    <input type="hidden" name="zip">
+    <input type="hidden" name="page">
+    <!-- Fields used by Honeybell chat widget -->
     <input type="hidden" name="hb-name" id="hb-name">
     <input type="hidden" name="hb-phone" id="hb-phone">
     <input type="hidden" name="hb-issue" id="hb-issue">
