@@ -1976,8 +1976,10 @@ input[type="email"] { text-transform: none; }
 })();
 
 /* ── Lead Notification: POST all form leads to /api/honeybell-lead ── */
+/* Also re-submit as honeybell-lead form so Netlify notification fires */
 (function(){
   document.querySelectorAll('form[data-netlify]').forEach(function(f){
+    if(f.id==='hbForm')return;/* skip the hidden honeybell form itself */
     f.addEventListener('submit',function(){
       try{
         var d={source:'form',name:'',phone:'',email:'',service:'',urgency:'normal',address:'',details:'',page:window.location.pathname};
@@ -1989,7 +1991,12 @@ input[type="email"] { text-transform: none; }
         var a=f.querySelector('[name=address]');if(a)d.address=a.value;
         var dt=f.querySelector('[name=details]');if(dt)d.details=dt.value;
         if(d.name||d.phone){
-          fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+          /* Use sendBeacon so the request survives page navigation */
+          var blob=new Blob([JSON.stringify(d)],{type:'application/json'});
+          navigator.sendBeacon('/api/honeybell-lead',blob);
+          /* Also submit directly to honeybell-lead Netlify form for email notification */
+          var fd=new URLSearchParams({'form-name':'honeybell-lead','hb-name':d.name,'hb-phone':d.phone,'hb-issue':d.service||'Form inquiry','hb-urgency':d.urgency,'hb-page':d.page,'hb-timestamp':new Date().toISOString(),'hb-diagnosis':(d.address?'Address: '+d.address+'. ':'')+d.details});
+          navigator.sendBeacon('/',fd);
         }
       }catch(err){console.error('Lead notify error:',err);}
     });
