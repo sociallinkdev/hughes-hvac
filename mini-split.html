@@ -1690,9 +1690,9 @@ input[type="email"] { text-transform: none; }
       <h2 class="h-h2" style="color:#fff;margin-top:var(--h-space-3)">Schedule Your Appointment</h2>
       <p style="color:rgba(255,255,255,0.7);margin-top:var(--h-space-2)">Someone will call you within 1 hour to confirm your appointment.</p>
     </div>
-    <form name="honeybell-lead" method="POST" data-netlify="true" class="h-form-dark" id="lead-form">
-      <input type="hidden" name="form-name" value="honeybell-lead">
-      <input type="hidden" name="hb-page" value="mini-split">
+    <form name="hughes-hvac-lead" method="POST" action="/thank-you" data-netlify="true" class="h-form-dark" id="lead-form">
+      <input type="hidden" name="form-name" value="hughes-hvac-lead">
+      <input type="hidden" name="page" value="mini-split">
       <!-- CRM-Ready Lead Tracking Fields -->
       <input type="hidden" name="lead_source" id="lead_source" value="website">
       <input type="hidden" name="utm_source" id="utm_source" value="">
@@ -1712,11 +1712,11 @@ input[type="email"] { text-transform: none; }
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--h-space-4)">
           <div class="h-form-group">
             <label class="h-label" for="cf-name">Your Name</label>
-            <input type="text" id="cf-name" name="hb-name" class="h-input" required autocomplete="name" placeholder="Full name">
+            <input type="text" id="cf-name" name="name" class="h-input" required autocomplete="name" placeholder="Full name">
           </div>
           <div class="h-form-group">
             <label class="h-label" for="cf-phone">Phone Number</label>
-            <input type="tel" id="cf-phone" name="hb-phone" class="h-input" required autocomplete="tel" placeholder="(615) 555-0123" inputmode="tel">
+            <input type="tel" id="cf-phone" name="phone" class="h-input" required autocomplete="tel" placeholder="(615) 555-0123" inputmode="tel">
           </div>
         </div>
         <div class="h-form-group">
@@ -1726,7 +1726,7 @@ input[type="email"] { text-transform: none; }
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--h-space-4)">
           <div class="h-form-group">
             <label class="h-label" for="cf-service">Service Needed</label>
-            <select id="cf-service" name="hb-issue" class="h-select" required>
+            <select id="cf-service" name="service" class="h-select" required>
               <option value="">What do you need help with?</option>
 <option value="AC Repair">AC Repair</option>
 <option value="AC Installation">AC Installation</option>
@@ -1743,7 +1743,7 @@ input[type="email"] { text-transform: none; }
           </div>
           <div class="h-form-group">
             <label class="h-label" for="cf-urgency">Urgency</label>
-            <select id="cf-urgency" name="hb-urgency" class="h-select">
+            <select id="cf-urgency" name="urgency" class="h-select">
               
         <option value="">How urgent is this?</option>
         <option value="emergency">Emergency - need help now</option>
@@ -1760,7 +1760,7 @@ input[type="email"] { text-transform: none; }
         </div>
         <div class="h-form-group">
           <label class="h-label" for="cf-details">Anything else we should know? <span style="font-weight:400;color:rgba(255,255,255,0.4)">(optional)</span></label>
-          <textarea id="cf-details" name="hb-diagnosis" class="h-textarea" rows="3" placeholder="Describe what&rsquo;s happening with your system"></textarea>
+          <textarea id="cf-details" name="details" class="h-textarea" rows="3" placeholder="Describe what&rsquo;s happening with your system"></textarea>
         </div>
         <button type="submit" class="h-btn h-btn-primary h-btn-lg h-btn-full" style="margin-top:var(--h-space-2)">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Request Appointment
@@ -1999,30 +1999,26 @@ input[type="email"] { text-transform: none; }
   });
 })();
 
-/* ── Lead Notification: POST all form leads to /api/honeybell-lead ── */
-/* Also re-submit as honeybell-lead form so Netlify notification fires */
+/* ── Lead Notification: beacon form leads to /api/honeybell-lead ── */
 (function(){
   document.querySelectorAll('form[data-netlify]').forEach(function(f){
-    if(f.id==='hbForm')return;/* skip the hidden honeybell form itself */
+    if(f.id==='hbForm')return;
     f.addEventListener('submit',function(){
       try{
-        var d={source:'form',name:'',phone:'',email:'',service:'',urgency:'normal',address:'',details:'',page:window.location.pathname};
+        var d={source:'form',name:'',phone:'',email:'',service:'',urgency:'normal',address:'',details:'',zip:'',page:window.location.pathname};
         var n=f.querySelector('[name=name]');if(n)d.name=n.value;
         var p=f.querySelector('[name=phone]');if(p)d.phone=p.value;
         var e=f.querySelector('[name=email]');if(e)d.email=e.value;
         var s=f.querySelector('[name=service]');if(s)d.service=s.value;
         var u=f.querySelector('[name=urgency]');if(u)d.urgency=u.value||'normal';
         var a=f.querySelector('[name=address]');if(a)d.address=a.value;
+        var z=f.querySelector('[name=zip]');if(z)d.zip=z.value;
         var dt=f.querySelector('[name=details]');if(dt)d.details=dt.value;
         if(d.name||d.phone){
-          /* Use sendBeacon so the request survives page navigation */
           var blob=new Blob([JSON.stringify(d)],{type:'application/json'});
           navigator.sendBeacon('/api/honeybell-lead',blob);
-          /* Also submit directly to honeybell-lead Netlify form for email notification */
-          var fd=new URLSearchParams({'form-name':'honeybell-lead','hb-name':d.name,'hb-phone':d.phone,'hb-issue':d.service||'Form inquiry','hb-urgency':d.urgency,'hb-page':d.page,'hb-timestamp':new Date().toISOString(),'hb-diagnosis':(d.address?'Address: '+d.address+'. ':'')+d.details});
-          navigator.sendBeacon('/',fd);
         }
-      }catch(err){console.error('Lead notify error:',err);}
+      }catch(err){}
     });
   });
 })();
@@ -2143,26 +2139,15 @@ input[type="email"] { text-transform: none; }
     <a href="tel:+16152199882">Call Now - (615) 219-9882</a>
   </div>
   <div class="hb-foot">Honeybell is an AI assistant; verify advice with a licensed technician. If you request service, Hughes HVAC keeps this conversation to follow up. <a href="/privacy-policy">Privacy</a></div>
-  <form id="hbForm" name="honeybell-lead" method="POST" data-netlify="true" netlify-honeypot="hb-bot" style="display:none">
-    <input type="hidden" name="form-name" value="honeybell-lead">
-    <!-- Fields used by visible forms (hero + bottom contact) -->
-    <input type="hidden" name="name">
-    <input type="hidden" name="phone">
-    <input type="hidden" name="email">
-    <input type="hidden" name="service">
-    <input type="hidden" name="urgency">
-    <input type="hidden" name="address">
-    <input type="hidden" name="details">
-    <input type="hidden" name="zip">
-    <input type="hidden" name="page">
-    <!-- Fields used by Honeybell chat widget -->
-    <input type="hidden" name="hb-name" id="hb-name">
-    <input type="hidden" name="hb-phone" id="hb-phone">
-    <input type="hidden" name="hb-issue" id="hb-issue">
-    <input type="hidden" name="hb-diagnosis" id="hb-diagnosis">
-    <input type="hidden" name="hb-urgency" id="hb-urgency">
-    <input type="hidden" name="hb-page" id="hb-page">
-    <input type="hidden" name="hb-timestamp" id="hb-timestamp">
+  <form id="hbForm" name="honeybell-chat" method="POST" data-netlify="true" netlify-honeypot="hb-bot" style="display:none">
+    <input type="hidden" name="form-name" value="honeybell-chat">
+    <input type="hidden" name="name" id="hb-name">
+    <input type="hidden" name="phone" id="hb-phone">
+    <input type="hidden" name="service" id="hb-issue">
+    <input type="hidden" name="conversation" id="hb-diagnosis">
+    <input type="hidden" name="urgency" id="hb-urgency">
+    <input type="hidden" name="page" id="hb-page">
+    <input type="hidden" name="timestamp" id="hb-timestamp">
     <input name="hb-bot" style="display:none">
   </form>
 </div>
@@ -2278,17 +2263,18 @@ var HB={
   },
 
   submitLead:function(name,phone,issue){
+    if(!name&&!phone)return;/* prevent blank submissions */
     this.leadCaptured=true;
-    document.getElementById('hb-name').value=name;
-    document.getElementById('hb-phone').value=phone;
-    document.getElementById('hb-issue').value=issue||'chat';
+    document.getElementById('hb-name').value=name||'';
+    document.getElementById('hb-phone').value=phone||'';
+    document.getElementById('hb-issue').value=issue||'Honeybell chat';
     document.getElementById('hb-diagnosis').value=this.msgs.map(function(m){return m.role+': '+m.content;}).join('\n').substring(0,2000);
     document.getElementById('hb-urgency').value='normal';
     document.getElementById('hb-page').value=window.location.pathname;
     document.getElementById('hb-timestamp').value=new Date().toISOString();
     var fd=new FormData(document.getElementById('hbForm'));
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});
-    fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'honeybell',name:name,phone:phone,issue:issue,conversation:this.msgs,page:window.location.pathname})});
+    fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'honeybell',name:name,phone:phone,issue:issue,conversation:this.msgs,page:window.location.pathname}),keepalive:true});
     window.dataLayer=window.dataLayer||[];
     window.dataLayer.push({event:'honeybell_lead_captured',honeybell_source:'hvac',honeybell_client:'hughes'});
     if(typeof gtag==='function')gtag('event','generate_lead',{currency:'USD',value:150,lead_source:'honeybell-hvac'});
