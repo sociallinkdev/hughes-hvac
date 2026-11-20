@@ -1995,7 +1995,7 @@ input[type="email"] { text-transform: none; }
 
 /* ── Lead Notification: beacon form leads to /api/honeybell-lead ── */
 (function(){
-  document.querySelectorAll('form[data-netlify]').forEach(function(f){
+  document.querySelectorAll('form[name="hughes-hvac-lead"]').forEach(function(f){
     if(f.id==='hbForm')return;
     f.addEventListener('submit',function(){
       try{
