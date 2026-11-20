@@ -93,7 +93,7 @@ async function sendEmailAlert(lead) {
         'Authorization': `Bearer ${key}`,
       },
       body: JSON.stringify({
-        from: 'Honeybell <onboarding@resend.dev>',
+        from: 'Honeybell <honeybell@send.sociallink.ai>',
         to: NOTIFY_EMAILS,
         subject,
         html: body,
