@@ -2139,6 +2139,11 @@ input[type="email"] { text-transform: none; }
         if(d.name||d.phone){
           var blob=new Blob([JSON.stringify(d)],{type:'application/json'});
           navigator.sendBeacon('/api/honeybell-lead',blob);
+          /* dataLayer for GTM conversion tracking */
+          window.dataLayer=window.dataLayer||[];
+          var ph=d.phone.replace(/[^+\d]/g,'');
+          if(ph&&!ph.startsWith('+'))ph='+1'+ph;
+          window.dataLayer.push({event:'lead_form_submit',form_name:f.getAttribute('name')||f.id||'unknown',user_data:{email:d.email||undefined,phone_number:ph||undefined}});
         }
       }catch(err){}
     });
@@ -2398,6 +2403,9 @@ var HB={
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});
     fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'honeybell',name:name,phone:phone,issue:issue,conversation:this.msgs,page:window.location.pathname}),keepalive:true});
     window.dataLayer=window.dataLayer||[];
+    var ph=phone?phone.replace(/[^+\d]/g,''):'';
+    if(ph&&!ph.startsWith('+'))ph='+1'+ph;
+    window.dataLayer.push({event:'lead_form_submit',form_name:'hbForm',user_data:{phone_number:ph||undefined}});
     window.dataLayer.push({event:'honeybell_lead_captured',honeybell_source:'hvac',honeybell_client:'hughes'});
     if(typeof gtag==='function')gtag('event','generate_lead',{currency:'USD',value:150,lead_source:'honeybell-hvac'});
   },
