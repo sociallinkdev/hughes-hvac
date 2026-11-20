@@ -476,6 +476,36 @@ input[type="email"] { text-transform: none; }
 }
 .h-form-dark .h-label { color: rgba(255,255,255,0.85); }
 
+/* Hero form card (internal pages) */
+.h-hero-form-card {
+  background: #fff; border-radius: 16px; padding: 0;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  overflow: hidden; width: 100%; max-width: 380px;
+}
+.h-hero-form-header {
+  background: var(--h-navy);
+  color: #fff; font-family: var(--h-font-display);
+  font-weight: 700; font-size: 1.125rem;
+  padding: 14px 24px;
+}
+.h-hero-form {
+  padding: 20px 24px 24px; display: grid; gap: 12px;
+}
+.h-hero-form .h-label {
+  font-size: 0.6875rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--h-ink-secondary); margin-bottom: 4px;
+}
+.h-hero-form .h-input, .h-hero-form .h-select {
+  padding: 10px 14px; font-size: 0.875rem;
+}
+.h-hero-form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+@media (max-width: 480px) {
+  .h-hero-form-card { max-width: 100%; }
+  .h-hero-form-row { grid-template-columns: 1fr; }
+}
+
 
 /* ═══════════════════════════════════════
    NAVIGATION
@@ -549,6 +579,29 @@ input[type="email"] { text-transform: none; }
 .h-nav-link-active {
   color: #fff;
 }
+/* Service Areas mega-dropdown */
+.h-nav-dropdown { position: relative; }
+.h-nav-dropdown-trigger { cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
+.h-nav-dropdown-trigger svg { transition: transform 0.2s; width: 12px; height: 12px; }
+.h-nav-dropdown:hover .h-nav-dropdown-trigger svg { transform: rotate(180deg); }
+.h-nav-dropdown-menu {
+  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: #fff; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  padding: 20px 24px; min-width: 520px; z-index: 100;
+  columns: 2; column-gap: 32px;
+}
+.h-nav-dropdown:hover .h-nav-dropdown-menu { display: block; }
+.h-nav-dropdown-menu a {
+  display: block; padding: 6px 0; font-size: 0.8125rem; font-weight: 500;
+  color: var(--h-ink); white-space: nowrap; break-inside: avoid;
+  transition: color 0.15s;
+}
+.h-nav-dropdown-menu a:hover { color: var(--h-orange); }
+.h-nav-dropdown-label {
+  font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--h-ink-secondary); margin: 8px 0 4px; break-inside: avoid;
+}
+.h-nav-dropdown-label:first-child { margin-top: 0; }
 .h-nav-cta {
   display: flex;
   align-items: center;
@@ -1521,7 +1574,35 @@ input[type="email"] { text-transform: none; }
       <a href="/furnace-repair" class="h-nav-link ">Heating</a>
       <a href="/ac-installation" class="h-nav-link ">Installation</a>
       <a href="/heat-pump-service" class="h-nav-link ">Heat Pumps</a>
-      <a href="/maintenance-plans" class="h-nav-link ">Maintenance</a>
+      <div class="h-nav-dropdown">
+        <span class="h-nav-link h-nav-dropdown-trigger ">Service Areas <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        <div class="h-nav-dropdown-menu">
+          <div class="h-nav-dropdown-label">Nashville</div>
+          <a href="/ac-repair-east-nashville-tn">East Nashville</a>
+          <a href="/ac-repair-germantown-tn">Germantown</a>
+          <a href="/ac-repair-the-nations-tn">The Nations</a>
+          <a href="/ac-repair-12-south-tn">12 South</a>
+          <a href="/ac-repair-green-hills-tn">Green Hills</a>
+          <a href="/ac-repair-belle-meade-tn">Belle Meade</a>
+          <a href="/ac-repair-sylvan-park-tn">Sylvan Park</a>
+          <a href="/ac-repair-hillsboro-village-tn">Hillsboro Village</a>
+          <a href="/ac-repair-north-nashville-tn">North Nashville</a>
+          <a href="/ac-repair-donelson-tn">Donelson</a>
+          <div class="h-nav-dropdown-label">Greater Nashville</div>
+          <a href="/ac-repair-madison-tn">Madison</a>
+          <a href="/ac-repair-hermitage-tn">Hermitage</a>
+          <a href="/ac-repair-brentwood-tn">Brentwood</a>
+          <a href="/ac-repair-franklin-tn">Franklin</a>
+          <a href="/ac-repair-hendersonville-tn">Hendersonville</a>
+          <a href="/ac-repair-mount-juliet-tn">Mount Juliet</a>
+          <a href="/ac-repair-gallatin-tn">Gallatin</a>
+          <a href="/ac-repair-goodlettsville-tn">Goodlettsville</a>
+          <a href="/ac-repair-murfreesboro-tn">Murfreesboro</a>
+          <a href="/ac-repair-antioch-tn">Antioch</a>
+          <a href="/ac-repair-spring-hill-tn">Spring Hill</a>
+          <a href="/ac-repair-smyrna-tn">Smyrna</a>
+        </div>
+      </div>
       <a href="/emergency-hvac" class="h-nav-link ">Emergency</a>
     </nav>
 
@@ -1562,6 +1643,17 @@ input[type="email"] { text-transform: none; }
     <a href="/maintenance-plans" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Maintenance Plans</a>
     <a href="/duct-cleaning" class="h-mobile-menu-link"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Duct Cleaning</a>
     <a href="/emergency-hvac" class="h-mobile-menu-link"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Emergency 24/7</a>
+    <div class="h-mobile-menu-section">Service Areas</div>
+    <a href="/ac-repair-madison-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Madison</a>
+    <a href="/ac-repair-hermitage-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Hermitage</a>
+    <a href="/ac-repair-hendersonville-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Hendersonville</a>
+    <a href="/ac-repair-brentwood-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Brentwood</a>
+    <a href="/ac-repair-franklin-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Franklin</a>
+    <a href="/ac-repair-mount-juliet-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Mount Juliet</a>
+    <a href="/ac-repair-murfreesboro-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Murfreesboro</a>
+    <a href="/ac-repair-east-nashville-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> East Nashville</a>
+    <a href="/ac-repair-green-hills-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Green Hills</a>
+    <a href="/ac-repair-gallatin-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Gallatin</a>
   </nav>
   <div class="h-mobile-menu-cta">
     <a href="tel:+16152199882" class="h-btn h-btn-call h-btn-lg h-btn-full" onclick="gtag('event','phone_click',{event_category:'engagement',event_label:'mobile_menu'})">
@@ -1601,6 +1693,19 @@ input[type="email"] { text-transform: none; }
   <div class="h-price-value">$225</div>
 </div>
 </div>
+        <div style="margin-top:var(--h-space-6)">
+          <div class="h-hero-form-card"><div class="h-hero-form-header">Schedule Service</div><form name="hughes-hvac-lead" method="POST" action="/thank-you" data-netlify="true" class="h-hero-form"><input type="hidden" name="form-name" value="hughes-hvac-lead"><input type="hidden" name="page" value="ac-repair"><input type="hidden" name="lead_source" value="website"><div class="h-hero-form-row"><div class="h-form-group"><label class="h-label">Name*</label><input type="text" name="name" class="h-input" required placeholder="Full name" autocomplete="name"></div><div class="h-form-group"><label class="h-label">Phone*</label><input type="tel" name="phone" class="h-input" required placeholder="(615) 555-0123" autocomplete="tel" inputmode="tel"></div></div><div class="h-form-group"><label class="h-label">Email</label><input type="email" name="email" class="h-input" placeholder="you@email.com" autocomplete="email"></div><div class="h-hero-form-row"><div class="h-form-group"><label class="h-label">Service Needed*</label><select name="service" class="h-select" required><option value="">Select a service</option>
+<option value="AC Repair" selected>AC Repair</option>
+<option value="AC Installation">AC Installation</option>
+<option value="Furnace Repair">Furnace Repair</option>
+<option value="Furnace Installation">Furnace Installation</option>
+<option value="Heat Pump">Heat Pump</option>
+<option value="Maintenance">Maintenance</option>
+<option value="Emergency">Emergency</option>
+<option value="New System Estimate">New System Estimate</option>
+<option value="Other">Other / Not Sure</option>
+</select></div><div class="h-form-group"><label class="h-label">ZIP Code</label><input type="text" name="zip" class="h-input" placeholder="37115" maxlength="5" inputmode="numeric"></div></div><button type="submit" class="h-btn h-btn-primary h-btn-lg h-btn-full">Request a Callback</button><p style="text-align:center;font-size:0.75rem;color:var(--h-ink-secondary);margin-top:6px">We'll call within 1 hour to confirm your appointment.</p></form></div>
+        </div>
       </div>
     </div>
   </div>

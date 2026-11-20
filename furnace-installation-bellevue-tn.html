@@ -476,6 +476,36 @@ input[type="email"] { text-transform: none; }
 }
 .h-form-dark .h-label { color: rgba(255,255,255,0.85); }
 
+/* Hero form card (internal pages) */
+.h-hero-form-card {
+  background: #fff; border-radius: 16px; padding: 0;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  overflow: hidden; width: 100%; max-width: 380px;
+}
+.h-hero-form-header {
+  background: var(--h-navy);
+  color: #fff; font-family: var(--h-font-display);
+  font-weight: 700; font-size: 1.125rem;
+  padding: 14px 24px;
+}
+.h-hero-form {
+  padding: 20px 24px 24px; display: grid; gap: 12px;
+}
+.h-hero-form .h-label {
+  font-size: 0.6875rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--h-ink-secondary); margin-bottom: 4px;
+}
+.h-hero-form .h-input, .h-hero-form .h-select {
+  padding: 10px 14px; font-size: 0.875rem;
+}
+.h-hero-form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+@media (max-width: 480px) {
+  .h-hero-form-card { max-width: 100%; }
+  .h-hero-form-row { grid-template-columns: 1fr; }
+}
+
 
 /* ═══════════════════════════════════════
    NAVIGATION
@@ -549,6 +579,29 @@ input[type="email"] { text-transform: none; }
 .h-nav-link-active {
   color: #fff;
 }
+/* Service Areas mega-dropdown */
+.h-nav-dropdown { position: relative; }
+.h-nav-dropdown-trigger { cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
+.h-nav-dropdown-trigger svg { transition: transform 0.2s; width: 12px; height: 12px; }
+.h-nav-dropdown:hover .h-nav-dropdown-trigger svg { transform: rotate(180deg); }
+.h-nav-dropdown-menu {
+  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: #fff; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  padding: 20px 24px; min-width: 520px; z-index: 100;
+  columns: 2; column-gap: 32px;
+}
+.h-nav-dropdown:hover .h-nav-dropdown-menu { display: block; }
+.h-nav-dropdown-menu a {
+  display: block; padding: 6px 0; font-size: 0.8125rem; font-weight: 500;
+  color: var(--h-ink); white-space: nowrap; break-inside: avoid;
+  transition: color 0.15s;
+}
+.h-nav-dropdown-menu a:hover { color: var(--h-orange); }
+.h-nav-dropdown-label {
+  font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--h-ink-secondary); margin: 8px 0 4px; break-inside: avoid;
+}
+.h-nav-dropdown-label:first-child { margin-top: 0; }
 .h-nav-cta {
   display: flex;
   align-items: center;
@@ -1382,7 +1435,35 @@ input[type="email"] { text-transform: none; }
       <a href="/furnace-repair" class="h-nav-link ">Heating</a>
       <a href="/ac-installation" class="h-nav-link ">Installation</a>
       <a href="/heat-pump-service" class="h-nav-link ">Heat Pumps</a>
-      <a href="/maintenance-plans" class="h-nav-link ">Maintenance</a>
+      <div class="h-nav-dropdown">
+        <span class="h-nav-link h-nav-dropdown-trigger ">Service Areas <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        <div class="h-nav-dropdown-menu">
+          <div class="h-nav-dropdown-label">Nashville</div>
+          <a href="/ac-repair-east-nashville-tn">East Nashville</a>
+          <a href="/ac-repair-germantown-tn">Germantown</a>
+          <a href="/ac-repair-the-nations-tn">The Nations</a>
+          <a href="/ac-repair-12-south-tn">12 South</a>
+          <a href="/ac-repair-green-hills-tn">Green Hills</a>
+          <a href="/ac-repair-belle-meade-tn">Belle Meade</a>
+          <a href="/ac-repair-sylvan-park-tn">Sylvan Park</a>
+          <a href="/ac-repair-hillsboro-village-tn">Hillsboro Village</a>
+          <a href="/ac-repair-north-nashville-tn">North Nashville</a>
+          <a href="/ac-repair-donelson-tn">Donelson</a>
+          <div class="h-nav-dropdown-label">Greater Nashville</div>
+          <a href="/ac-repair-madison-tn">Madison</a>
+          <a href="/ac-repair-hermitage-tn">Hermitage</a>
+          <a href="/ac-repair-brentwood-tn">Brentwood</a>
+          <a href="/ac-repair-franklin-tn">Franklin</a>
+          <a href="/ac-repair-hendersonville-tn">Hendersonville</a>
+          <a href="/ac-repair-mount-juliet-tn">Mount Juliet</a>
+          <a href="/ac-repair-gallatin-tn">Gallatin</a>
+          <a href="/ac-repair-goodlettsville-tn">Goodlettsville</a>
+          <a href="/ac-repair-murfreesboro-tn">Murfreesboro</a>
+          <a href="/ac-repair-antioch-tn">Antioch</a>
+          <a href="/ac-repair-spring-hill-tn">Spring Hill</a>
+          <a href="/ac-repair-smyrna-tn">Smyrna</a>
+        </div>
+      </div>
       <a href="/emergency-hvac" class="h-nav-link ">Emergency</a>
     </nav>
 
@@ -1423,6 +1504,17 @@ input[type="email"] { text-transform: none; }
     <a href="/maintenance-plans" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Maintenance Plans</a>
     <a href="/duct-cleaning" class="h-mobile-menu-link"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Duct Cleaning</a>
     <a href="/emergency-hvac" class="h-mobile-menu-link"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Emergency 24/7</a>
+    <div class="h-mobile-menu-section">Service Areas</div>
+    <a href="/ac-repair-madison-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Madison</a>
+    <a href="/ac-repair-hermitage-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Hermitage</a>
+    <a href="/ac-repair-hendersonville-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Hendersonville</a>
+    <a href="/ac-repair-brentwood-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Brentwood</a>
+    <a href="/ac-repair-franklin-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Franklin</a>
+    <a href="/ac-repair-mount-juliet-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Mount Juliet</a>
+    <a href="/ac-repair-murfreesboro-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Murfreesboro</a>
+    <a href="/ac-repair-east-nashville-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> East Nashville</a>
+    <a href="/ac-repair-green-hills-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Green Hills</a>
+    <a href="/ac-repair-gallatin-tn" class="h-mobile-menu-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Gallatin</a>
   </nav>
   <div class="h-mobile-menu-cta">
     <a href="tel:+16152199882" class="h-btn h-btn-call h-btn-lg h-btn-full" onclick="gtag('event','phone_click',{event_category:'engagement',event_label:'mobile_menu'})">
@@ -1437,13 +1529,28 @@ input[type="email"] { text-transform: none; }
 <script>document.addEventListener('DOMContentLoaded',function(){var b=document.getElementById('headerScheduleBtn');if(b)b.style.display='inline-flex';});</script>
 
 <section class="h-ns-hero h-hero-photo">
-  <div class="h-container">
-    <div class="h-ns-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Furnace & Heater Installation in Bellevue</div>
-    <h1>Best Furnace & Heater Installation in Bellevue, TN</h1>
-    <p class="h-ns-hero-sub">A properly sized furnace keeps your home comfortable for 15 to 20 years. Bellevue is a suburban Nashville community in west Davidson County, with a mix of established neighborhoods, newer developments, and convenient access to downtown. Hughes HVAC provides expert furnace installation to Bellevue homeowners with same-day availability, honest diagnostics, and upfront pricing.</p>
-    <div class="h-ns-hero-actions">
-      <a href="tel:+16152199882" class="h-btn h-btn-primary h-btn-lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Call (615) 219-9882</a>
-      <a href="#contact" class="h-btn-outline-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Schedule Service</a>
+  <div class="h-container" style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap">
+    <div style="flex:1;min-width:300px">
+      <div class="h-ns-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Furnace & Heater Installation in Bellevue</div>
+      <h1>Best Furnace & Heater Installation in Bellevue, TN</h1>
+      <p class="h-ns-hero-sub">A properly sized furnace keeps your home comfortable for 15 to 20 years. Bellevue is a suburban Nashville community in west Davidson County, with a mix of established neighborhoods, newer developments, and convenient access to downtown. Hughes HVAC provides expert furnace installation to Bellevue homeowners with same-day availability, honest diagnostics, and upfront pricing.</p>
+      <div class="h-ns-hero-actions">
+        <a href="tel:+16152199882" class="h-btn h-btn-primary h-btn-lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Call (615) 219-9882</a>
+        <a href="#contact" class="h-btn-outline-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Schedule Service</a>
+      </div>
+    </div>
+    <div style="flex:0 0 auto" class="h-hero-form-wrap">
+      <div class="h-hero-form-card"><div class="h-hero-form-header">Schedule Service</div><form name="hughes-hvac-lead" method="POST" action="/thank-you" data-netlify="true" class="h-hero-form"><input type="hidden" name="form-name" value="hughes-hvac-lead"><input type="hidden" name="page" value="furnace-installation-bellevue"><input type="hidden" name="lead_source" value="website"><div class="h-hero-form-row"><div class="h-form-group"><label class="h-label">Name*</label><input type="text" name="name" class="h-input" required placeholder="Full name" autocomplete="name"></div><div class="h-form-group"><label class="h-label">Phone*</label><input type="tel" name="phone" class="h-input" required placeholder="(615) 555-0123" autocomplete="tel" inputmode="tel"></div></div><div class="h-form-group"><label class="h-label">Email</label><input type="email" name="email" class="h-input" placeholder="you@email.com" autocomplete="email"></div><div class="h-hero-form-row"><div class="h-form-group"><label class="h-label">Service Needed*</label><select name="service" class="h-select" required><option value="">Select a service</option>
+<option value="AC Repair">AC Repair</option>
+<option value="AC Installation">AC Installation</option>
+<option value="Furnace Repair">Furnace Repair</option>
+<option value="Furnace Installation" selected>Furnace Installation</option>
+<option value="Heat Pump">Heat Pump</option>
+<option value="Maintenance">Maintenance</option>
+<option value="Emergency">Emergency</option>
+<option value="New System Estimate">New System Estimate</option>
+<option value="Other">Other / Not Sure</option>
+</select></div><div class="h-form-group"><label class="h-label">ZIP Code</label><input type="text" name="zip" class="h-input" placeholder="37115" maxlength="5" inputmode="numeric"></div></div><button type="submit" class="h-btn h-btn-primary h-btn-lg h-btn-full">Request a Callback</button><p style="text-align:center;font-size:0.75rem;color:var(--h-ink-secondary);margin-top:6px">We'll call within 1 hour to confirm your appointment.</p></form></div>
     </div>
   </div>
 </section><nav class="h-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/furnace-installation">Furnace & Heater Installation</a> <span>/</span> <span>Bellevue</span></nav>
@@ -1501,8 +1608,8 @@ input[type="email"] { text-transform: none; }
       <h2 class="h-h2" style="color:#fff;margin-top:var(--h-space-3)">Schedule Your Appointment</h2>
       <p style="color:rgba(255,255,255,0.7);margin-top:var(--h-space-2)">Someone will call you within 1 hour to confirm your appointment.</p>
     </div>
-    <form name="service-request" method="POST" data-netlify="true" class="h-form-dark" id="lead-form">
-      <input type="hidden" name="form-name" value="service-request">
+    <form name="hughes-hvac-lead" method="POST" action="/thank-you" data-netlify="true" class="h-form-dark" id="lead-form">
+      <input type="hidden" name="form-name" value="hughes-hvac-lead">
       <input type="hidden" name="page" value="furnace-installation">
       <!-- CRM-Ready Lead Tracking Fields -->
       <input type="hidden" name="lead_source" id="lead_source" value="website">
@@ -1759,6 +1866,30 @@ input[type="email"] { text-transform: none; }
   });
 })();
 
+/* ── Lead Notification: beacon form leads to /api/honeybell-lead ── */
+(function(){
+  document.querySelectorAll('form[name="hughes-hvac-lead"]').forEach(function(f){
+    if(f.id==='hbForm')return;
+    f.addEventListener('submit',function(){
+      try{
+        var d={source:'form',name:'',phone:'',email:'',service:'',urgency:'normal',address:'',details:'',zip:'',page:window.location.pathname};
+        var n=f.querySelector('[name=name]');if(n)d.name=n.value;
+        var p=f.querySelector('[name=phone]');if(p)d.phone=p.value;
+        var e=f.querySelector('[name=email]');if(e)d.email=e.value;
+        var s=f.querySelector('[name=service]');if(s)d.service=s.value;
+        var u=f.querySelector('[name=urgency]');if(u)d.urgency=u.value||'normal';
+        var a=f.querySelector('[name=address]');if(a)d.address=a.value;
+        var z=f.querySelector('[name=zip]');if(z)d.zip=z.value;
+        var dt=f.querySelector('[name=details]');if(dt)d.details=dt.value;
+        if(d.name||d.phone){
+          var blob=new Blob([JSON.stringify(d)],{type:'application/json'});
+          navigator.sendBeacon('/api/honeybell-lead',blob);
+        }
+      }catch(err){}
+    });
+  });
+})();
+
 /* ── Phone Click Tracking ── */
 (function(){
   document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
@@ -1802,16 +1933,16 @@ input[type="email"] { text-transform: none; }
 <!-- Powered by Claude API + Mega Honey     -->
 <!-- ═══════════════════════════════════════ -->
 <style>
-.hb-fab{position:fixed;bottom:24px;right:24px;z-index:9999;width:52px;height:52px;border-radius:50%;background:linear-gradient(145deg,#1a2535,#0d1520);border:2px solid var(--h-orange);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.4),0 0 0 4px rgba(212,84,26,0.12);transition:transform 0.2s,box-shadow 0.2s;-webkit-tap-highlight-color:transparent;padding:0;overflow:hidden}
-.hb-fab:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(212,84,26,0.3),0 0 0 4px rgba(212,84,26,0.2)}
-.hb-fab img{width:34px;height:34px;border-radius:50%;object-fit:cover}
-.hb-fab-pulse{position:fixed;bottom:24px;right:24px;z-index:9998;width:52px;height:52px;border-radius:50%;background:var(--h-orange);animation:hb-pulse 2.5s ease-in-out infinite;pointer-events:none}
+.hb-fab{position:fixed;bottom:24px;right:24px;z-index:9999;width:52px;height:52px;border-radius:50%;background:#26262b;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px #6A63F0,0 4px 24px rgba(0,0,0,0.4);transition:transform 0.2s,box-shadow 0.2s;-webkit-tap-highlight-color:transparent;padding:0;overflow:hidden}
+.hb-fab:hover{transform:scale(1.08);box-shadow:0 0 0 2px #6A63F0,0 6px 28px rgba(106,99,240,0.3)}
+.hb-fab img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.hb-fab-pulse{position:fixed;bottom:24px;right:24px;z-index:9998;width:52px;height:52px;border-radius:50%;background:#6A63F0;animation:hb-pulse 2.5s ease-in-out infinite;pointer-events:none}
 @keyframes hb-pulse{0%,100%{transform:scale(1);opacity:0.25}50%{transform:scale(1.6);opacity:0}}
 .hb-win{position:fixed;bottom:88px;right:24px;z-index:10000;width:400px;max-height:600px;border-radius:16px;background:#111820;box-shadow:0 24px 64px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.05);display:none;flex-direction:column;overflow:hidden;font-family:var(--h-font-body)}
 .hb-win.is-open{display:flex}
 @media(max-width:480px){.hb-win{bottom:0;right:0;left:0;width:100%;max-height:100dvh;border-radius:16px 16px 0 0}}
 .hb-hdr{background:#111820;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.06)}
-.hb-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(145deg,#1a2535,#0d1520);border:1.5px solid var(--h-orange);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.hb-av{width:36px;height:36px;border-radius:50%;background:#26262b;border:none;box-shadow:0 0 0 1.5px #6A63F0;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
 .hb-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .hb-id{flex:1;min-width:0}
 .hb-id b{font-size:0.875rem;font-weight:600;display:block;line-height:1.2}
@@ -1852,12 +1983,12 @@ input[type="email"] { text-transform: none; }
 
 <div class="hb-fab-pulse" id="hbPulse"></div>
 <button class="hb-fab" onclick="HB.toggle()" aria-label="Chat with Honeybell" id="hbFab">
-  <img src="/hb-avatar.png" alt="Honeybell" width="34" height="34">
+  <img src="https://www.sociallink.com/m/honeybell/hb-neutral-96.webp" alt="Honeybell" width="52" height="52">
 </button>
 
 <div class="hb-win" id="hbWin">
   <div class="hb-hdr">
-    <div class="hb-av"><img src="/hb-avatar.png" alt="Honeybell" width="36" height="36"></div>
+    <div class="hb-av"><img src="https://www.sociallink.com/m/honeybell/hb-neutral-96.webp" alt="Honeybell" width="36" height="36"></div>
     <div class="hb-id"><b>Honeybell</b><span>Hughes HVAC diagnostic advisor</span></div>
     <div class="hb-act">
       <a href="tel:+16152199882" class="hb-call">Talk to a person</a>
@@ -1875,15 +2006,15 @@ input[type="email"] { text-transform: none; }
     <a href="tel:+16152199882">Call Now - (615) 219-9882</a>
   </div>
   <div class="hb-foot">Honeybell is an AI assistant; verify advice with a licensed technician. If you request service, Hughes HVAC keeps this conversation to follow up. <a href="/privacy-policy">Privacy</a></div>
-  <form id="hbForm" name="honeybell-lead" method="POST" data-netlify="true" netlify-honeypot="hb-bot" style="display:none">
-    <input type="hidden" name="form-name" value="honeybell-lead">
-    <input type="hidden" name="hb-name" id="hb-name">
-    <input type="hidden" name="hb-phone" id="hb-phone">
-    <input type="hidden" name="hb-issue" id="hb-issue">
-    <input type="hidden" name="hb-diagnosis" id="hb-diagnosis">
-    <input type="hidden" name="hb-urgency" id="hb-urgency">
-    <input type="hidden" name="hb-page" id="hb-page">
-    <input type="hidden" name="hb-timestamp" id="hb-timestamp">
+  <form id="hbForm" name="honeybell-chat" method="POST" data-netlify="true" netlify-honeypot="hb-bot" style="display:none">
+    <input type="hidden" name="form-name" value="honeybell-chat">
+    <input type="hidden" name="name" id="hb-name">
+    <input type="hidden" name="phone" id="hb-phone">
+    <input type="hidden" name="service" id="hb-issue">
+    <input type="hidden" name="conversation" id="hb-diagnosis">
+    <input type="hidden" name="urgency" id="hb-urgency">
+    <input type="hidden" name="page" id="hb-page">
+    <input type="hidden" name="timestamp" id="hb-timestamp">
     <input name="hb-bot" style="display:none">
   </form>
 </div>
@@ -1893,8 +2024,11 @@ var HB={
   open:false,
   msgs:[],
   sending:false,
+  leadCaptured:false,
+  insightSent:false,
 
   toggle:function(){
+    var wasOpen=this.open;
     this.open=!this.open;
     document.getElementById('hbWin').classList.toggle('is-open',this.open);
     document.getElementById('hbPulse').style.display=this.open?'none':'block';
@@ -1902,6 +2036,8 @@ var HB={
     if(this.open&&this.msgs.length===0)this.init();
     if(this.open)document.getElementById('hbInput').focus();
     if(typeof gtag==='function')gtag('event',this.open?'honeybell_opened':'honeybell_closed',{event_category:'honeybell'});
+    /* Send non-conversion insight when chat closes */
+    if(wasOpen&&!this.open)this.maybeSendInsight();
   },
 
   init:function(){
@@ -1994,22 +2130,57 @@ var HB={
   },
 
   submitLead:function(name,phone,issue){
-    document.getElementById('hb-name').value=name;
-    document.getElementById('hb-phone').value=phone;
-    document.getElementById('hb-issue').value=issue||'chat';
+    if(!name&&!phone)return;/* prevent blank submissions */
+    this.leadCaptured=true;
+    document.getElementById('hb-name').value=name||'';
+    document.getElementById('hb-phone').value=phone||'';
+    document.getElementById('hb-issue').value=issue||'Honeybell chat';
     document.getElementById('hb-diagnosis').value=this.msgs.map(function(m){return m.role+': '+m.content;}).join('\n').substring(0,2000);
     document.getElementById('hb-urgency').value='normal';
     document.getElementById('hb-page').value=window.location.pathname;
     document.getElementById('hb-timestamp').value=new Date().toISOString();
     var fd=new FormData(document.getElementById('hbForm'));
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});
-    fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,issue:issue,conversation:this.msgs,page:window.location.pathname})});
+    fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'honeybell',name:name,phone:phone,issue:issue,conversation:this.msgs,page:window.location.pathname}),keepalive:true});
     window.dataLayer=window.dataLayer||[];
     window.dataLayer.push({event:'honeybell_lead_captured',honeybell_source:'hvac',honeybell_client:'hughes'});
     if(typeof gtag==='function')gtag('event','generate_lead',{currency:'USD',value:150,lead_source:'honeybell-hvac'});
+  },
+
+  maybeSendInsight:function(){
+    /* Only send if: had real conversation (2+ user msgs), no lead captured, not already sent */
+    if(this.leadCaptured||this.insightSent)return;
+    var userMsgs=this.msgs.filter(function(m){return m.role==='user';});
+    if(userMsgs.length<2)return;
+    this.insightSent=true;
+    var convoText=this.msgs.map(function(m){return(m.role==='user'?'Visitor':'Honeybell')+': '+m.content;}).join('\n').substring(0,3000);
+    /* Submit to Netlify Forms directly (triggers native email notifications) */
+    try{
+      document.getElementById('hb-name').value='[No contact - insight only]';
+      document.getElementById('hb-phone').value='';
+      document.getElementById('hb-issue').value='Non-conversion insight';
+      document.getElementById('hb-diagnosis').value=convoText;
+      document.getElementById('hb-urgency').value='insight';
+      document.getElementById('hb-page').value=window.location.pathname;
+      document.getElementById('hb-timestamp').value=new Date().toISOString();
+      var fd=new FormData(document.getElementById('hbForm'));
+      navigator.sendBeacon('/',new URLSearchParams(fd).toString());
+    }catch(e){console.error('Insight form error:',e);}
+    /* Also POST to API for logging and Mega Honey */
+    try{
+      var payload={source:'insight',conversation:this.msgs,page:window.location.pathname,messageCount:this.msgs.length,userMessageCount:userMsgs.length};
+      if(navigator.sendBeacon){
+        navigator.sendBeacon('/api/honeybell-lead',JSON.stringify(payload));
+      }else{
+        fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true});
+      }
+      if(typeof gtag==='function')gtag('event','honeybell_no_convert',{event_category:'honeybell',event_label:userMsgs.length+' messages'});
+    }catch(e){console.error('Insight send error:',e);}
   }
 };
 document.getElementById('hbInput').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();HB.send();}});
+/* Send insight on page unload if chat had meaningful conversation but no conversion */
+window.addEventListener('beforeunload',function(){HB.maybeSendInsight();});
 </script>
 
 </body>
