@@ -1883,7 +1883,6 @@ input[type="email"] { text-transform: none; }
   f.addEventListener('submit',function(){
     var ts=document.getElementById('submitted_at');if(ts)ts.value=new Date().toISOString();
     if(typeof gtag==='function'){
-      gtag('event','generate_lead',{event_category:'conversion',event_label:f.querySelector('[name=page]').value,value:89});
       var svc=f.querySelector('[name=service]');
       if(svc&&svc.value)gtag('event','service_selected',{event_category:'engagement',service_type:svc.value});
       var urg=f.querySelector('[name=urgency]');
@@ -2178,7 +2177,11 @@ var HB={
     if(ph&&!ph.startsWith('+'))ph='+1'+ph;
     window.dataLayer.push({event:'lead_form_submit',form_name:'hbForm',user_data:{phone_number:ph||undefined}});
     window.dataLayer.push({event:'honeybell_lead_captured',honeybell_source:'hvac',honeybell_client:'hughes'});
-    if(typeof gtag==='function')gtag('event','generate_lead',{currency:'USD',value:150,lead_source:'honeybell-hvac'});
+    if(!this.chatLeadFired){
+      this.chatLeadFired=true;
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({event:'chat_lead',lead_source:'honeybell_chat'});
+    }
   },
 
   maybeSendInsight:function(){
