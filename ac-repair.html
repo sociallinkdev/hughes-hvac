@@ -2281,6 +2281,7 @@ input[type="email"] { text-transform: none; }
     <input type="hidden" name="form-name" value="honeybell-chat">
     <input type="hidden" name="name" id="hb-name">
     <input type="hidden" name="phone" id="hb-phone">
+    <input type="hidden" name="email" id="hb-email">
     <input type="hidden" name="service" id="hb-issue">
     <input type="hidden" name="conversation" id="hb-diagnosis">
     <input type="hidden" name="urgency" id="hb-urgency">
@@ -2327,6 +2328,7 @@ var HB={
 
   userMsg:function(text){
     this.msgs.push({role:'user',content:text});
+    try{this.captureContact(text);}catch(e){}
     var log=document.getElementById('hbLog');
     var d=document.createElement('div');d.className='hb-m me';
     d.textContent=text;
@@ -2400,11 +2402,46 @@ var HB={
       .replace(/\n/g,'<br>');
   },
 
-  submitLead:function(name,phone,issue){
-    if(!name&&!phone)return;/* prevent blank submissions */
+  /* Contact capture: the first valid US phone or email in a visitor message submits the lead (once per chat) */
+  findContact:function(text){
+    var t=String(text||''),phone='',m;
+    var re=/(^|[^\w+@.\-])((?:\+?1[\s.\-]?)?(?:\(\d{3}\)|\d{3})[\s.\-]?\d{3}[\s.\-]?\d{4})(?![\w@])/g;
+    while((m=re.exec(t))){
+      var d=m[2].replace(/\D/g,'');
+      if(d.length===11&&d.charAt(0)==='1')d=d.slice(1);
+      if(d.length===10&&/^[2-9]\d{2}[2-9]\d{6}$/.test(d)){phone='('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);break;}
+    }
+    var em=t.match(/[A-Za-z0-9._%+\-]+@[A-Za-z0-9\-]+(?:\.[A-Za-z0-9\-]+)*\.[A-Za-z]{2,}/);
+    return {phone:phone,email:em?em[0]:''};
+  },
+
+  findName:function(text){
+    var all=this.msgs.filter(function(m){return m.role==='user';}).map(function(m){return m.content;}).join('\n');
+    var m=all.match(/(?:[Mm]y name is|[Mm]y name's|[Nn]ame is|[Nn]ame's|I am|I'm)\s+([A-Z][a-zA-Z']+(?:\s+[A-Z][a-zA-Z']+)?)/);
+    if(m)return m[1];
+    var rest=String(text||'').replace(/[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+/g,' ').replace(/[^A-Za-z'\s]/g,' ').replace(/\s+/g,' ').trim();
+    var w=rest?rest.split(' '):[];
+    var stop=/^(thanks|thank|yes|yeah|sure|ok|okay|hi|hello|hey|please|call|text|phone|number|cell|email|my|its|here|is|me|at|and|or|the|you)$/i;
+    if(w.length&&w.length<=3&&w.every(function(x){return /^[A-Z][a-zA-Z']+$/.test(x)&&!stop.test(x);}))return rest;
+    return '';
+  },
+
+  captureContact:function(text){
+    if(this.leadCaptured)return;
+    var c=this.findContact(text);
+    if(!c.phone&&!c.email)return;
+    var first=this.msgs.filter(function(m){return m.role==='user';})[0];
+    var issue=first?String(first.content).substring(0,200):'Honeybell chat';
+    this.submitLead(this.findName(text),c.phone,issue,c.email);
+  },
+
+  submitLead:function(name,phone,issue,email){
+    if(!name&&!phone&&!email)return;/* prevent blank submissions */
+    if(this.leadCaptured)return;/* once per chat session */
     this.leadCaptured=true;
     document.getElementById('hb-name').value=name||'';
     document.getElementById('hb-phone').value=phone||'';
+    var hbe=document.getElementById('hb-email');if(hbe)hbe.value=email||'';
     document.getElementById('hb-issue').value=issue||'Honeybell chat';
     document.getElementById('hb-diagnosis').value=this.msgs.map(function(m){return m.role+': '+m.content;}).join('\n').substring(0,2000);
     document.getElementById('hb-urgency').value='normal';
@@ -2412,11 +2449,11 @@ var HB={
     document.getElementById('hb-timestamp').value=new Date().toISOString();
     var fd=new FormData(document.getElementById('hbForm'));
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});
-    fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'honeybell',name:name,phone:phone,issue:issue,conversation:this.msgs,page:window.location.pathname}),keepalive:true});
+    fetch('/api/honeybell-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'honeybell',name:name,phone:phone,email:email||'',issue:issue,conversation:this.msgs,page:window.location.pathname}),keepalive:true});
     window.dataLayer=window.dataLayer||[];
     var ph=phone?phone.replace(/[^+\d]/g,''):'';
     if(ph&&!ph.startsWith('+'))ph='+1'+ph;
-    window.dataLayer.push({event:'lead_form_submit',form_name:'hbForm',user_data:{phone_number:ph||undefined}});
+    window.dataLayer.push({event:'lead_form_submit',form_name:'hbForm',user_data:{email:email||undefined,phone_number:ph||undefined}});
     window.dataLayer.push({event:'honeybell_lead_captured',honeybell_source:'hvac',honeybell_client:'hughes'});
     if(!this.chatLeadFired){
       this.chatLeadFired=true;

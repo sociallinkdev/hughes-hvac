@@ -55,7 +55,7 @@ async function sendEmailAlert(lead) {
     const src = lead.source === 'form' ? 'Website Form' : 'Honeybell Chat';
     const isEmergency = (lead.urgency || '').toLowerCase() === 'emergency';
     const urgencyBadge = isEmergency ? '🚨 EMERGENCY' : (lead.urgency === 'today' ? '⚡ URGENT' : '');
-    subject = `${urgencyBadge ? urgencyBadge + ' ' : ''}Hughes HVAC Lead - ${lead.name || 'Unknown'} (${src})`;
+    subject = `${urgencyBadge ? urgencyBadge + ' ' : ''}Hughes HVAC Lead - ${lead.name || lead.phone || lead.email || 'Unknown'} (${src})`;
 
     const phone = lead.phone || '';
     const phoneCta = phone ? `<a href="tel:${phone.replace(/[^+\d]/g,'')}" style="display:inline-block;background:#D4541A;color:#fff;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:600;font-size:16px;margin:12px 0">Call ${(lead.name||'').split(' ')[0]||'Lead'}: ${phone}</a>` : '';
@@ -127,12 +127,12 @@ export async function handler(event) {
   try {
     const lead = JSON.parse(event.body);
 
-    // Require at least name or phone to prevent blank submissions
-    if (!lead.name && !lead.phone && lead.source !== 'insight') {
+    // Require at least name, phone or email to prevent blank submissions
+    if (!lead.name && !lead.phone && !lead.email && lead.source !== 'insight') {
       return { statusCode: 200, headers, body: JSON.stringify({ success: false, error: 'No lead data' }) };
     }
 
-    console.log('LEAD:', lead.source, lead.name, lead.phone);
+    console.log('LEAD:', lead.source, lead.name, lead.phone, lead.email);
 
     // Send email alerts to Brady and Chris
     const emailResult = await sendEmailAlert(lead);

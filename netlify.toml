@@ -3,7 +3,8 @@
 
 [build]
   publish = "."
-  command = "echo 'Static site - no build step'"
+  # Static site. Strip internal docs from the publish directory before deploy.
+  command = "rm -rf internal-docs"
 
 [functions]
   directory = "netlify/functions"
