@@ -1,6 +1,9 @@
 # Canonical domain redirect
 https://www.hugheshvacservices.com/* https://hugheshvacservices.com/:splat 301!
 
+# Retired duplicate service-area pages -> real pages
+/service-areas/service-areas/*  /service-areas/:splat  301
+
 # Internal files: never serve (docs folder, function source)
 /internal-docs/*  /404.html  404!
 /netlify/*  /404.html  404!
