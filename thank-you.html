@@ -10,6 +10,16 @@
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer','GTM-MH4DSSH2');</script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());</script>
 
+<!-- Global Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"LocalBusiness","@id":"https://hugheshvacservices.com/#business","name":"Hughes HVAC Services","url":"https://hugheshvacservices.com/","telephone":"+16152199882","address":{"@type":"PostalAddress","streetAddress":"200 Madison St","addressLocality":"Madison","addressRegion":"TN","postalCode":"37115","addressCountry":"US"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","bestRating":"5","ratingCount":"1"}},
+    {"@type":"Person","@id":"https://hugheshvacservices.com/#chris-hughes","name":"Chris Hughes","jobTitle":"Owner","worksFor":{"@id":"https://hugheshvacservices.com/#business"}}
+  ]
+}
+</script>
 <!-- Fire conversion events -->
 <script>
 window.dataLayer.push({
@@ -17,6 +27,10 @@ window.dataLayer.push({
   form_name: 'hughes-hvac-lead',
   page_path: '/thank-you'
 });
+if(typeof gtag==='function'){
+  gtag('event','generate_lead',{currency:'USD',value:150,lead_source:'website-form'});
+  gtag('event','conversion',{send_to:'AW-18315239154/AZiSCOPFx6sdEPK9sZ1E'});
+}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">

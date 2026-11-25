@@ -1,6 +1,6 @@
 # Hughes HVAC Services
 
-> Licensed HVAC contractor serving Nashville, Madison, and Middle Tennessee. Same-day AC repair, furnace service, heat pump installation. No commission sales, upfront pricing, 24/7 emergency service.
+> Licensed HVAC contractor serving Nashville, Madison, and Middle Tennessee. Same-day AC repair, furnace repair, blower motor replacement, inducer motor repair, furnace replacement, heat pump installation. No commission sales, upfront pricing, 24/7 emergency service.
 
 ## Company Information
 
@@ -21,6 +21,7 @@
 - Upfront pricing -- you approve before work begins
 - All permits pulled and inspections handled on installations
 - Service all major HVAC brands
+- Carbon monoxide safety check included on every furnace service call
 
 ## Services
 
@@ -31,8 +32,20 @@
 
 ### Heating
 - Furnace Repair: Gas and electric, carbon monoxide safety check included
-- Furnace Installation: All permits and inspections included
-- Heat Pump Repair & Installation: Year-round efficient comfort
+- Furnace Installation & Replacement: All permits and inspections included, old system removal and disposal
+- Furnace Replacement & Changeout: Complete removal of old furnace, new system installation, proper sizing, all permits
+- Heat Pump Repair & Installation: Year-round efficient comfort, TVA rebates available
+
+### Furnace Component Repair & Replacement
+- Blower Motor Replacement: PSC and ECM motors, same-day service, all furnace brands. The blower motor circulates air through your furnace and ductwork. Signs of failure include weak airflow, loud humming or squealing, furnace overheating and tripping the limit switch, or no air movement at all. Replacement cost ranges from $400 to $1,500 depending on motor type (PSC vs ECM/variable-speed).
+- Inducer Motor Repair & Replacement: Also called the draft inducer motor or induced draft motor. This motor vents combustion gases safely out of your furnace before ignition begins. When the inducer motor fails, the furnace locks out as a safety measure and will not fire. Signs of failure include loud rattling or whining before the furnace ignites, repeated lockout codes, or the furnace running but not producing heat. Replacement cost ranges from $400 to $1,200. Carbon monoxide safety check included.
+- Flame Sensor Cleaning & Replacement
+- Ignitor Replacement
+- Gas Valve Repair & Replacement
+- Control Board Replacement
+- Heat Exchanger Inspection & Replacement
+- Capacitor Replacement
+- Thermostat Repair & Installation
 
 ### Specialty
 - Emergency HVAC 24/7: Day or night response
@@ -46,11 +59,54 @@
 - Diagnostic Fee: $89 (waived with repair)
 - Standard Service Rate: $150/hr (Mon-Fri 7 AM - 6 PM)
 - After-Hours/Emergency Rate: $225/hr
+- Blower Motor Replacement: $400-$800 (PSC motor), $800-$1,500 (ECM/variable-speed motor)
+- Inducer Motor Replacement: $400-$1,200
+- Gas Furnace Replacement: Starting at $3,500 installed (includes removal of old system, permits, inspection)
 - Maintenance Plans: Starting at $149/yr
+
+## Common Furnace Problems and Solutions
+
+### Blower Motor Failure
+The blower motor is the component that pushes heated air through your ductwork and into your rooms. Without a working blower motor, your furnace may run and produce heat at the heat exchanger, but no warm air reaches your living space. Common signs of blower motor failure include no airflow from vents even though the furnace is running, a loud humming or buzzing sound from the furnace, the blower running intermittently or at reduced speed, the furnace overheating and shutting down on the high-limit safety switch, or a burning smell from the furnace cabinet. Blower motors come in two main types: PSC (permanent split capacitor) motors found in older and standard-efficiency furnaces, and ECM (electronically commutated motor) or variable-speed motors found in high-efficiency systems. ECM motors are more energy-efficient and provide better comfort but cost more to replace. Hughes HVAC stocks common blower motor sizes for same-day replacement in most cases.
+
+### Inducer Motor Failure
+The inducer motor (also called the draft inducer, induced draft motor, or combustion blower) is a critical safety component in modern gas furnaces. It runs before the ignition sequence begins, creating a draft that pulls combustion gases through the heat exchanger and vents them safely outside. If the inducer motor does not start or the pressure switch does not confirm proper draft, the furnace control board will not allow ignition -- this is a safety lockout that prevents carbon monoxide from entering your home. Signs of inducer motor failure include the furnace not starting at all, a loud rattling or grinding noise when the furnace tries to start, the furnace starting and then immediately shutting down with an error code, or the inducer motor running continuously without the burners firing. Because the inducer motor is directly tied to combustion gas venting and carbon monoxide safety, this repair should always be handled by a licensed HVAC technician. Hughes HVAC includes a carbon monoxide safety check with every inducer motor service call.
+
+### When to Replace Your Furnace
+Consider furnace replacement when: the furnace is over 20 years old, the heat exchanger is cracked (carbon monoxide risk), repair costs exceed 50% of a new system, the furnace requires frequent repairs (more than twice per heating season), energy bills have increased significantly despite maintenance, the furnace uses a standing pilot light (inefficient and discontinued), or the furnace no longer heats your home evenly. Modern furnaces achieve 95-98% AFUE efficiency compared to 60-80% for older models, meaning 15-30% energy savings on heating bills. Hughes HVAC provides free in-home estimates for furnace replacement, including Manual J load calculations to ensure proper sizing, removal and disposal of the old system, all required permits and code inspections, and equipment warranty registration.
+
+## Frequently Asked Questions
+
+### Blower Motor
+- Q: How much does a furnace blower motor replacement cost?
+  A: PSC blower motor replacement typically costs $400 to $800 including parts and labor. ECM or variable-speed motor replacement costs $800 to $1,500. The $89 diagnostic fee is waived when you proceed with the replacement.
+
+- Q: What are the signs of a failing blower motor?
+  A: Weak or no airflow from vents, loud humming or squealing from the furnace, the furnace overheating and shutting off, intermittent blower operation, or higher than normal energy bills due to the motor drawing excess power.
+
+- Q: How long does blower motor replacement take?
+  A: Most blower motor replacements are completed in 1 to 2 hours. We stock common motor sizes for same-day service.
+
+### Inducer Motor
+- Q: What is a furnace inducer motor?
+  A: The inducer motor (also called the draft inducer or induced draft motor) creates a draft that pulls combustion gases through the heat exchanger and safely vents them outside before the burners ignite. It is a critical safety component that prevents carbon monoxide from entering your home.
+
+- Q: How much does inducer motor replacement cost?
+  A: Inducer motor replacement typically costs $400 to $1,200 depending on the furnace model and motor availability. The $89 diagnostic fee is waived with repair.
+
+- Q: What happens when the inducer motor fails?
+  A: The furnace will not ignite. Modern furnaces have a pressure switch that confirms the inducer is creating proper draft before allowing the gas valve to open. If the inducer motor fails or runs too slowly, the pressure switch will not close, and the furnace locks out as a safety precaution. This is by design -- it prevents unvented combustion gases from entering your home.
+
+### Furnace Replacement
+- Q: How much does furnace replacement cost in Nashville?
+  A: Gas furnace replacement in Nashville typically ranges from $3,500 to $8,000 depending on the size of your home, efficiency rating (AFUE), and any ductwork modifications needed. This includes removal of the old furnace, the new equipment, installation labor, permits, and inspection. Free in-home estimates available.
+
+- Q: When should I replace my furnace instead of repairing it?
+  A: Replace when the furnace is over 20 years old, has a cracked heat exchanger, requires a repair costing more than 50% of a new system, needs frequent repairs, or operates at significantly lower efficiency than modern furnaces. A new 95%+ AFUE furnace can save 15-30% on heating costs compared to an older 80% AFUE system.
 
 ## Service Areas
 
-Nashville, Madison (headquarters), Hermitage, Donelson, Goodlettsville, Hendersonville, Gallatin, Mount Juliet, Old Hickory, Antioch, Brentwood, Franklin, Murfreesboro, Smyrna, Spring Hill, Millersville, Lebanon, and all of Middle Tennessee.
+Nashville, Madison (headquarters), Hermitage, Donelson, Goodlettsville, Hendersonville, Gallatin, Mount Juliet, Old Hickory, Antioch, Brentwood, Franklin, Murfreesboro, Smyrna, Spring Hill, Nolensville, La Vergne, East Nashville, Belle Meade, Green Hills, Germantown, The Nations, Sylvan Park, Bordeaux, 12 South, Wedgewood-Houston, Hillsboro Village, Bellevue, Crieve Hall, North Nashville, West Nashville, South Nashville, and all of Middle Tennessee.
 
 ## Brands Serviced
 
@@ -58,7 +114,7 @@ Carrier, Trane, Lennox, Rheem, York, Goodman, Amana, Bryant, American Standard, 
 
 ## Financing
 
-Financing available for new HVAC system installations. Contact for details on current programs.
+Financing available for new HVAC system installations and furnace replacements. Contact for details on current programs.
 
 ## How to Contact
 
